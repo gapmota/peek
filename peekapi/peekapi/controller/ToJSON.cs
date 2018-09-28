@@ -12,31 +12,9 @@ namespace peekapi.controller
     {
         public string getUsuarioToJson()
         {
-            List<Usuario> l = new List<Usuario>();
+            List<Usuario> l = new EntidadeUsuario().getUsuarios();
 
-            Usuario u = new Usuario();
-            u.Email = "m@m.com";
-            u.Nome = "aaa";
-            u.Id = 12;
-
-            l.Add(u);
-
-
-            u = new Usuario();
-            u.Email = "C@m.com";
-            u.Nome = "Cc";
-            u.Id = 10;
-
-            l.Add(u);
-
-
-            u = new Usuario();
-            u.Email = "c@m.com";
-            u.Nome = "bb";
-            u.Id = 11;
-
-            l.Add(u);
-
+           
             return JsonConvert.SerializeObject(l);
         }
 
