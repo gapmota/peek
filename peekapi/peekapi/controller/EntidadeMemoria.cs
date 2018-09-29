@@ -25,9 +25,9 @@ namespace peekapi.controller
                         if (dr.Read())
                         {
                             Memoria m = new Memoria();
-                            m.Total = int.Parse(dr["TOTAL"].ToString());
-                            m.Livre = int.Parse(dr["LIVRE"].ToString());
-                            m.EmUso = int.Parse(dr["EMUSO"].ToString());
+                            m.Total = double.Parse(dr["TOTAL"].ToString());
+                            m.Livre = double.Parse(dr["LIVRE"].ToString());
+                            m.EmUso = double.Parse(dr["EMUSO"].ToString());
 
                             return m;
                         }
