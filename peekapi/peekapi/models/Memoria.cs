@@ -7,8 +7,8 @@ namespace peekapi.models
 {
     public class Memoria
     {
-        public int Total { get; set; }
-        public int Livre { get; set; }
-        public int EmUso { get; set; }
+        public double Total { get; set; }
+        public double Livre { get; set; }
+        public double EmUso { get; set; }
     }
 }
