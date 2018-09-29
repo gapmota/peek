@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft;
 using Newtonsoft.Json;
-using peekapi.Models;
+using peekapi.models;
 
 namespace peekapi.controller
 {
@@ -12,20 +12,24 @@ namespace peekapi.controller
     {
         public string getUsuarioToJson()
         {
-            List<Usuario> l = new EntidadeUsuario().getUsuarios();
-
-           
-            return JsonConvert.SerializeObject(l);
+            return JsonConvert.SerializeObject(new EntidadeUsuario().getUsuarios());
         }
 
         public List<Usuario> JsonToListUsuario(string json)
         {
-            JsonConvert.DeserializeObject(json);
-
-            List<Usuario> list = JsonConvert.DeserializeObject<List<Usuario>>(json);
-            
-            return list;
+            return JsonConvert.DeserializeObject<List<Usuario>>(json);
         }
+
+        public string getMemoriaToJson()
+        {
+            return JsonConvert.SerializeObject(new EntidadeMemoria().getMemoria());
+        }
+
+        public Memoria JsonToGetMemoria(string json)
+        {
+            return JsonConvert.DeserializeObject<Memoria>(json);
+        } 
+
 
     }
 }

@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,9 +85,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\Banco.cs" />
+    <Compile Include="controller\EntidadeMemoria.cs" />
     <Compile Include="controller\EntidadeUsuario.cs" />
     <Compile Include="controller\ToJSON.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="models\Memoria.cs" />
+    <Compile Include="models\Usuario.cs" />
     <Compile Include="get\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

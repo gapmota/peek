@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using peekapi.controller;
-using peekapi.Models;
+using peekapi.models;
 
 namespace peekapi.set
 {
@@ -14,14 +14,20 @@ namespace peekapi.set
         protected void Page_Load(object sender, EventArgs e)
         {
             string json = Request.QueryString["json"];
+            string type = Request.QueryString["type"];
 
-            List<Usuario> usuario = new ToJSON().JsonToListUsuario(json);
-
-            foreach (Usuario u in usuario)
+            if (type == "memory")
             {
-                Response.Write(u.Nome+" > "+u.Email+" > "+u.Id+"<br>");
+                new EntidadeMemoria().UpdateMemoria(new ToJSON().JsonToGetMemoria(json));
             }
+            else if (type == "user")
+            {
 
+            }
+            else
+            {
+
+            }
         }
     }
 }

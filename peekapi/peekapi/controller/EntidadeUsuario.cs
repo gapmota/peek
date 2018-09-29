@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using peekapi.Models;
+using peekapi.models;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -36,7 +36,7 @@ namespace peekapi.controller
                         }
                     }
                 }
-                catch(SqlException ex) { return null; }                
+                catch { return null; }                
             }
             return userList;
         }

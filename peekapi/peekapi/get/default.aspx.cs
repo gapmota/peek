@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using peekapi.controller;
-using peekapi.Models;
+using peekapi.models;
 
 namespace peekapi.get
 {
@@ -13,7 +13,19 @@ namespace peekapi.get
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(new ToJSON().getUsuarioToJson());
+            string type = Request.QueryString["type"];
+            if(type == "memory")
+            {
+                Response.Write(new ToJSON().getMemoriaToJson());
+            }
+            else if(type == "user")
+            {
+                Response.Write(new ToJSON().getUsuarioToJson());
+            }
+            else
+            {
+                Response.Write("IsNaN");
+            }
         }
     }
 }
