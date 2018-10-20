@@ -28,14 +28,11 @@
 			<version>1.7.22</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>7.0.0.jre8</version>
-			<scope>test</scope>
 		</dependency>
-
 
 	</dependencies>
 

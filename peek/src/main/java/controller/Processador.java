@@ -1,4 +1,4 @@
-package Aplicacao;
+package controller;
 
 import oshi.SystemInfo;
 
@@ -7,7 +7,7 @@ public class Processador {
 	
 	public String getNomeProcessador() {
 		
-		return systemInfo.getHardware().getProcessor().getIdentifier();
+		return systemInfo.getHardware().getProcessor().getName();
 		
 	}
 	

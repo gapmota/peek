@@ -1,7 +1,10 @@
-package Aplicacao;
+package controller;
 
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
+import model.MAC;
 import oshi.SystemInfo;
 import oshi.util.FormatUtil;
 
@@ -17,16 +20,15 @@ public class Rede {
 		return systemInfo.getHardware().getNetworkIFs().length;
 	}
 	
-	public String[] getMacsPC() {
+	public List<MAC> getMacsPC() {
 		systemInfo = new SystemInfo();
-		systemInfo.getHardware().getNetworkIFs()[0].getMacaddr();
-		
 		int index = systemInfo.getHardware().getNetworkIFs().length;
 		
-		String[] macs = new String[index];
+		List<MAC> macs = new ArrayList<MAC>();
 		
 		for(int i = 0; i < index; i++) {
-			macs[i] = systemInfo.getHardware().getNetworkIFs()[i].getMacaddr();
+			macs.add(new MAC(systemInfo.getHardware().getNetworkIFs()[i].getMacaddr(),
+					systemInfo.getHardware().getNetworkIFs()[i].getDisplayName()));
 		}
 		
 		return macs;
@@ -102,5 +104,7 @@ public class Rede {
 		
 		return -1;
 	}
+	
+	
 	
 }

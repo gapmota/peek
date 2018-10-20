@@ -1,4 +1,4 @@
-package Aplicacao;
+package controller;
 
 public class Computador {
 	

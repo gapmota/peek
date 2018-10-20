@@ -1,4 +1,4 @@
-package Aplicacao;
+package controller;
 
 import oshi.SystemInfo;
 import oshi.hardware.HWDiskStore;
