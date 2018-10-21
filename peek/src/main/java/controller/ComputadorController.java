@@ -11,270 +11,272 @@ import java.sql.SQLException;
 
 public class ComputadorController {
 
-	private PreparedStatement ps = null;
-	private Computador computador;
+    private PreparedStatement ps = null;
 
-	public String cadastroInicial() {
-		
-		List<MAC> macs = new Rede().getMacsPC(); 
-		
-		if(!isPcJaCadastrado(macs)) {
-			int idComputador = cadastroComputadorInicio();
-			boolean cadastrouMac = cadastrarMACS(macs, idComputador);
-				
-			
-			
-			return "\n---------------------------------------------------------\n"
-					+ "ID_COMPUTADOR: "+idComputador+""
-					+ "\nMAC CADASTRADOS: "+cadastrouMac+""
-							+ "\n---------------------------------------------------------";
-		}else {
-			
-			return "Computador já cadastro, aguarde...";
-			
-		}
-		
-		
-	}
+    public String cadastroInicial() {
 
-	/**
-	 * METODO PARA DESCOBRIR SE O MAC DO COMPUTADOR JA ESTA CADASTRADO NO BANCO, CASO JÁ ESTEJA O RETORNO EH TRUE
-	 * @param mac List<MAC> vem da classe Rede, presenta no package
-	 *                     controller. no metodo getMacsPC()
-	 * @return TRUE = JA TEM PC CADASTRADO COM ESSE MAC | FALSE = NAO TEM 
-	 */
-	private boolean isPcJaCadastrado(List<MAC> mac) {
-		String SQL = "SELECT * FROM PEEK_MAC_ADDRESS WHERE MAC_ADDRESS = ?";
+        List<MAC> macs = new Rede().getMacsPC();
 
-		for(MAC m : mac) {
-			Connection cnx = new Banco().getInstance();
+        if (!isPcJaCadastrado(macs)) {
+            int idComputador = cadastroComputadorInicio();
+            boolean cadastrouMac = cadastrarMACS(macs, idComputador);
 
-			try {
+            return "\n---------------------------------------------------------\n"
+                    + "ID_COMPUTADOR: " + idComputador + ""
+                    + "\nMAC CADASTRADOS: " + cadastrouMac + ""
+                    + "\n---------------------------------------------------------";
+        } else {
 
-				cnx.setAutoCommit(true);
-				PreparedStatement ps = cnx.prepareStatement(SQL);
-				ps.setString(1, m.getMac());
-				
-				ResultSet rs = ps.executeQuery();
-				if (rs.next()) {
-					// System.out.println(rs);
-					return true;
+            return "Computador jÃ¡ cadastro, aguarde...";
 
-				}
+        }
 
-			} catch (SQLException sqlEx) {
-				System.out.print("ERRO SQL0003: ");
-				try {
-					if (!cnx.isClosed())
-						cnx.rollback();
+    }
 
-					sqlEx.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (Exception e) {
-				System.out.print("ERRO DESC0001: ");
-				e.getMessage();
-			} finally {
-				try {
+    /**
+     * METODO PARA DESCOBRIR SE O MAC DO COMPUTADOR JA ESTA CADASTRADO NO BANCO,
+     * CASO Jï¿½ ESTEJA O RETORNO EH TRUE
+     *
+     * @param mac List<MAC> vem da classe Rede, presenta no package controller.
+     * no metodo getMacsPC()
+     * @return TRUE = JA TEM PC CADASTRADO COM ESSE MAC | FALSE = NAO TEM
+     */
+    private boolean isPcJaCadastrado(List<MAC> mac) {
+        String SQL = "SELECT * FROM PEEK_MAC_ADDRESS WHERE MAC_ADDRESS = ?";
 
-					if (!cnx.isClosed()) {
+        for (MAC m : mac) {
+            Connection cnx = new Banco().getInstance();
 
-						cnx.close();
+            try {
 
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		
-		
-		return false;// se chegar ate aqui quer dizer que não tem o MAC cadastrado
-	}
+                cnx.setAutoCommit(true);
+                PreparedStatement ps = cnx.prepareStatement(SQL);
+                ps.setString(1, m.getMac());
 
-	/**
-	 * METODO QUE FAZ O PRIMEIRO CADASTRO DE UM COMPUTADOR NA TABELA PEEK_COMPUTADOR
-	 * 
-	 * @return RETORNA O ID_COMPUTADOR DO COMPUTADOR CADASTRADO
-	 */
-	private int cadastroComputadorInicio() {
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    // System.out.println(rs);
+                    return true;
 
-		String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR) VALUES (?,?)";
-		Connection cnx = new Banco().getInstance();
-		int idComputador = -1;
-		try {
+                }
 
-			Computador computador = new Computador();
+            } catch (SQLException sqlEx) {
+                System.out.print("ERRO SQL0003: ");
+                try {
+                    if (!cnx.isClosed()) {
+                        cnx.rollback();
+                    }
 
-			cnx.setAutoCommit(false);
-			PreparedStatement ps = cnx.prepareStatement(SQL);
+                    sqlEx.printStackTrace();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                System.out.print("ERRO DESC0001: ");
+                e.getMessage();
+            } finally {
+                try {
 
-			ps.setString(1, computador.getRam().getTotal());
-			ps.setString(2, computador.getProcessador().getNomeProcessador());
+                    if (!cnx.isClosed()) {
 
-			if (ps.executeUpdate() > 0) {
-				cnx.commit();
-				System.out.println("COMPUTADOR CRIADO");
-				idComputador = this.getIdComputador(computador);
-				return idComputador;
-			}
+                        cnx.close();
 
-		} catch (SQLException sqlEx) {
-			System.out.print("ERRO SQL0003: ");
-			try {
-				if (!cnx.isClosed())
-					cnx.rollback();
+                    }
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
 
-				sqlEx.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (Exception e) {
-			System.out.print("ERRO DESC0001: ");
-			e.getMessage();
-		} finally {
-			try {
+        return false;// se chegar ate aqui quer dizer que nï¿½o tem o MAC cadastrado
+    }
 
-				if (!cnx.isClosed()) {
+    /**
+     * METODO QUE FAZ O PRIMEIRO CADASTRO DE UM COMPUTADOR NA TABELA
+     * PEEK_COMPUTADOR
+     *
+     * @return RETORNA O ID_COMPUTADOR DO COMPUTADOR CADASTRADO
+     */
+    private int cadastroComputadorInicio() {
 
-					cnx.close();
+        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR) VALUES (?,?)";
+        Connection cnx = new Banco().getInstance();
+        int idComputador = -1;
+        try {
 
-				}
+            Computador computador = new Computador();
 
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return idComputador;
+            cnx.setAutoCommit(false);
+            PreparedStatement ps = cnx.prepareStatement(SQL);
 
-	}
+            ps.setString(1, computador.getRam().getTotal());
+            ps.setString(2, computador.getProcessador().getNomeProcessador());
 
-	/**
-	 * PEGA O ULTIMO ID_COMPUTADOR CADASTRADO, ESSE METODO SERVE DE COMPLEMENTO PARA
-	 * O METODO cadastroComputadorInicio()
-	 * 
-	 * @param computador COMPUTADOR QUE ACABOU DE SER CADASTRADO
-	 * @return ULTIMO ID_COMPUTADOR CADASTRADO
-	 */
-	private int getIdComputador(Computador computador) {
-		String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_COMPUTADOR = "
-				+ "(SELECT MAX(ID_COMPUTADOR) FROM PEEK_COMPUTADOR)";
-		Connection cnx = new Banco().getInstance();
+            if (ps.executeUpdate() > 0) {
+                cnx.commit();
+                System.out.println("COMPUTADOR CRIADO");
+                idComputador = this.getIdComputador(computador);
+                return idComputador;
+            }
 
-		try {
+        } catch (SQLException sqlEx) {
+            System.out.print("ERRO SQL0003: ");
+            try {
+                if (!cnx.isClosed()) {
+                    cnx.rollback();
+                }
 
-			cnx.setAutoCommit(true);
-			PreparedStatement ps = cnx.prepareStatement(SQL);
+                sqlEx.printStackTrace();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.print("ERRO DESC0001: ");
+            e.getMessage();
+        } finally {
+            try {
 
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				// System.out.println(rs);
-				return rs.getInt("ID_COMPUTADOR");
+                if (!cnx.isClosed()) {
 
-			}
+                    cnx.close();
 
-		} catch (SQLException sqlEx) {
-			System.out.print("ERRO SQL0003: ");
-			try {
-				if (!cnx.isClosed())
-					cnx.rollback();
+                }
 
-				sqlEx.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (Exception e) {
-			System.out.print("ERRO DESC0001: ");
-			e.getMessage();
-		} finally {
-			try {
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return idComputador;
 
-				if (!cnx.isClosed()) {
+    }
 
-					cnx.close();
+    /**
+     * PEGA O ULTIMO ID_COMPUTADOR CADASTRADO, ESSE METODO SERVE DE COMPLEMENTO
+     * PARA O METODO cadastroComputadorInicio()
+     *
+     * @param computador COMPUTADOR QUE ACABOU DE SER CADASTRADO
+     * @return ULTIMO ID_COMPUTADOR CADASTRADO
+     */
+    private int getIdComputador(Computador computador) {
+        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_COMPUTADOR = "
+                + "(SELECT MAX(ID_COMPUTADOR) FROM PEEK_COMPUTADOR)";
+        Connection cnx = new Banco().getInstance();
 
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+        try {
 
-		return -1;
-	}
+            cnx.setAutoCommit(true);
+            PreparedStatement ps = cnx.prepareStatement(SQL);
 
-	/**
-	 * METODO PARA CADASTRAR TODOS OS MAC ADDRESS DO COMPUTADOR
-	 * 
-	 * @param mac          List<MAC> vem da classe Rede, presenta no package
-	 *                     controller. no metodo getMacsPC()
-	 * @param idComputador vem do metodo cadastroComputadorInicio() desta mesma
-	 *                     classe
-	 * @return retorna TRUE se todos mac cadastrarem no banco
-	 */
-	private boolean cadastrarMACS(List<MAC> mac, int idComputador) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                // System.out.println(rs);
+                return rs.getInt("ID_COMPUTADOR");
 
-		String SQL = "INSERT INTO PEEK_MAC_ADDRESS(MAC_ADDRESS,TIPO_CONEXAO,ID_COMPUTADOR) VALUES (?,?,?)";
-		int cadastrados = 0;
+            }
 
-		for (MAC m : mac) {
+        } catch (SQLException sqlEx) {
+            System.out.print("ERRO SQL0003: ");
+            try {
+                if (!cnx.isClosed()) {
+                    cnx.rollback();
+                }
 
-			Connection cnx = new Banco().getInstance();
-			try {
+                sqlEx.printStackTrace();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.print("ERRO DESC0001: ");
+            e.getMessage();
+        } finally {
+            try {
 
-				cnx.setAutoCommit(false);
-				PreparedStatement ps = cnx.prepareStatement(SQL);
+                if (!cnx.isClosed()) {
 
-				ps.setString(1, m.getMac());
-				ps.setString(2, m.getAdaptador());
-				ps.setInt(3, idComputador);
+                    cnx.close();
 
-				if (ps.executeUpdate() > 0) {
-					cnx.commit();
-					System.out.println(
-							"MAC: " + m.getMac() + "\nADAPTADOR: " + m.getAdaptador() + "\nCADASTRADO COM SUCESSO!");
-					cadastrados++;
-				}
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
-			} catch (SQLException sqlEx) {
-				System.out.print("ERRO SQL0003: ");
-				try {
-					if (!cnx.isClosed())
-						cnx.rollback();
+        return -1;
+    }
 
-					sqlEx.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (Exception e) {
-				System.out.print("ERRO DESC0001: ");
-				e.getMessage();
-			} finally {
-				try {
+    /**
+     * METODO PARA CADASTRAR TODOS OS MAC ADDRESS DO COMPUTADOR
+     *
+     * @param mac List<MAC> vem da classe Rede, presenta no package controller.
+     * no metodo getMacsPC()
+     * @param idComputador vem do metodo cadastroComputadorInicio() desta mesma
+     * classe
+     * @return retorna TRUE se todos mac cadastrarem no banco
+     */
+    private boolean cadastrarMACS(List<MAC> mac, int idComputador) {
 
-					if (!cnx.isClosed()) {
+        String SQL = "INSERT INTO PEEK_MAC_ADDRESS(MAC_ADDRESS,TIPO_CONEXAO,ID_COMPUTADOR) VALUES (?,?,?)";
+        int cadastrados = 0;
 
-						cnx.close();
+        for (MAC m : mac) {
 
-					}
+            Connection cnx = new Banco().getInstance();
+            try {
 
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+                cnx.setAutoCommit(false);
+                PreparedStatement ps = cnx.prepareStatement(SQL);
 
-		}
+                ps.setString(1, m.getMac());
+                ps.setString(2, m.getAdaptador());
+                ps.setInt(3, idComputador);
 
-		return cadastrados == mac.size();
+                if (ps.executeUpdate() > 0) {
+                    cnx.commit();
+                    System.out.println(
+                            "MAC: " + m.getMac() + "\nADAPTADOR: " + m.getAdaptador() + "\nCADASTRADO COM SUCESSO!");
+                    cadastrados++;
+                }
 
-	}
+            } catch (SQLException sqlEx) {
+                System.out.print("ERRO SQL0003: ");
+                try {
+                    if (!cnx.isClosed()) {
+                        cnx.rollback();
+                    }
+
+                    sqlEx.printStackTrace();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                System.out.print("ERRO DESC0001: ");
+                e.getMessage();
+            } finally {
+                try {
+
+                    if (!cnx.isClosed()) {
+
+                        cnx.close();
+
+                    }
+
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        return cadastrados == mac.size();
+
+    }
 
 }
