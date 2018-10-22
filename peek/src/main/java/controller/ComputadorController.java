@@ -279,4 +279,25 @@ public class ComputadorController {
 
     }
 
+    public String atualizacaoAutomatica() {
+        //String processSQL = "EXEC Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)";
+        String SQL = "SELECT * FROM PEEK_COMPUTADOR";
+
+        Connection cnx = new Banco().getInstance();
+
+        try {
+
+            cnx.setAutoCommit(true);
+            PreparedStatement ps = cnx.prepareStatement(SQL);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs);
+            }
+
+        } catch (SQLException sqlEx) {
+
+        }
+        return null;
+    }
 }

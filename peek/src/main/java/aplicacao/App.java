@@ -9,5 +9,8 @@ public class App {
         ComputadorController cc = new ComputadorController();
         System.out.println(cc.cadastroInicial());
 
+        cc.atualizacaoAutomatica();
+
     }
+
 }
