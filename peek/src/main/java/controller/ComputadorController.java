@@ -7,6 +7,7 @@ import model.MAC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class ComputadorController {
@@ -279,7 +280,7 @@ public class ComputadorController {
 
     }
 
-    public String atualizacaoAutomatica() {
+    public void atualizacaoAutomatica() {
         //String processSQL = "EXEC Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)";
         String SQL = "SELECT * FROM PEEK_COMPUTADOR";
 
@@ -291,13 +292,14 @@ public class ComputadorController {
             PreparedStatement ps = cnx.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                System.out.println(rs);
+            System.out.println("Deu bom");
+
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
             }
 
         } catch (SQLException sqlEx) {
-
+            System.out.println("Deu ruim");
         }
-        return null;
     }
 }
