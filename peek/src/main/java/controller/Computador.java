@@ -6,8 +6,8 @@ public class Computador {
         return new MemoriaRam();
     }
 
-    public HD getHD() {
-        return new HD();
+    public HDController getHD() {
+        return new HDController();
     }
 
     public Processador getProcessador() {
