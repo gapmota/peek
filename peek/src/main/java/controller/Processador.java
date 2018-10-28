@@ -42,4 +42,9 @@ public class Processador {
         systemInfo = new SystemInfo();
         return (int) (systemInfo.getHardware().getProcessor().getSystemCpuLoad() * 100.0);
     }
+
+    public int getTempoAtividade() {
+        systemInfo = new SystemInfo();
+        return (int) systemInfo.getHardware().getProcessor().getSystemUptime();
+    }
 }

@@ -280,9 +280,30 @@ public class ComputadorController {
 
     }
 
+    /* ATUALIZAÇÃO DE INFORMAÇÕES DO COMPUTADOR E DA REDE AUTOMÁTICAS
+	*
+	*   Descrição: O método abaixo é executado repetidas vezes com um intervalo de
+	*   5 minutos a cada execução, ele pega as informações do computador, insere na
+	*   na procedure e executada a procedura em linguagem SQL;
+        *   
+        *   As informações necessárias são inseridas na String da procedure e a mesma é
+        *   "enviada" para a execução depois da conexão com o banco for iniciada. A query passa
+        *   pelo tratamento para verificar se foi realizada e atualizada as informações ou se ocorreu
+        *   algum erro.
+     */
     public void atualizacaoAutomatica() {
-        //String processSQL = "EXEC Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)";
-        String SQL = "SELECT * FROM PEEK_COMPUTADOR";
+        Computador c = new Computador();
+
+        String SQL = "EXEC Sp_adicionar_informacoes(" + c.getProcessador().getTempoAtividade() + ""
+                + ", " + c.getProcessador().getPorcetagemDeUso() + ""
+                + ", " + c.getRede().getIPv4() + ""
+                + ", " + c.getRede().getIPv6() + ""
+                + ", " + c.getRede().getMAC() + ""
+                + ", " + c.getRede().getVelocidadeDownload() + ""
+                + ", " + c.getRede().getVelocidadeUpload() + ""
+                + ", " + c.getRam().getTotal() + ""
+                + ", " + c.getRam().getDisponivel() + ""
+                + ", " + c.getRam().getUsando() + ")";
 
         Connection cnx = new Banco().getInstance();
 
@@ -292,14 +313,14 @@ public class ComputadorController {
             PreparedStatement ps = cnx.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
-            System.out.println("Deu bom");
+            System.out.println("Informações atualizadas com sucesso!");
 
             while (rs.next()) {
                 System.out.println(rs.getString(1));
             }
 
         } catch (SQLException sqlEx) {
-            System.out.println("Deu ruim");
+            System.out.println("Algum erro aconteceu...");
         }
     }
 }
