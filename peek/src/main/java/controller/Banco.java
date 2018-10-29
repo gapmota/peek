@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Banco {
 
-    private static String PATH_SQL = "";
+    private static String PATH_SQL = "jdbc:sqlserver://mateuzserver.database.windows.net:1433;database=MEU;user=mateuz@mateuzserver;password=Banco2k18;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     public Connection getInstance() {
         try {

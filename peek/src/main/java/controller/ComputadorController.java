@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.CallableStatement;
 import java.util.List;
 
 import model.MAC;
@@ -291,36 +292,32 @@ public class ComputadorController {
         *   pelo tratamento para verificar se foi realizada e atualizada as informações ou se ocorreu
         *   algum erro.
      */
-    public void atualizacaoAutomatica() {
+    public void atualizacaoAutomatica() throws SQLException {
         Computador c = new Computador();
 
-        String SQL = "EXEC Sp_adicionar_informacoes(" + c.getProcessador().getTempoAtividade() + ""
-                + ", " + c.getProcessador().getPorcetagemDeUso() + ""
-                + ", " + c.getRede().getIPv4() + ""
-                + ", " + c.getRede().getIPv6() + ""
-                + ", " + c.getRede().getMAC() + ""
-                + ", " + c.getRede().getVelocidadeDownload() + ""
-                + ", " + c.getRede().getVelocidadeUpload() + ""
-                + ", " + c.getRam().getTotal() + ""
-                + ", " + c.getRam().getDisponivel() + ""
-                + ", " + c.getRam().getUsando() + ")";
-
         Connection cnx = new Banco().getInstance();
+        CallableStatement ps;
+        ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)}");
 
         try {
 
             cnx.setAutoCommit(true);
-            PreparedStatement ps = cnx.prepareStatement(SQL);
-
-            ResultSet rs = ps.executeQuery();
+            ps.setString("@TEMPO_ATIVIDADE", c.getProcessador().getTempoAtividade() + "");
+            ps.setString("@PORCENTAGEM_USO", c.getProcessador().getPorcetagemDeUso()+"");
+            ps.setString("@IPV4", c.getRede().getIPv4());
+            ps.setString("@IPV6", c.getRede().getIPv6());
+            ps.setString("@MAC_ADDRESS", c.getRede().getMAC());
+            ps.setString("@VELOCIDADE_DOWNLOAD", c.getRede().getVelocidadeDownload());
+            ps.setString("@VELOCIDADE_UPLOAD", c.getRede().getVelocidadeUpload());
+            ps.setLong("@TOTAL", c.getRam().getTotal());
+            ps.setLong("@LIVRE", c.getRam().getDisponivel());
+            ps.setLong("@EM_USO", c.getRam().getUsando());
+            ps.execute();
             System.out.println("Informações atualizadas com sucesso!");
-
-            while (rs.next()) {
-                System.out.println(rs.getString(1));
-            }
 
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");
+            sqlEx.printStackTrace();
         }
     }
 }

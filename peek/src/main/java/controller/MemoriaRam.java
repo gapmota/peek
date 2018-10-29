@@ -11,28 +11,27 @@ public class MemoriaRam {
      *
      * @return Retorna o total de RAM em GB
      */
-    public String getTotal() {
+    public long getTotal() {
         systemInfo = new SystemInfo();
-        return FormatUtil.formatBytes(systemInfo.getHardware().getMemory().getTotal());
+        return systemInfo.getHardware().getMemory().getTotal();
     }
 
     /**
      *
      * @return Retorna o total disponivel de RAM em GB
      */
-    public String getDisponivel() {
+    public long getDisponivel() {
         systemInfo = new SystemInfo();
-        return FormatUtil.formatBytes(systemInfo.getHardware().getMemory().getAvailable());
+        return systemInfo.getHardware().getMemory().getAvailable();
     }
 
     /**
      *
      * @return Retorna o total em uso de RAM em GB
      */
-    public String getUsando() {
+    public long getUsando() {
         systemInfo = new SystemInfo();
-        long uso = systemInfo.getHardware().getMemory().getTotal() - systemInfo.getHardware().getMemory().getAvailable();
-        return FormatUtil.formatBytes(uso);
+        return systemInfo.getHardware().getMemory().getTotal() - systemInfo.getHardware().getMemory().getAvailable();
     }
 
 }
