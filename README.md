@@ -1,2 +1,2 @@
 # MonitoringProject
-Projeto de monitoramento.
+Projeto de monitoramento de hardware e rede
