@@ -12,19 +12,12 @@ public class App {
         Computador a = new Computador();
         ComputadorController cc = new ComputadorController();
 
-        for (int i = 0; i < a.getHD().getInformacoesHdParticao().size(); i++) {
-            List<Particao> p = a.getHD().getInformacoesHdParticao().get(i).getParticoes();
+        cc.cadastroInicial();
 
-            for (Particao pp : p) {
-                System.out.println(pp.getDiretorio());
-                System.out.println(pp.getTotal());
-            }
-
-        }
-
-        while (true){
-        cc.atualizacaoAutomatica();
-        Thread.sleep(1000);
+       
+        while (true) {
+            cc.atualizacaoAutomatica();
+            Thread.sleep(60000); //1 minuto
         }
     }
 }

@@ -113,7 +113,7 @@ public class ComputadorController {
             cnx.setAutoCommit(false);
             PreparedStatement ps = cnx.prepareStatement(SQL);
 
-            ps.setString(1, computador.getRam().getTotal());
+            ps.setInt(1, computador.getRam().getTotal());
             ps.setString(2, computador.getProcessador().getNomeProcessador());
 
             if (ps.executeUpdate() > 0) {
@@ -309,15 +309,19 @@ public class ComputadorController {
             ps.setString("@MAC_ADDRESS", c.getRede().getMAC());
             ps.setString("@VELOCIDADE_DOWNLOAD", c.getRede().getVelocidadeDownload());
             ps.setString("@VELOCIDADE_UPLOAD", c.getRede().getVelocidadeUpload());
-            ps.setLong("@TOTAL", c.getRam().getTotal());
-            ps.setLong("@LIVRE", c.getRam().getDisponivel());
-            ps.setLong("@EM_USO", c.getRam().getUsando());
+            ps.setInt("@TOTAL", c.getRam().getTotal());
+            ps.setInt("@LIVRE", c.getRam().getDisponivel());
+            ps.setInt("@EM_USO", c.getRam().getUsando());
             ps.execute();
             System.out.println("Informações atualizadas com sucesso!");
 
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");
             sqlEx.printStackTrace();
+        }
+        finally{
+            ps.close();
+            cnx.close();
         }
     }
 }

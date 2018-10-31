@@ -1,7 +1,6 @@
 package controller;
 
 import oshi.SystemInfo;
-import oshi.util.FormatUtil;
 
 public class MemoriaRam {
 
@@ -11,27 +10,27 @@ public class MemoriaRam {
      *
      * @return Retorna o total de RAM em GB
      */
-    public long getTotal() {
+    public int getTotal() {
         systemInfo = new SystemInfo();
-        return systemInfo.getHardware().getMemory().getTotal();
+        return (int) systemInfo.getHardware().getMemory().getTotal();
     }
 
     /**
      *
      * @return Retorna o total disponivel de RAM em GB
      */
-    public long getDisponivel() {
+    public int getDisponivel() {
         systemInfo = new SystemInfo();
-        return systemInfo.getHardware().getMemory().getAvailable();
+        return (int) systemInfo.getHardware().getMemory().getAvailable();
     }
 
     /**
      *
      * @return Retorna o total em uso de RAM em GB
      */
-    public long getUsando() {
+    public int getUsando() {
         systemInfo = new SystemInfo();
-        return systemInfo.getHardware().getMemory().getTotal() - systemInfo.getHardware().getMemory().getAvailable();
+        return (int) ((int) systemInfo.getHardware().getMemory().getTotal() - systemInfo.getHardware().getMemory().getAvailable());
     }
 
 }
