@@ -9,10 +9,9 @@ public class App {
 
         Computador a = new Computador();
         ComputadorController cc = new ComputadorController();
-
+        
         cc.cadastroInicial();
 
-       
         while (true) {
             cc.atualizacaoAutomatica();
             Thread.sleep(60000); //1 minuto
