@@ -2,8 +2,6 @@ package aplicacao;
 
 import controller.*;
 import java.sql.SQLException;
-import java.util.List;
-import model.Particao;
 
 public class App {
 

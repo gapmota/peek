@@ -8,8 +8,10 @@ import model.MAC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ComputadorController {
 
@@ -280,6 +282,12 @@ public class ComputadorController {
         return cadastrados == mac.size();
 
     }
+    
+    private String getDateTime() { 
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+	Date date = new Date(); 
+	return dateFormat.format(date); 
+}
 
     /* ATUALIZAÇÃO DE INFORMAÇÕES DO COMPUTADOR E DA REDE AUTOMÁTICAS
 	*
@@ -300,7 +308,7 @@ public class ComputadorController {
         ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)}");
 
         try {
-
+            Date data = new Date();
             cnx.setAutoCommit(true);
             ps.setString("@TEMPO_ATIVIDADE", c.getProcessador().getTempoAtividade() + "");
             ps.setString("@PORCENTAGEM_USO", c.getProcessador().getPorcetagemDeUso()+"");
@@ -313,7 +321,8 @@ public class ComputadorController {
             ps.setInt("@LIVRE", c.getRam().getDisponivel());
             ps.setInt("@EM_USO", c.getRam().getUsando());
             ps.execute();
-            System.out.println("Informações atualizadas com sucesso!");
+            System.out.println("");
+            System.out.println("Atualizado com sucesso no dia "+getDateTime());
 
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");
