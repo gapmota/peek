@@ -8,11 +8,13 @@ import model.MAC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.HD;
 
 public class ComputadorController {
 
@@ -20,20 +22,31 @@ public class ComputadorController {
 
     public String atualizarPC() throws SQLException {
 
-        String retorno = "";
-
         if (this.jaCadastrado()) {
-            retorno += cadastroInicial() + "\n";
+            cadastroInicial();
         }
 
-        retorno += atualizacaoAutomatica() + "\n";
-        retorno += atualizarHd();
+        atualizacaoAutomatica();
+        atualizarHd();
 
-        return retorno;
+        return "Informações atualizadas com sucesso!" + getDateTime();
     }
 
-    public String atualizarHd() {
-        return "";
+    public void atualizarHd() throws SQLException {
+        HDController hc = new HDController();
+        Connection cnx = new Banco().getInstance();
+
+        hc.getInformacoesHdParticao().forEach(p -> {
+            String SQL = "INSERT INTO PEEK_HD(TOTAL, USADO, VELOCIDADE_LEITURA) VALUES (?,?,?)";
+
+            try {
+                PreparedStatement ps = cnx.prepareStatement(SQL);
+            } catch (SQLException erro) {
+                System.out.println("Algum erro aconteceu...");
+                erro.printStackTrace();
+            }
+
+        });
     }
 
     public String cadastroInicial() {
@@ -60,8 +73,9 @@ public class ComputadorController {
      * METODO PARA DESCOBRIR SE O MAC DO COMPUTADOR JA ESTA CADASTRADO NO BANCO,
      * CASO J� ESTEJA O RETORNO EH TRUE
      *
-     * @param mac List<MAC> vem da classe Rede, presenta no package controller.
-     * no metodo getMacsPC()
+     * List <MAC> vem da classe Rede, presenta no package controller. no metodo
+     * getMacsPC()
+     *
      * @return TRUE = JA TEM PC CADASTRADO COM ESSE MAC | FALSE = NAO TEM
      */
     public boolean jaCadastrado() {
@@ -323,7 +337,7 @@ public class ComputadorController {
         *   pelo tratamento para verificar se foi realizada e atualizada as informações ou se ocorreu
         *   algum erro.
      */
-    public String atualizacaoAutomatica() throws SQLException {
+    public void atualizacaoAutomatica() throws SQLException {
         Computador c = new Computador();
 
         Connection cnx = new Banco().getInstance();
@@ -349,6 +363,5 @@ public class ComputadorController {
             System.out.println("Algum erro aconteceu...");
             sqlEx.printStackTrace();
         }
-        return "Informações atualizadas com sucesso!"+getDateTime();
     }
 }
