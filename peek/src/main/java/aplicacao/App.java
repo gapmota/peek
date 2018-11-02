@@ -2,6 +2,7 @@ package aplicacao;
 
 import controller.*;
 import java.sql.SQLException;
+import oshi.util.FormatUtil;
 
 public class App {
 
@@ -11,10 +12,12 @@ public class App {
         ComputadorController cc = new ComputadorController();
         
         cc.cadastroInicial();
-
+        
+        
+        
         while (true) {
             cc.atualizacaoAutomatica();
-            Thread.sleep(60000); //1 minuto
+            Thread.sleep(5000); //1 minuto
         }
     }
 }

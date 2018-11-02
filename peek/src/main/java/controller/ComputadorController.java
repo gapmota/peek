@@ -12,9 +12,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.HD;
+import oshi.SystemInfo;
 
 public class ComputadorController {
 
@@ -338,6 +336,7 @@ public class ComputadorController {
         *   algum erro.
      */
     public void atualizacaoAutomatica() throws SQLException {
+        
         Computador c = new Computador();
 
         Connection cnx = new Banco().getInstance();
@@ -358,7 +357,9 @@ public class ComputadorController {
             ps.setDouble("@LIVRE", c.getRam().getDisponivel());
             ps.setDouble("@EM_USO", c.getRam().getUsando());
             ps.execute();
-
+            
+            System.out.println("atualizado..");
+            
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");
             sqlEx.printStackTrace();
