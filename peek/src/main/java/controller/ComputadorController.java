@@ -18,7 +18,7 @@ public class ComputadorController {
 
     private PreparedStatement ps = null;
 
-    public String atualizarPC() throws SQLException {
+    public String atualizarPC() throws SQLException, InterruptedException {
 
         if (this.jaCadastrado()) {
             cadastroInicial();
@@ -140,7 +140,7 @@ public class ComputadorController {
      */
     private int cadastroComputadorInicio() {
 
-        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,ID_PROCESSADOR_OSHI) VALUES (?,?,?)";
+        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,MAC_ADDRESS_INICIAL) VALUES (?,?,?)";
         Connection cnx = new Banco().getInstance();
         int idComputador = -1;
         try {
@@ -152,7 +152,7 @@ public class ComputadorController {
 
             ps.setDouble(1, computador.getRam().getTotal());
             ps.setString(2, computador.getProcessador().getNomeProcessador());
-            ps.setString(3, computador.getProcessador().getIdProcessadorOSHI());
+            ps.setString(3, computador.getRede().getMacParaCadastroInicial());
             
             if (ps.executeUpdate() > 0) {
                 cnx.commit();
@@ -202,14 +202,14 @@ public class ComputadorController {
      * @return ULTIMO ID_COMPUTADOR CADASTRADO
      */
     private int getIdComputador(Computador computador) {
-        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_PROCESSADOR_OSHI = ?";
+        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE MAC_ADDRESS_INICIAL = ?";
         Connection cnx = new Banco().getInstance();
 
         try {
 
             cnx.setAutoCommit(true);
             PreparedStatement ps = cnx.prepareStatement(SQL);
-            ps.setString(1, computador.getProcessador().getIdProcessadorOSHI());
+            ps.setString(1, computador.getRede().getMacParaCadastroInicial());
             
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -336,7 +336,7 @@ public class ComputadorController {
         *   pelo tratamento para verificar se foi realizada e atualizada as informações ou se ocorreu
         *   algum erro.
      */
-    public void atualizacaoAutomatica() throws SQLException {
+    public void atualizacaoAutomatica() throws SQLException, InterruptedException {
         
         Computador c = new Computador();
 
@@ -352,8 +352,8 @@ public class ComputadorController {
             ps.setString("@IPV4", c.getRede().getIPv4());
             ps.setString("@IPV6", c.getRede().getIPv6());
             ps.setString("@MAC_ADDRESS", c.getRede().getMAC());
-            ps.setString("@VELOCIDADE_DOWNLOAD", c.getRede().getVelocidadeDownload());
-            ps.setString("@VELOCIDADE_UPLOAD", c.getRede().getVelocidadeUpload());
+            ps.setDouble("@VELOCIDADE_DOWNLOAD", c.getRede().getVelocidadeDownload());
+            ps.setDouble("@VELOCIDADE_UPLOAD", c.getRede().getVelocidadeUpload());
             ps.setDouble("@TOTAL", c.getRam().getTotal());
             ps.setDouble("@LIVRE", c.getRam().getDisponivel());
             ps.setDouble("@EM_USO", c.getRam().getUsando());

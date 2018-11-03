@@ -36,53 +36,34 @@ public class Rede {
         return macs;
     }
 
-    public long getTeste() throws InterruptedException {
+    public double getVelocidadeDownload() throws InterruptedException {
         systemInfo = new SystemInfo();
 
         NetworkIF net = systemInfo.getHardware().getNetworkIFs()[getInterfaceEmUso()];
 
         long download1 = net.getBytesRecv();
         long timestamp1 = net.getTimeStamp();
-        Thread.sleep(2000); //Sleep for a bit longer, 2s should cover almost every possible problem
-        net.updateNetworkStats(); //Updating network stats
+        Thread.sleep(1000); 
+        net.updateNetworkStats(); 
         long download2 = net.getBytesRecv();
         long timestamp2 = net.getTimeStamp();
-        return ((download2 - download1)/(timestamp2 - timestamp1));
-        //Do the correct calculations
+        return ((download2 - download1)/(timestamp2 - timestamp1)) / 125.0;//kb to mbps
+        
     }
 
-    public String getVelocidadeDownload() {
+    public double getVelocidadeUpload() throws InterruptedException {
         systemInfo = new SystemInfo();
 
-        systemInfo.getHardware().getNetworkIFs()[getInterfaceEmUso()].updateNetworkStats();
+        NetworkIF net = systemInfo.getHardware().getNetworkIFs()[getInterfaceEmUso()];
 
-        return FormatUtil.formatBytes(systemInfo.getHardware()
-                .getNetworkIFs()[getInterfaceEmUso()]
-                .getBytesRecv());
-    }
-
-    public String getVelocidadeDownloadPKG() {
-        systemInfo = new SystemInfo();
-
-        systemInfo.getHardware()
-                .getNetworkIFs()[getInterfaceEmUso()]
-                .updateNetworkStats();
-
-        return FormatUtil.formatBytes(systemInfo.getHardware()
-                .getNetworkIFs()[getInterfaceEmUso()]
-                .getPacketsRecv());
-    }
-
-    public String getVelocidadeUpload() {
-        systemInfo = new SystemInfo();
-
-        systemInfo.getHardware()
-                .getNetworkIFs()[getInterfaceEmUso()]
-                .updateNetworkStats();
-
-        return FormatUtil.formatBytes(systemInfo.getHardware()
-                .getNetworkIFs()[getInterfaceEmUso()]
-                .getBytesSent());
+        long upload1 = net.getBytesSent();
+        long timestamp1 = net.getTimeStamp();
+        Thread.sleep(1000); 
+        net.updateNetworkStats(); 
+        long upload2 = net.getBytesSent();
+        long timestamp2 = net.getTimeStamp();
+        return ((upload2 - upload1)/(timestamp2 - timestamp1)) / 125.0;//kb to mbps
+        
     }
 
     public String getVelocidadeUploadPKG() {
@@ -148,6 +129,15 @@ public class Rede {
     public void atualizarDadosRede(){
         systemInfo = new SystemInfo();
         systemInfo.getHardware().getNetworkIFs()[this.getInterfaceEmUso()].updateNetworkStats();
+    }
+    
+    public String getMacParaCadastroInicial(){
+        
+        for(MAC mac: this.getMacsPC()){
+                if(!mac.getAdaptador().toUpperCase().contains("VIRTUAL"))
+                return mac.getMac();
+        }
+        return null;
     }
 
 }

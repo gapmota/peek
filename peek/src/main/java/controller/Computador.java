@@ -17,5 +17,9 @@ public class Computador {
     public Rede getRede() {
         return new Rede();
     }
+    
+    public ProcessoController getProcesso(){
+        return new ProcessoController();
+    }
 
 }

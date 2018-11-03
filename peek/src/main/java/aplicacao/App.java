@@ -17,7 +17,7 @@ public class App {
         
         while (true) {
             cc.atualizacaoAutomatica();
-            Thread.sleep(5000); //1 minuto
+            Thread.sleep(60000); //1 minuto
         }
     }
 }
