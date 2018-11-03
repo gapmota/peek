@@ -140,7 +140,7 @@ public class ComputadorController {
      */
     private int cadastroComputadorInicio() {
 
-        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR) VALUES (?,?)";
+        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,ID_PROCESSADOR_OSHI) VALUES (?,?,?)";
         Connection cnx = new Banco().getInstance();
         int idComputador = -1;
         try {
@@ -152,7 +152,8 @@ public class ComputadorController {
 
             ps.setDouble(1, computador.getRam().getTotal());
             ps.setString(2, computador.getProcessador().getNomeProcessador());
-
+            ps.setString(3, computador.getProcessador().getIdProcessadorOSHI());
+            
             if (ps.executeUpdate() > 0) {
                 cnx.commit();
                 System.out.println("COMPUTADOR CRIADO");
@@ -201,15 +202,15 @@ public class ComputadorController {
      * @return ULTIMO ID_COMPUTADOR CADASTRADO
      */
     private int getIdComputador(Computador computador) {
-        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_COMPUTADOR = "
-                + "(SELECT MAX(ID_COMPUTADOR) FROM PEEK_COMPUTADOR)";
+        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_PROCESSADOR_OSHI = ?";
         Connection cnx = new Banco().getInstance();
 
         try {
 
             cnx.setAutoCommit(true);
             PreparedStatement ps = cnx.prepareStatement(SQL);
-
+            ps.setString(1, computador.getProcessador().getIdProcessadorOSHI());
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 // System.out.println(rs);

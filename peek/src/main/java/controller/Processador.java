@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import oshi.SystemInfo;
 
 public class Processador {
@@ -43,8 +44,15 @@ public class Processador {
         return (int) (systemInfo.getHardware().getProcessor().getSystemCpuLoad() * 100.0);
     }
 
-    public int getTempoAtividade() {
+    public String getTempoAtividade() {
         systemInfo = new SystemInfo();
-        return (int) systemInfo.getHardware().getProcessor().getSystemUptime();
+        return new Date(systemInfo.getHardware().getProcessor().getSystemUptime()).toString();
     }
+    
+    public String getIdProcessadorOSHI(){
+        systemInfo = new SystemInfo();
+        return systemInfo.getHardware().getProcessor().getProcessorID();
+    }
+    
+    
 }
