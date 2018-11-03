@@ -1,0 +1,3 @@
+[submodule "frontProjeto"]
+	path = frontProjeto
+	url = https://github.com/Guiapmota/MonitoringProject
