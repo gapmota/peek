@@ -1,23 +1,22 @@
 package controller;
 
-import java.sql.CallableStatement;
-import java.util.List;
-
 import model.MAC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import dao.*;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ComputadorController {
 
-    private PreparedStatement ps = null;
+    ComputadorDAO pcDAO = null;
 
-    public String atualizarPC() throws SQLException, InterruptedException {
+    public String atualizarPC() {
 
         if (this.jaCadastrado()) {
             cadastroInicial();
@@ -25,45 +24,22 @@ public class ComputadorController {
 
         atualizacaoAutomatica();
         atualizarHd();
+        return "";
 
-        return "Informações atualizadas com sucesso!" + getDateTime();
     }
 
-    public void atualizarHd() throws SQLException {
-        HDController hc = new HDController();
-        Connection cnx = new Banco().getInstance();
-
-        hc.getInformacoesHdParticao().forEach(p -> {
-            String SQL = "INSERT INTO PEEK_HD(TOTAL, USADO, VELOCIDADE_LEITURA) VALUES (?,?,?)";
-
-            try {
-                PreparedStatement ps = cnx.prepareStatement(SQL);
-            } catch (SQLException erro) {
-                System.out.println("Algum erro aconteceu...");
-                erro.printStackTrace();
-            }
-
-        });
+    public void atualizarHd() {
+        pcDAO = new ComputadorDAO();
+        try {
+            pcDAO.atualizarHd();
+        } catch (SQLException ex) {
+            Logger.getLogger(ComputadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public String cadastroInicial() {
-
-        List<MAC> macs = new Rede().getMacsPC();
-
-        if (!isPcJaCadastrado(macs)) {
-            int idComputador = cadastroComputadorInicio();
-            boolean cadastrouMac = cadastrarMACS(macs, idComputador);
-
-            return "\n---------------------------------------------------------\n"
-                    + "ID_COMPUTADOR: " + idComputador + ""
-                    + "\nMAC CADASTRADOS: " + cadastrouMac + ""
-                    + "\n---------------------------------------------------------";
-        } else {
-
-            return "Computador já cadastro, aguarde...";
-
-        }
-
+        pcDAO = new ComputadorDAO();
+        return pcDAO.cadastroInicial();
     }
 
     /**
@@ -76,59 +52,13 @@ public class ComputadorController {
      * @return TRUE = JA TEM PC CADASTRADO COM ESSE MAC | FALSE = NAO TEM
      */
     public boolean jaCadastrado() {
-        return isPcJaCadastrado(new Rede().getMacsPC());
+        return isPcJaCadastrado(new RedeController().getMacsPC());
     }
 
     public boolean isPcJaCadastrado(List<MAC> mac) {
-        String SQL = "SELECT * FROM PEEK_MAC_ADDRESS WHERE MAC_ADDRESS = ?";
+        pcDAO = new ComputadorDAO();
+        return pcDAO.isPcJaCadastrado(new RedeController().getMacsPC());// se chegar ate aqui quer dizer que n�o tem o MAC cadastrado
 
-        for (MAC m : mac) {
-            Connection cnx = new Banco().getInstance();
-
-            try {
-
-                cnx.setAutoCommit(true);
-                PreparedStatement ps = cnx.prepareStatement(SQL);
-                ps.setString(1, m.getMac());
-
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    // System.out.println(rs);
-                    return true;
-
-                }
-
-            } catch (SQLException sqlEx) {
-                System.out.print("ERRO SQL0003: ");
-                try {
-                    if (!cnx.isClosed()) {
-                        cnx.rollback();
-                    }
-
-                    sqlEx.printStackTrace();
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            } catch (Exception e) {
-                System.out.print("ERRO DESC0001: ");
-                e.getMessage();
-            } finally {
-                try {
-
-                    if (!cnx.isClosed()) {
-
-                        cnx.close();
-
-                    }
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return false;// se chegar ate aqui quer dizer que n�o tem o MAC cadastrado
     }
 
     /**
@@ -138,58 +68,8 @@ public class ComputadorController {
      * @return RETORNA O ID_COMPUTADOR DO COMPUTADOR CADASTRADO
      */
     private int cadastroComputadorInicio() {
-
-        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,MAC_ADDRESS_INICIAL) VALUES (?,?,?)";
-        Connection cnx = new Banco().getInstance();
-        int idComputador = -1;
-        try {
-
-            Computador computador = new Computador();
-
-            cnx.setAutoCommit(false);
-            PreparedStatement ps = cnx.prepareStatement(SQL);
-
-            ps.setDouble(1, computador.getRam().getTotal());
-            ps.setString(2, computador.getProcessador().getNomeProcessador());
-            ps.setString(3, computador.getRede().getMacParaCadastroInicial());
-            
-            if (ps.executeUpdate() > 0) {
-                cnx.commit();
-                System.out.println("COMPUTADOR CRIADO");
-                idComputador = new SelectPEEK().getIdComputador();
-                return idComputador;
-            }
-
-        } catch (SQLException sqlEx) {
-            System.out.print("ERRO SQL0003: ");
-            try {
-                if (!cnx.isClosed()) {
-                    cnx.rollback();
-                }
-
-                sqlEx.printStackTrace();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            System.out.print("ERRO DESC0001: ");
-            e.getMessage();
-        } finally {
-            try {
-
-                if (!cnx.isClosed()) {
-
-                    cnx.close();
-
-                }
-
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        return idComputador;
+        pcDAO = new ComputadorDAO();
+        return pcDAO.cadastroComputadorInicio();
 
     }
 
@@ -200,8 +80,7 @@ public class ComputadorController {
      * @param computador COMPUTADOR QUE ACABOU DE SER CADASTRADO
      * @return ULTIMO ID_COMPUTADOR CADASTRADO
      */
-    
-    private String getDateTime() {
+    public String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
@@ -217,63 +96,8 @@ public class ComputadorController {
      * @return retorna TRUE se todos mac cadastrarem no banco
      */
     private boolean cadastrarMACS(List<MAC> mac, int idComputador) {
-
-        String SQL = "INSERT INTO PEEK_MAC_ADDRESS(MAC_ADDRESS,TIPO_CONEXAO,ID_COMPUTADOR) VALUES (?,?,?)";
-        int cadastrados = 0;
-
-        for (MAC m : mac) {
-
-            Connection cnx = new Banco().getInstance();
-            try {
-
-                cnx.setAutoCommit(false);
-                PreparedStatement ps = cnx.prepareStatement(SQL);
-
-                ps.setString(1, m.getMac());
-                ps.setString(2, m.getAdaptador());
-                ps.setInt(3, idComputador);
-
-                if (ps.executeUpdate() > 0) {
-                    cnx.commit();
-                    System.out.println(
-                            "MAC: " + m.getMac() + "\nADAPTADOR: " + m.getAdaptador() + "\nCADASTRADO COM SUCESSO!");
-                    cadastrados++;
-                }
-
-            } catch (SQLException sqlEx) {
-                System.out.print("ERRO SQL0003: ");
-                try {
-                    if (!cnx.isClosed()) {
-                        cnx.rollback();
-                    }
-
-                    sqlEx.printStackTrace();
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            } catch (Exception e) {
-                System.out.print("ERRO DESC0001: ");
-                e.getMessage();
-            } finally {
-                try {
-
-                    if (!cnx.isClosed()) {
-
-                        cnx.close();
-
-                    }
-
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        return cadastrados == mac.size();
-
+        pcDAO = new ComputadorDAO();
+        return pcDAO.cadastrarMACS(mac, idComputador);
     }
 
     /* ATUALIZAÇÃO DE INFORMAÇÕES DO COMPUTADOR E DA REDE AUTOMÁTICAS
@@ -287,34 +111,14 @@ public class ComputadorController {
         *   pelo tratamento para verificar se foi realizada e atualizada as informações ou se ocorreu
         *   algum erro.
      */
-    public void atualizacaoAutomatica() throws SQLException, InterruptedException {
-        
-        Computador c = new Computador();
-
-        Connection cnx = new Banco().getInstance();
-        CallableStatement ps;
-        ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)}");
-
+    public void atualizacaoAutomatica() {
+        pcDAO = new ComputadorDAO();
         try {
-
-            cnx.setAutoCommit(true);
-            ps.setString("@TEMPO_ATIVIDADE", c.getProcessador().getTempoAtividade() + "");
-            ps.setString("@PORCENTAGEM_USO", c.getProcessador().getPorcetagemDeUso() + "");
-            ps.setString("@IPV4", c.getRede().getIPv4());
-            ps.setString("@IPV6", c.getRede().getIPv6());
-            ps.setString("@MAC_ADDRESS", c.getRede().getMAC());
-            ps.setDouble("@VELOCIDADE_DOWNLOAD", c.getRede().getVelocidadeDownload());
-            ps.setDouble("@VELOCIDADE_UPLOAD", c.getRede().getVelocidadeUpload());
-            ps.setDouble("@TOTAL", c.getRam().getTotal());
-            ps.setDouble("@LIVRE", c.getRam().getDisponivel());
-            ps.setDouble("@EM_USO", c.getRam().getUsando());
-            ps.execute();
-            
-            System.out.println("atualizado..");
-            
-        } catch (SQLException sqlEx) {
-            System.out.println("Algum erro aconteceu...");
-            sqlEx.printStackTrace();
+            pcDAO.atualizacaoAutomatica();
+        } catch (SQLException ex) {
+            Logger.getLogger(ComputadorController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ComputadorController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

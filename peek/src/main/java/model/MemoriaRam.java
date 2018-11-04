@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import oshi.SystemInfo;
 import oshi.util.FormatUtil;

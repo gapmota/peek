@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import java.util.Date;
 import oshi.SystemInfo;

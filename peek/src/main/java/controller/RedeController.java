@@ -2,15 +2,12 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import model.MAC;
 import oshi.SystemInfo;
 import oshi.hardware.NetworkIF;
 import oshi.util.FormatUtil;
 
-public class Rede {
+public class RedeController {
 
     private SystemInfo systemInfo = null;
 

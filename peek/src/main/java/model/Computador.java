@@ -1,4 +1,8 @@
-package controller;
+package model;
+
+import controller.RedeController;
+import controller.HDController;
+import controller.ProcessoController;
 
 public class Computador {
 
@@ -14,8 +18,8 @@ public class Computador {
         return new Processador();
     }
 
-    public Rede getRede() {
-        return new Rede();
+    public RedeController getRede() {
+        return new RedeController();
     }
     
     public ProcessoController getProcesso(){

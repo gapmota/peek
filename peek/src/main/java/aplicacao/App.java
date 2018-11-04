@@ -4,15 +4,13 @@ import controller.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import oshi.util.FormatUtil;
 
 public class App {
 
     public static void main(String[] args) throws InterruptedException, SQLException {
-        
-        
+
         new ComputadorController().cadastroInicial();
-        
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -22,16 +20,14 @@ public class App {
                     try {
                         cc.atualizacaoAutomatica();
                         Thread.sleep(60000); //1 minuto
-                    } catch (SQLException ex) {
-                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                 }
             }
         }).start();
-        
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -39,16 +35,15 @@ public class App {
 
                 while (true) {
                     try {
-                        System.out.println(pc.insertProcesso()+" processos inseridos");
+                        System.out.println(pc.insertProcesso() + " processos inseridos");
                         Thread.sleep(10000); //1 minuto
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                 }
             }
         }).start();
 
-        
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Banco {
 
-    private static String PATH_SQL = "jdbc:sqlserver://XXX;database=XXX;user=XXX;password=XXX;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private static String PATH_SQL = "jdbc:sqlserver://mateuzserver.database.windows.net;database=MEU;user=mateuz;password=Banco2k18;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     public Connection getInstance() {
         try {
