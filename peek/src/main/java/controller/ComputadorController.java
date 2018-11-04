@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import oshi.SystemInfo;
 
 public class ComputadorController {
 
@@ -80,7 +79,7 @@ public class ComputadorController {
         return isPcJaCadastrado(new Rede().getMacsPC());
     }
 
-    private boolean isPcJaCadastrado(List<MAC> mac) {
+    public boolean isPcJaCadastrado(List<MAC> mac) {
         String SQL = "SELECT * FROM PEEK_MAC_ADDRESS WHERE MAC_ADDRESS = ?";
 
         for (MAC m : mac) {
@@ -157,7 +156,7 @@ public class ComputadorController {
             if (ps.executeUpdate() > 0) {
                 cnx.commit();
                 System.out.println("COMPUTADOR CRIADO");
-                idComputador = this.getIdComputador(computador);
+                idComputador = new SelectPEEK().getIdComputador();
                 return idComputador;
             }
 
@@ -201,55 +200,7 @@ public class ComputadorController {
      * @param computador COMPUTADOR QUE ACABOU DE SER CADASTRADO
      * @return ULTIMO ID_COMPUTADOR CADASTRADO
      */
-    private int getIdComputador(Computador computador) {
-        String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE MAC_ADDRESS_INICIAL = ?";
-        Connection cnx = new Banco().getInstance();
-
-        try {
-
-            cnx.setAutoCommit(true);
-            PreparedStatement ps = cnx.prepareStatement(SQL);
-            ps.setString(1, computador.getRede().getMacParaCadastroInicial());
-            
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                // System.out.println(rs);
-                return rs.getInt("ID_COMPUTADOR");
-
-            }
-
-        } catch (SQLException sqlEx) {
-            System.out.print("ERRO SQL0003: ");
-            try {
-                if (!cnx.isClosed()) {
-                    cnx.rollback();
-                }
-
-                sqlEx.printStackTrace();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            System.out.print("ERRO DESC0001: ");
-            e.getMessage();
-        } finally {
-            try {
-
-                if (!cnx.isClosed()) {
-
-                    cnx.close();
-
-                }
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-
-        return -1;
-    }
-
+    
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
