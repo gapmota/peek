@@ -5,19 +5,18 @@
  */
 package dao;
 
+import model.*;
 import controller.ProcessoController;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
-import oshi.software.os.OperatingSystem;
 
 /**
  *
@@ -27,11 +26,56 @@ public class ProcessoDAO {
 
     private SystemInfo si = null;
 
-    public void selectProcessosParaFinalizar() {
+    public List<Processo> selectProcessosParaFinalizar() {
+        List<Processo> list = new ArrayList<>();
+        int idComputador = new SelectPEEK().getIdComputador();
+        String SQL = "SELECT * FROM PEEK_FINALIZAR_PROCESSO WHERE ID_COMPUTADOR = ? AND FLAG_FINALIZAR = 0";
+        Connection cnx = new Banco().getInstance();
+        Computador computador = new Computador();
+        try {
+
+            PreparedStatement ps = cnx.prepareStatement(SQL);
+            ps.setInt(1, idComputador);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                // System.out.println(rs);
+                Processo p = new Processo();
+                p.setIdProcesso(rs.getInt("ID_FINALIZAR_PROCESSO"));
+                p.setPid(rs.getInt("PID"));
+                p.setNomeProcesso(rs.getString("NOME_PROCESSO"));
+                p.setFlag(rs.getBoolean("FLAG_FINALIZAR"));
+                p.setDataCadastro(rs.getString("DATE_TIME"));
+                p.setIdComputador(idComputador);
+
+                list.add(p);
+            }
+
+        } catch (SQLException sqlEx) {
+            System.out.print("ERRO SQL0003: ");
+            sqlEx.printStackTrace();
+        } catch (Exception e) {
+            System.out.print("ERRO DESC0001: ");
+            e.getMessage();
+        } finally {
+            try {
+
+                if (!cnx.isClosed()) {
+
+                    cnx.close();
+
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        return list;
 
     }
 
-    public void deleteProcessosParaFinalizar(int proc, String mac) {
+    public void deleteProcessosParaFinalizar(Processo processo) {
 
     }
 
@@ -157,6 +201,5 @@ public class ProcessoDAO {
         }
 
     }
-
 
 }
