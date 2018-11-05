@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 public class App {
 
     public static void main(String[] args) throws InterruptedException, SQLException {
-
+               
+        
         new ComputadorController().cadastroInicial();
 
         new Thread(new Runnable() {
@@ -36,7 +37,7 @@ public class App {
                 while (true) {
                     try {
                         System.out.println(pc.insertProcesso() + " processos inseridos");
-                        Thread.sleep(10000); //1 minuto
+                        Thread.sleep(60000); //1 minuto
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -44,6 +45,24 @@ public class App {
                 }
             }
         }).start();
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HDController hd = new HDController();
 
+                while (true) {
+                    try {
+                        hd.atualizarHd();
+                        Thread.sleep(60000); //1 minuto
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+        
+        
     }
 }

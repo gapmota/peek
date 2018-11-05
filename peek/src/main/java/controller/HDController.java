@@ -1,82 +1,77 @@
 package controller;
 
+import dao.ComputadorDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.HWDiskStore;
-import model.HD;
-import model.Particao;
+import oshi.software.os.OSFileStore;
 
 public class HDController {
     
+    private ComputadorDAO pcDAO = null;
     private String mensagemPadraoParticao = "###";
     private SystemInfo systemInfo = null;
-    
-    private boolean isParticaoValida(String nome){
-        return !nome.trim().equals(mensagemPadraoParticao);           
+
+    private boolean isParticaoValida(String nome) {
+        return !nome.trim().equals(mensagemPadraoParticao);
     }
-    
-    public List<HD> getInformacoesHdParticao(){
-        List<HD> listaHD = new ArrayList<>();
-        
-        String[] identificadorHD = this.getIdentificadorHD();
-               
-        
-        for(int i = 0; i < identificadorHD.length; i++){
-            HD hd = new HD();            
-            hd.setIdentificador(identificadorHD[i]);
-            hd.setUsado(this.getEspacoUsado(i));
-            hd.setTotal(this.getEspacoTotal(i)); 
-            hd.setLeitura(this.getLeitura(i));
-            
-            for(int j = 0; j < this.getQuantidadeParticoes(i); j++){
-                Particao p = new Particao();
-                
-                p.setDiretorio(this.getNomeParticao(i, j));
-                p.setTotal(this.getEspacoTotalParticao(i, j));
-                
-                if(this.isParticaoValida(p.getDiretorio())){
-                    hd.getParticoes().add(p);
-                }
+
+    public List<OSFileStore> getInformacoesHd() {
+         OSFileStore[] hds = new SystemInfo().getOperatingSystem().getFileSystem().getFileStores();
+        List<OSFileStore> listOS = new ArrayList<>();
+        String ret = "";
+        for (int i = 0; i < hds.length; i++) {
+
+            if (hds[i].getDescription().equalsIgnoreCase("Fixed drive")) {
+                listOS.add(new OSFileStore(hds[i].getName(), hds[i].getVolume(), hds[i].getMount(), hds[i].getDescription(), hds[i].getType(), hds[i].getUUID(),hds[i].getUsableSpace(), hds[i].getTotalSpace()));
             }
-            
-            listaHD.add(hd);            
-        }  
-        return listaHD;
-        
+        }
+
+        return listOS;
+
+    }
+
+    private long getEspacoUsadoParticao(int indexHD, int indexParticao) {
+        systemInfo = new SystemInfo();
+        //return systemInfo.getHardware().getDiskStores()[indexHD].getPartitions()[indexParticao].get
+        return 00000;//systemInfo.getHardware().getDisk;
     }
     
-    
-  private long getEspacoUsadoParticao(int indexHD, int indexParticao){
-      systemInfo = new SystemInfo();
-      //return systemInfo.getHardware().getDiskStores()[indexHD].getPartitions()[indexParticao].get
-      return 0000000000000;
-  }
-    
-  private int getQuantidadeParticoes(int indexHD){
+    public void atualizarHd(){
+        pcDAO = new ComputadorDAO();
+        try {
+            pcDAO.atualizarHd();
+        } catch (SQLException ex) {
+            Logger.getLogger(HDController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private int getQuantidadeParticoes(int indexHD) {
         systemInfo = new SystemInfo();
         return systemInfo.getHardware().getDiskStores()[indexHD].getPartitions().length;
     }
-    
-    private String[] getIdentificadorHD(){
+
+    private String[] getIdentificadorHD() {
         systemInfo = new SystemInfo();
         int qntDisco = getQuantidadeDisco();
         String[] serialHD = new String[qntDisco];
-        for(int i = 0; i < qntDisco; i++){
-            serialHD[i] = systemInfo.getHardware().getDiskStores()[i].getSerial();           
+        for (int i = 0; i < qntDisco; i++) {
+            serialHD[i] = systemInfo.getHardware().getDiskStores()[i].getSerial();
         }
         return serialHD;
-        
+
     }
-    
-    
-    
+
     /**
      * @return Retorna a quantida de disco
      */
     private int getQuantidadeDisco() {
         systemInfo = new SystemInfo();
-        System.out.println("------------------------- "+systemInfo.getHardware().getDiskStores().length);
+        System.out.println("------------------------- " + systemInfo.getHardware().getDiskStores().length);
         return systemInfo.getHardware().getDiskStores().length;
     }
 
@@ -102,7 +97,6 @@ public class HDController {
      * @return Retorna o espaço disponível de um disco em GIGA passando o index
      * do disco
      */
-  
     /**
      * @return Retorna o espaço total da partição de um disco em GIGA passando o
      * index do disco

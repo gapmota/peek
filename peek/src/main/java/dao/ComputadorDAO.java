@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import oshi.software.os.OSFileStore;
 
 public class ComputadorDAO {
 
@@ -33,18 +34,27 @@ public class ComputadorDAO {
     public void atualizarHd() throws SQLException {
         HDController hc = new HDController();
         Connection cnx = new Banco().getInstance();
-
-        hc.getInformacoesHdParticao().forEach(p -> {
-            String SQL = "INSERT INTO PEEK_HD(TOTAL, USADO, VELOCIDADE_LEITURA) VALUES (?,?,?)";
+        int idComputador = new SelectPEEK().getIdComputador();
+        for(OSFileStore p : hc.getInformacoesHd()){
+            String SQL = "INSERT INTO PEEK_HD(TOTAL,USADO,DIRETORIO,UUID,TIPO_DIR,VOLUME,ID_COMPUTADOR) VALUES (?,?,?,?,?,?,?)";
 
             try {
                 PreparedStatement ps = cnx.prepareStatement(SQL);
+                ps.setLong(1, p.getTotalSpace());
+                ps.setLong(2, p.getUsableSpace());
+                ps.setString(3, p.getMount());
+                ps.setString(4, p.getUUID());
+                ps.setString(5, p.getType());
+                ps.setString(6, p.getVolume());
+                ps.setInt(7, idComputador);
+                ps.executeUpdate();
+                System.out.println("hd atualizado......");
             } catch (SQLException erro) {
                 System.out.println("Algum erro aconteceu...");
                 erro.printStackTrace();
             }
 
-        });
+        }
     }
 
     public String cadastroInicial() {
