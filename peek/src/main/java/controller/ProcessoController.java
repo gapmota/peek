@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Processo;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem;
@@ -93,7 +94,7 @@ public class ProcessoController {
 
     public void finalizarProcesso(int proc) {
         try {
-            Runtime.getRuntime().exec("taskkill /PID " + proc);
+            Runtime.getRuntime().exec("taskkill /PID " + proc+" /F");
         } catch (IOException ex) {
             Logger.getLogger(ProcessoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,14 +113,27 @@ public class ProcessoController {
         }
     }
 
-    public void selectProcessosParaFinalizar() {
+    public List<Processo> selectProcessosParaFinalizar() {
         processo = new ProcessoDAO();
-        processo.selectProcessosParaFinalizar();
+        return processo.selectProcessosParaFinalizar();
     }
 
-    public void deleteProcessosParaFinalizar(int proc, String mac) {
+    public void deleteProcessosParaFinalizar() {
         processo = new ProcessoDAO();
-        processo.deleteProcessosParaFinalizar(proc, mac);
+        List<Processo> procs = processo.selectProcessosParaFinalizar();
+        int totalDelete = 0;
+        for(Processo processoParaFinalizar : procs){
+            ProcessoDAO pd = new ProcessoDAO();
+            
+            this.finalizarProcesso(processoParaFinalizar.getPid());            
+            totalDelete += pd.deleteProcessosParaFinalizar(processoParaFinalizar);
+        }
+        
+        if(totalDelete == procs.size())
+            System.out.println("todos processos solicitados foram fechados");
+        else
+            System.out.println("totalDeletado = "+totalDelete+" totalListaProcessos = "+procs.size());
+            
     }
 
     public int insertProcesso() {

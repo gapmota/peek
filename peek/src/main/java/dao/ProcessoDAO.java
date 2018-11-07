@@ -75,10 +75,7 @@ public class ProcessoDAO {
 
     }
 
-    public void deleteProcessosParaFinalizar(Processo processo) {
-
-    }
-
+    
     public int insertProcesso() {
         String SQL = "INSERT INTO PEEK_PROCESSO(NOME,TEMPO_INICIO,USUARIO,PID,CAMINHO,PRIORIDADE,BYTES_LIDOS,BYTES_ESCRITOS, TEMPO_MODO_USUARIO,MEMORIA_RAM_USADA,COMMAND_LINE,OPEN_FILES,GRUPO,GRUPO_ID,ID_COMPUTADOR) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -168,7 +165,7 @@ public class ProcessoDAO {
                 System.out.println("TOTAL: " + totalRegistros);
             } else {
                 System.out.println(totalRegistros + " != " + procs.size());
-                System.out.println("SE FODEU KKKKKKKKKKKKKKKKKKKKKKK");
+                
             }
 
         } catch (SQLException ex) {
@@ -190,11 +187,29 @@ public class ProcessoDAO {
         return totalRegistros;
     }
 
+    
+    public int deleteProcessosParaFinalizar(Processo processo){
+        String SQL = "DELETE FROM PEEK_FINALIZAR_PROCESSO WHERE PID = ? AND ID_COMPUTADOR = ?";
+         Connection cnx = new Banco().getInstance();
+        try {
+            PreparedStatement ps = cnx.prepareStatement(SQL);
+            ps.setInt(1, processo.getPid());
+            ps.setInt(2, processo.getIdComputador());
+            
+            return ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProcessoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return -1;
+    }
+    
     private void apagarProcessosByIdComputador(PreparedStatement ps, int idComputador) {
         try {
             ps.setInt(1, idComputador);
             ps.executeUpdate();
-            System.out.println("ANTERIORES APAGADOS");
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(ProcessoController.class.getName()).log(Level.SEVERE, null, ex);

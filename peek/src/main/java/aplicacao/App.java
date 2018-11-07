@@ -63,6 +63,20 @@ public class App {
             }
         }).start();
         
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    ProcessoController pc = new ProcessoController();
+                    pc.deleteProcessosParaFinalizar();
+                    try {
+                        Thread.sleep(120000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }).start();
         
     }
 }
