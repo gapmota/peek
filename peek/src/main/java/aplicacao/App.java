@@ -8,8 +8,7 @@ import java.util.logging.Logger;
 public class App {
 
     public static void main(String[] args) throws InterruptedException, SQLException {
-               
-        
+                       
         new ComputadorController().cadastroInicial();
 
         new Thread(new Runnable() {
@@ -20,7 +19,7 @@ public class App {
                 while (true) {
                     try {
                         cc.atualizacaoAutomatica();
-                        Thread.sleep(60000); //1 minuto
+                        Thread.sleep(10000); //1 minuto
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -37,7 +36,7 @@ public class App {
                 while (true) {
                     try {
                         System.out.println(pc.insertProcesso() + " processos inseridos");
-                        Thread.sleep(60000); //1 minuto
+                        Thread.sleep(10000); //1 minuto
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -54,7 +53,7 @@ public class App {
                 while (true) {
                     try {
                         hd.atualizarHd();
-                        Thread.sleep(60000); //1 minuto
+                        Thread.sleep(10000); //1 minuto
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -70,7 +69,7 @@ public class App {
                     ProcessoController pc = new ProcessoController();
                     pc.deleteProcessosParaFinalizar();
                     try {
-                        Thread.sleep(120000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                     }

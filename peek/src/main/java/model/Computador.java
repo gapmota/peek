@@ -6,24 +6,43 @@ import controller.ProcessoController;
 
 public class Computador {
 
+    
+    private MemoriaRam ram;
+    private HDController HD;
+    private Processador processador;
+    private RedeController rede;    
+    private ProcessoController processo;
+
+    public Computador() {
+        ram = new MemoriaRam();
+        HD = new HDController();
+        processador = new Processador();
+        rede = new RedeController();
+        processo = new ProcessoController();
+    }
+    
+    
+    
     public MemoriaRam getRam() {
-        return new MemoriaRam();
+        return ram;
     }
 
     public HDController getHD() {
-        return new HDController();
+        return HD;
     }
 
     public Processador getProcessador() {
-        return new Processador();
+        return processador;
     }
 
     public RedeController getRede() {
-        return new RedeController();
-    }
-    
-    public ProcessoController getProcesso(){
-        return new ProcessoController();
+        return rede;
     }
 
+    public ProcessoController getProcesso() {
+        return processo;
+    }
+    
+    
+    
 }

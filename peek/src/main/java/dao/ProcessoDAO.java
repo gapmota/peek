@@ -110,9 +110,9 @@ public class ProcessoDAO {
 
                     ps.setString(1, osp.getName());
                     ps.setLong(2, osp.getStartTime());
-                    ps.setString(3, osp.getUser().length() + "");
+                    ps.setString(3, osp.getUser());
                     ps.setInt(4, osp.getProcessID());
-                    ps.setString(5, osp.getPath().length() + "");
+                    ps.setString(5, osp.getPath());
                     ps.setInt(6, osp.getPriority());
                     ps.setLong(7, osp.getBytesRead());
                     ps.setLong(8, osp.getBytesWritten());
@@ -121,7 +121,7 @@ public class ProcessoDAO {
                     ps.setString(11, osp.getCommandLine());
                     ps.setLong(12, osp.getOpenFiles());
                     ps.setString(13, osp.getGroup());
-                    ps.setString(14, osp.getGroupID().length() + "");
+                    ps.setString(14, osp.getGroupID());
                     ps.setInt(15, idComputador);
 
                     totalRegistros += ps.executeUpdate();
