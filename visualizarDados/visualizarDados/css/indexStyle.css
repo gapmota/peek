@@ -1,5 +1,6 @@
 ﻿body {
     background-color: black;
+    font-size: 1.1vW;
 }
 
 .boxTitle{
@@ -16,7 +17,7 @@
     background-color: transparent;
     border:0.5vw solid red;
     width: 28vw;
-    height: auto;
+    height: 16vW;
     color: white;
     margin-left: 2.9vw;
     margin-top: 1vw;
