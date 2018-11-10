@@ -31,11 +31,17 @@ namespace visualizarDados
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            String cod_computer = (String)Session["computador"];
+            if (cod_computer == null || cod_computer == "")
+            {
+                Response.Redirect("computer.aspx");
+            }
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
+
                 #region Alimentando dados do computador
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_COMPUTADOR", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_COMPUTADOR WHERE ID_COMPUTADOR = "+cod_computer, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -57,7 +63,7 @@ namespace visualizarDados
                 #endregion
 
                 #region Alimentando dados do processador
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_PROCESSADOR", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_PROCESSADOR WHERE ID_COMPUTADOR = " + cod_computer, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -79,7 +85,7 @@ namespace visualizarDados
                 #endregion
 
                 #region Alimentando dados da RAM
-                using (SqlCommand cmd = new SqlCommand("SELECT TOTAL, LIVRE, EM_USO, ID_COMPUTADOR FROM PEEK_MEMORIA_RAM", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT TOTAL, LIVRE, EM_USO, ID_COMPUTADOR FROM PEEK_MEMORIA_RAM WHERE ID_COMPUTADOR = " + cod_computer, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -101,7 +107,7 @@ namespace visualizarDados
                 #endregion
 
                 #region Alimentando dados da Rede
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_REDE", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_REDE WHERE ID_COMPUTADOR = " + cod_computer, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -131,7 +137,7 @@ namespace visualizarDados
                 #endregion
 
                 #region Alimentando dados do MAC
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_MAC_ADDRESS", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_MAC_ADDRESS WHERE ID_COMPUTADOR = " + cod_computer, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -154,6 +160,10 @@ namespace visualizarDados
 
                 conexao.Close();
             }
+        }
+        public void VoltarPag_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("computer.aspx");
         }
     }
 }

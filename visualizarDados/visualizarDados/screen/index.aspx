@@ -65,7 +65,9 @@
                 <asp:Label class="lbl" runat="server" id="lblConnec"/> <br />
                 <asp:Label class="lbl" runat="server" id="lblDateCad"/> <br />
             </div>
-        </div>
+            <br /><br />
+             <asp:Button Text="Voltar" runat="server" class="btnVoltar" OnClick="VoltarPag_Click"/>
+         </div>
     </form>
 </body>
 </html>

@@ -23,3 +23,14 @@
     margin-top: 1vw;
     padding-bottom: 1vw;
 }
+
+.btnVoltar {
+    float: right;
+    text-align: center;
+    background-color: white;
+    width: 5vw;
+    height: 2vW;
+    color: black;
+    margin-right: 15vw;
+    margin-top: 10vw;
+}

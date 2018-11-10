@@ -75,7 +75,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\computerStyle.css" />
     <Content Include="Global.asax" />
+    <Content Include="screen\computer.aspx" />
     <Content Include="screen\index.aspx" />
     <Content Include="css\indexStyle.css" />
     <Content Include="Web.config" />
@@ -83,6 +85,13 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="screen\computer.aspx.cs">
+      <DependentUpon>computer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="screen\computer.aspx.designer.cs">
+      <DependentUpon>computer.aspx</DependentUpon>
     </Compile>
     <Compile Include="screen\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
