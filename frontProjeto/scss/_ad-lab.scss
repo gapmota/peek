@@ -1,3 +1,14 @@
+body.backBodyLab{
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+    
+
+    &:after{
+        opacity: 0.7;
+    }
+}
+
 .ad-lab{
     .title-heading{
         font-size: 65px;
