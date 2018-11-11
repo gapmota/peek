@@ -1,0 +1,181 @@
+//esse import chama o arquivos .scss onde tem configurações de css que podemos reaproveitar aqui
+@import 'config';
+@import 'menu';
+@import 'menuDash';
+@import 'dashMain';
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    @include background;
+    background: $cor-primaria;
+    color: cor-do-texto($cor-primaria);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+//headings
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: 400;
+
+    //o h1, h2 e h3 foi definido antes
+    //aqui mudo apenas o h1, chamando por '&'
+    &.title-heading{
+        font-size: 6rem; //rem multiplica o tamanho
+    }
+
+    &.subtitle-heading{
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($cor-primaria, 2), 0.5); //fundo mais claro da cor primaria (rgba para transparente)
+    }
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary{
+    color: $cor-secundaria;
+}
+
+main{
+    padding: 4rem;
+    //height: 100%;
+    min-height: calc(100vh - 60px); //deixa o rodape (60px) sempre no fim
+
+    .icons{
+        margin-top: 1rem;
+
+        a{
+            padding: 0.4rem;
+            //coloca cor secundaria ao passar mouse nos icones
+            &:hover{
+                color: $cor-secundaria;
+                @include easeOut(); //chama efeito de transição criado antes
+            }
+        }
+    }
+
+    &#home{
+        overflow: hidden;
+        h1{
+            margin-top: 20vh; //unidade vh equivale a uma fatia do tamanho toal (1/100)
+        }        
+    }
+}
+
+//sobre
+
+body#backBody{
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after{
+        background: none;
+    }
+}
+
+.about-info{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: //representação visual da pagina
+    'bioimage bio bio'
+    'quadro1 quadro2 quadro3';
+    grid-template-columns: repeat(3, 1fr);
+
+    //como vai ficar cada grid area criada acima
+    .bio-img{
+        grid-area: bioimage;
+        margin: auto;
+        border-radius: 50%;
+        border: $cor-secundaria 3px solid;
+    }
+
+    .bio{
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+
+    .quadro-1{
+        grid-area: quadro1;
+    }
+
+    .quadro-2{
+        grid-area: quadro2;
+    }
+
+    .quadro-3{
+        grid-area: quadro3;
+    }
+    .quadro{
+        background: lighten($cor-primaria,5);
+        padding: 0.5rem;
+        border-bottom: $cor-secundaria 5px solid;
+    }
+}
+
+//work/projects
+.projects{
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+    
+    img{
+        width: 100%;
+        border: 3px #fff solid;
+
+        &:hover{
+            opacity: 0.5;
+            border-color: $cor-secundaria;
+            @include easeOut;
+        }
+    }
+}
+
+//botão work
+.btn{
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    &:hover {
+        background: $cor-secundaria;
+        color: cor-do-texto($cor-secundaria);        
+    }
+}
+
+.btn-dark{
+    @extend .btn;
+    background: darken($cor-primaria, 50);
+    color: #fff;
+}
+.btn-light{
+    @extend .btn;
+    background: lighten($cor-primaria, 50);
+    color: #333;
+}
+
+#main-footer{
+    text-align: center;
+    padding: 1rem;
+    background: darken($cor-primaria, 10);
+    color: cor-do-texto($cor-primaria);
+    height: 60px;
+}
+
+@import 'mobile';

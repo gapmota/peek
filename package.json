@@ -1,0 +1,14 @@
+{
+  "name": "frontprojeto",
+  "version": "1.0.0",
+  "description": "Projeto Peek Front",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css --recursive"
+  },
+  "author": "Giuliana",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  }
+}
