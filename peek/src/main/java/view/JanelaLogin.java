@@ -81,9 +81,9 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == btnLogar){
-            Usuario user = new Usuario(jlEmail.getText(), jpSenha.getText());
+            Usuario user = new Usuario(jtEmail.getText(), jpSenha.getText());
             
-            new UsuarioDAO().logar(user).getId();
+            System.out.println(new UsuarioDAO().logar(user).getId());
         }
         
     }

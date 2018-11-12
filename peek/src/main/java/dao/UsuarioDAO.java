@@ -23,9 +23,9 @@ public class UsuarioDAO {
             ps.setString(2, u.getSenha());
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 // System.out.println(rs);
-                user.setId(rs.getInt("ID_COMPUTADOR"));
+                user.setId(rs.getInt("ID_USUARIO"));
                 user.setEmail(rs.getString("EMAIL"));
                 user.setSenha(rs.getString("SENHA"));
 
