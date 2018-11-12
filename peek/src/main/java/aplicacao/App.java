@@ -10,9 +10,9 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException, SQLException {
        
-        JanelaLogin jl = new JanelaLogin();
+        //JanelaLogin jl = new JanelaLogin();
         
-        /*
+        
         new ComputadorController().cadastroInicial();
 
         new Thread(new Runnable() {
@@ -80,6 +80,6 @@ public class App {
                 }
             }
         }).start();
-        */
+        
     }
 }
