@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import model.Usuario;
@@ -28,6 +29,15 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
     private JPasswordField jpSenha;
     private JButton btnLogar;
 
+    public JanelaLogin(String msgErro) {
+        JOptionPane.showMessageDialog(this, msgErro);
+    }
+    
+    public JanelaLogin() {}
+    
+    
+    
+    
     @Override
     public void ij() {
 
@@ -83,7 +93,15 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
         if(e.getSource() == btnLogar){
             Usuario user = new Usuario(jtEmail.getText(), jpSenha.getText());
             
-            System.out.println(new UsuarioDAO().logar(user).getId());
+            Usuario usuario = new UsuarioDAO().logar(user);
+            
+            if(usuario!=null){
+                new JanelaCadastrarPC(usuario);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "usuário ou senha inválido");
+            }
+            
         }
         
     }
