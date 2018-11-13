@@ -4,6 +4,7 @@ import controller.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import view.JanelaCadastrarPC;
 import view.JanelaLogin;
 
 public class App {

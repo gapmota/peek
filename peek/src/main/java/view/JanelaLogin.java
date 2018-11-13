@@ -5,7 +5,7 @@
  */
 package view;
 
-import dao.UsuarioDAO;
+import controller.UsuarioController;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -93,7 +93,7 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
         if(e.getSource() == btnLogar){
             Usuario user = new Usuario(jtEmail.getText(), jpSenha.getText());
             
-            Usuario usuario = new UsuarioDAO().logar(user);
+            Usuario usuario = new UsuarioController().logar(user);
             
             if(usuario!=null){
                 new JanelaCadastrarPC(usuario);
