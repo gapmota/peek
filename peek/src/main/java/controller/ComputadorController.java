@@ -1,5 +1,6 @@
 package controller;
 
+import aplicacao.App;
 import model.MAC;
 
 import java.text.DateFormat;
@@ -16,18 +17,6 @@ public class ComputadorController {
 
     ComputadorDAO pcDAO = null;
 
-    public String atualizarPC() {
-
-        if (this.jaCadastrado()) {
-            cadastroInicial();
-        }
-
-        atualizacaoAutomatica();
-        atualizarHd();
-        return "";
-
-    }
-
     public void atualizarHd() {
         pcDAO = new ComputadorDAO();
         try {
@@ -37,9 +26,9 @@ public class ComputadorController {
         }
     }
 
-    public String cadastroInicial() {
+    public String cadastroInicial(int idLab) {
         pcDAO = new ComputadorDAO();
-        return pcDAO.cadastroInicial();
+        return pcDAO.cadastroInicial(idLab);
     }
 
     /**
@@ -67,9 +56,9 @@ public class ComputadorController {
      *
      * @return RETORNA O ID_COMPUTADOR DO COMPUTADOR CADASTRADO
      */
-    private int cadastroComputadorInicio() {
+    private int cadastroComputadorInicio(int idLab) {
         pcDAO = new ComputadorDAO();
-        return pcDAO.cadastroComputadorInicio();
+        return pcDAO.cadastroComputadorInicio(idLab);
 
     }
 
@@ -121,4 +110,74 @@ public class ComputadorController {
             Logger.getLogger(ComputadorController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void coletarInformacoes(){
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ComputadorController cc = new ComputadorController();
+
+                while (true) {
+                    try {
+                        cc.atualizacaoAutomatica();
+                        Thread.sleep(10000); //1 minuto
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ProcessoController pc = new ProcessoController();
+
+                while (true) {
+                    try {
+                        System.out.println(pc.insertProcesso() + " processos inseridos");
+                        Thread.sleep(10000); //1 minuto
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HDController hd = new HDController();
+
+                while (true) {
+                    try {
+                        hd.atualizarHd();
+                        Thread.sleep(10000); //1 minuto
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    ProcessoController pc = new ProcessoController();
+                    pc.deleteProcessosParaFinalizar();
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }).start();
+    }   
+    
 }

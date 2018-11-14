@@ -12,6 +12,13 @@ package model;
 public class Laboratorio {
     private int idLab;
     private String nome;
+    private String andar;
+
+    public Laboratorio(int idLab, String nome, String andar) {
+        this.idLab = idLab;
+        this.nome = nome;
+        this.andar = andar;
+    }
 
     public int getIdLab() {
         return idLab;
@@ -29,11 +36,14 @@ public class Laboratorio {
         this.nome = nome;
     }
 
-    public Laboratorio(int idLab, String nome) {
-        this.idLab = idLab;
-        this.nome = nome;
+    public String getAndar() {
+        return andar;
     }
-    
+
+    public void setAndar(String andar) {
+        this.andar = andar;
+    }
+
     
     
 }

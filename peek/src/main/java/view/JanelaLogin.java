@@ -32,10 +32,11 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
     public JanelaLogin(String msgErro) {
         JOptionPane.showMessageDialog(this, msgErro);
     }
-    
-    public JanelaLogin() {}
-    
-    
+
+    public JanelaLogin() {
+        
+    }
+       
     
     
     @Override

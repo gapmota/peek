@@ -12,7 +12,7 @@ import javax.swing.JFrame;
  * @author Aluno
  */
 public abstract class JanelaPadrao extends JFrame{
-    
+ 
     public JanelaPadrao(){
         
         ij();

@@ -19,18 +19,6 @@ public class ComputadorDAO {
 
     private PreparedStatement ps = null;
 
-    public String atualizarPC() throws SQLException, InterruptedException {
-
-        if (this.jaCadastrado()) {
-            cadastroInicial();
-        }
-
-        atualizacaoAutomatica();
-        atualizarHd();
-
-        return "Informações atualizadas com sucesso!" + new ComputadorController().getDateTime();
-    }
-
     public void atualizarHd() throws SQLException {
         HDController hc = new HDController();
         Connection cnx = new Banco().getInstance();
@@ -57,21 +45,21 @@ public class ComputadorDAO {
         }
     }
 
-    public String cadastroInicial() {
+    public String cadastroInicial(int idLab) {
 
         List<MAC> macs = new RedeController().getMacsPC();
 
         if (!isPcJaCadastrado(macs)) {
-            int idComputador = cadastroComputadorInicio();
+            int idComputador = cadastroComputadorInicio(idLab);
             boolean cadastrouMac = cadastrarMACS(macs, idComputador);
 
             return "\n---------------------------------------------------------\n"
                     + "ID_COMPUTADOR: " + idComputador + ""
-                    + "\nMAC CADASTRADOS: " + cadastrouMac + ""
+                    + "\nMAC CADASTRADOS!"
                     + "\n---------------------------------------------------------";
         } else {
 
-            return "Computador já cadastro, aguarde...";
+            return "Computador já cadastrado...";
 
         }
 
@@ -148,9 +136,9 @@ public class ComputadorDAO {
      *
      * @return RETORNA O ID_COMPUTADOR DO COMPUTADOR CADASTRADO
      */
-    public int cadastroComputadorInicio() {
+    public int cadastroComputadorInicio(int idLab) {
 
-        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,MAC_ADDRESS_INICIAL) VALUES (?,?,?)";
+        String SQL = "INSERT INTO PEEK_COMPUTADOR(QUANTIDADE_MEMORIA_RAM,DESCRICAO_PROCESSADOR,MAC_ADDRESS_INICIAL, ID_LAB) VALUES (?,?,?,?)";
         Connection cnx = new Banco().getInstance();
         int idComputador = -1;
         try {
@@ -163,6 +151,7 @@ public class ComputadorDAO {
             ps.setDouble(1, computador.getRam().getTotal());
             ps.setString(2, computador.getProcessador().getNomeProcessador());
             ps.setString(3, computador.getRede().getMacParaCadastroInicial());
+            ps.setInt(4, idLab);
             
             if (ps.executeUpdate() > 0) {
                 cnx.commit();

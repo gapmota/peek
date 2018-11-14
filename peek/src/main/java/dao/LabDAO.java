@@ -34,7 +34,7 @@ public class LabDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 // System.out.println(rs);
-                list.add(new Laboratorio(rs.getInt("ID_LAB"), rs.getString("NOME")));                
+                list.add(new Laboratorio(rs.getInt("ID_LAB"), rs.getString("NOME"),rs.getString("ANDAR")));                
             }
 
         } catch (SQLException sqlEx) {
