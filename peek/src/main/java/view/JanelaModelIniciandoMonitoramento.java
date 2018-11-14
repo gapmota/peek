@@ -24,7 +24,8 @@ public class JanelaModelIniciandoMonitoramento extends JFrame{
         this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-        this.setVisible(true);     
+        this.setVisible(true);   
+        
         autoFecharJanela();
     }
     

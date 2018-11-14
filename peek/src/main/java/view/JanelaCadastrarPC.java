@@ -97,10 +97,12 @@ public class JanelaCadastrarPC extends JanelaPadrao implements ActionListener {
             //JOptionPane.showOptionDialog(this, this, "cadastro de pc", 200, 50, null, null, NORMAL);
             JOptionPane.showMessageDialog(this, new ComputadorController().cadastroInicial(lab));
             System.out.println("fim");
-            System.out.println("1111111111111111111111");
+            this.dispose();
+            new JanelaModelIniciandoMonitoramento();
+            
         } else {
             JOptionPane.showMessageDialog(this, "selecione um laboratório");
-            System.out.println("333333333333333333333333333333333");
+            
         }
 
     }
@@ -115,5 +117,7 @@ public class JanelaCadastrarPC extends JanelaPadrao implements ActionListener {
         }
 
     }
+    
+    
 
 }
