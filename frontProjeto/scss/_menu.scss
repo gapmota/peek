@@ -40,6 +40,7 @@
 //menu overlay
 .menu{
     position: fixed;
+    float: right;
     top: 0;
     width: 100%;
     opacity: 0.9;
@@ -51,14 +52,20 @@
     }
 
     //nao precisa colocar manu-nav, pq a tag esta dentro da tag menu
-    &-branding,
+    &-branding{
+        visibility: hidden;
+        display: flex;
+        float: left;
+        width: 70%;
+        height: 100vh;
+    }
     &-nav{
         display: flex;
         flex-flow: column wrap;
         align-items: center;
         justify-content: center;
         float: left;
-        width: 50%;
+        width: 30%;
         height: 100vh;
         overflow: hidden;
     }

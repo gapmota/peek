@@ -22,19 +22,26 @@
 
 .menu {
   position: fixed;
+  float: right;
   top: 0;
   width: 100%;
   opacity: 0.9;
   visibility: hidden; }
   .menu.show {
     visibility: visible; }
-  .menu-branding, .menu-nav {
+  .menu-branding {
+    visibility: hidden;
+    display: flex;
+    float: left;
+    width: 70%;
+    height: 100vh; }
+  .menu-nav {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
     float: left;
-    width: 50%;
+    width: 30%;
     height: 100vh;
     overflow: hidden; }
   .menu-nav {
@@ -513,15 +520,12 @@ body#backBody {
     div.menu-branding.show {
       transform: translate3d(0, 0, 0); }
   .menu-nav {
-    height: 75vh;
+    height: 100vh;
     transform: translate3d(-100%, 0, 0);
     font-size: 24px; }
   .menu-branding {
-    height: 30vh;
+    height: 0vh;
     transform: translate3d(100%, 0, 0); }
-    .menu-branding .portrait {
-      width: 150px;
-      height: 150px; }
   .about-info {
     grid-template-areas: 'bioimage' 'bio' 'quadro1' 'quadro2' 'quadro3';
     grid-template-columns: 1fr; }
