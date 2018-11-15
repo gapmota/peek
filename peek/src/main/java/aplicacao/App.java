@@ -19,6 +19,7 @@ public class App {
         if(new ComputadorController().isPcJaCadastrado(new RedeController().getMacsPC())){
             new JanelaModelIniciandoMonitoramento();
             new ComputadorController().coletarInformacoes();
+            new ComputadorController().enviarSlack();
             
         }else{
             new JanelaLogin();
