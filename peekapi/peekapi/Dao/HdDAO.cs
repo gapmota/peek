@@ -14,10 +14,8 @@ namespace peekapi.Dao
         private List<string> PegarDetorios(int idComputador)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
-            //using (SqlConnection cnx = new Banco().PegarConexao())
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 {
                     List<string> listDiretorio = new List<string>();
                     string sql = "SELECT DISTINCT(DIRETORIO) FROM PEEK_HD WHERE ID_COMPUTADOR = @ID";
@@ -52,10 +50,8 @@ namespace peekapi.Dao
             List<HD> hds = new List<HD>();
             foreach (string dir in this.PegarDetorios(idComputador))
             {
-                using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
-                //using (SqlConnection cnx = new Banco().PegarConexao())
+                using (SqlConnection cnx = new Banco().PegarConexao())
                 {
-                    cnx.Open();
                     {
                         List<string> listDiretorio = new List<string>();
                         string sql = "SELECT TOP 1 * FROM PEEK_HD WHERE ID_COMPUTADOR = @ID AND DIRETORIO = @DIR ORDER BY ID_HD DESC";
@@ -69,18 +65,19 @@ namespace peekapi.Dao
                             {
                                 while (dr.Read())
                                 {
-                                    HD h = new HD();
+                                    HD h = new HD
+                                    {
+                                        IdHd = int.Parse(dr["ID_HD"].ToString()),
+                                        Total = dr["TOTAL"].ToString(),
+                                        Usado = dr["USADO"].ToString(),
+                                        IdComputador = idComputador,
+                                        Diretorio = dr["DIRETORIO"].ToString(),
+                                        TipoDir = dr["TIPO_DIR"].ToString(),
+                                        Uuid = dr["UUID"].ToString(),
+                                        Volume = dr["VOLUME"].ToString(),
+                                        DataCadastro = dr["DATA_CADASTRO"].ToString()
+                                    };
 
-                                    h.IdHd = int.Parse(dr["ID_HD"].ToString());
-                                    h.Total = dr["TOTAL"].ToString();
-                                    h.Usado = dr["USADO"].ToString();
-                                    h.IdComputador = idComputador;
-                                    h.Diretorio = dr["DIRETORIO"].ToString();
-                                    h.TipoDir = dr["TIPO_DIR"].ToString();
-                                    h.Uuid = dr["UUID"].ToString();
-                                    h.Volume = dr["VOLUME"].ToString();
-                                    h.DataCadastro = dr["DATA_CADASTRO"].ToString();
-                                    
                                     hds.Add(h);
                                 }
 

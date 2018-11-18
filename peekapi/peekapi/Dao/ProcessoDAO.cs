@@ -14,10 +14,9 @@ namespace peekapi.Dao
         {
             List<Processo> listProcessos = new List<Processo>();
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
-                
+
                 string sql = "SELECT * FROM PEEK_PROCESSO WHERE ID_COMPUTADOR = @COD";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
@@ -28,25 +27,26 @@ namespace peekapi.Dao
                         while (dr.Read())
                         {
 
-                            Processo p = new Processo();
-
-                            p.IdProcesso = int.Parse(dr["ID_PROCESSO"].ToString());
-                            p.IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString());
-                            p.Pid = int.Parse(dr["PID"].ToString());
-                            p.MemoriaRamUsada = long.Parse(dr["MEMORIA_RAM_USADA"].ToString());
-                            p.TempoInicio = long.Parse(dr["TEMPO_INICIO"].ToString());
-                            p.TempoModoUsuario = long.Parse(dr["TEMPO_MODO_USUARIO"].ToString());
-                            p.Nome = dr["NOME"].ToString();
-                            p.Usuario = dr["USUARIO"].ToString();
-                            p.Prioridade = int.Parse(dr["PRIORIDADE"].ToString());
-                            p.OpenFiles = long.Parse(dr["OPEN_FILES"].ToString());
-                            p.GrupoID = dr["GRUPO_ID"].ToString();
-                            p.Grupo = dr["GRUPO"].ToString();
-                            p.DataCadastro = dr["DATA_CADASTRO"].ToString();
-                            p.CommandLine = dr["COMMAND_LINE"].ToString();
-                            p.Caminho = dr["CAMINHO"].ToString();
-                            p.BytesLidos = long.Parse(dr["BYTES_LIDOS"].ToString());
-                            p.BytesEscritos = long.Parse(dr["BYTES_ESCRITOS"].ToString());
+                            Processo p = new Processo
+                            {
+                                IdProcesso = int.Parse(dr["ID_PROCESSO"].ToString()),
+                                IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString()),
+                                Pid = int.Parse(dr["PID"].ToString()),
+                                MemoriaRamUsada = long.Parse(dr["MEMORIA_RAM_USADA"].ToString()),
+                                TempoInicio = long.Parse(dr["TEMPO_INICIO"].ToString()),
+                                TempoModoUsuario = long.Parse(dr["TEMPO_MODO_USUARIO"].ToString()),
+                                Nome = dr["NOME"].ToString(),
+                                Usuario = dr["USUARIO"].ToString(),
+                                Prioridade = int.Parse(dr["PRIORIDADE"].ToString()),
+                                OpenFiles = long.Parse(dr["OPEN_FILES"].ToString()),
+                                GrupoID = dr["GRUPO_ID"].ToString(),
+                                Grupo = dr["GRUPO"].ToString(),
+                                DataCadastro = dr["DATA_CADASTRO"].ToString(),
+                                CommandLine = dr["COMMAND_LINE"].ToString(),
+                                Caminho = dr["CAMINHO"].ToString(),
+                                BytesLidos = long.Parse(dr["BYTES_LIDOS"].ToString()),
+                                BytesEscritos = long.Parse(dr["BYTES_ESCRITOS"].ToString())
+                            };
 
                             listProcessos.Add(p);
 

@@ -11,9 +11,8 @@ namespace peekapi.Dao
     {
          public bool UsuarioExiste(int idUsuario)
         {
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 string sql = "SELECT * FROM PEEK_USUARIO WHERE ID_USUARIO = @ID";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {

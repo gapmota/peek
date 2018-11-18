@@ -13,9 +13,8 @@ namespace peekapi.Dao
        public MemoriaRam PegarMemoriaRam(int idComputador)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 MemoriaRam memoria = new MemoriaRam();
                 string sql = "SELECT TOP 1 * FROM PEEK_MEMORIA_RAM WHERE ID_COMPUTADOR = @COD ORDER BY ID_MEMORIA_RAM DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))

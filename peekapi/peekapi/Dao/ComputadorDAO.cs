@@ -13,9 +13,8 @@ namespace peekapi.Dao
         public Computador PegarComputador(int idComputador)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
 
                 Computador c = new Computador();
                 string sql = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_COMPUTADOR = @ID";
@@ -50,10 +49,8 @@ namespace peekapi.Dao
         public List<Computador> PegarTodosComputadores()
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
-            //using (SqlConnection cnx = new Banco().PegarConexao())
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 {
                     List<Computador> listPc = new List<Computador>();
                     string sql = "SELECT * FROM PEEK_COMPUTADOR";
@@ -64,12 +61,13 @@ namespace peekapi.Dao
                         {
                             while (dr.Read())
                             {
-                                Computador c = new Computador();
-
-                                c.IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString());
-                                c.QuantidadeMemoriaRam = dr["QUANTIDADE_MEMORIA_RAM"].ToString();
-                                c.DescricaoProcessador = dr["DESCRICAO_PROCESSADOR"].ToString();
-                                c.MacAddressInicial = dr["MAC_ADDRESS_INICIAL"].ToString();
+                                Computador c = new Computador
+                                {
+                                    IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString()),
+                                    QuantidadeMemoriaRam = dr["QUANTIDADE_MEMORIA_RAM"].ToString(),
+                                    DescricaoProcessador = dr["DESCRICAO_PROCESSADOR"].ToString(),
+                                    MacAddressInicial = dr["MAC_ADDRESS_INICIAL"].ToString()
+                                };
                                 // c.IdLab = int.Parse(dr["ID_LAB"].ToString());
 
                                 listPc.Add(c);
@@ -90,10 +88,8 @@ namespace peekapi.Dao
 
         public List<Computador> PegarTodosComputadoresByLab(int idLab)
         {
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
-            //using (SqlConnection cnx = new Banco().PegarConexao())
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 {
                     List<Computador> listPc = new List<Computador>();
                     string sql = "SELECT * FROM PEEK_COMPUTADOR WHERE ID_LAB = @LAB";
@@ -105,13 +101,14 @@ namespace peekapi.Dao
 
                             while (dr.Read())
                             {
-                                Computador c = new Computador();
-
-                                c.IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString());
-                                c.QuantidadeMemoriaRam = dr["QUANTIDADE_MEMORIA_RAM"].ToString();
-                                c.DescricaoProcessador = dr["DESCRICAO_PROCESSADOR"].ToString();
-                                c.MacAddressInicial = dr["MAC_ADDRESS_INICIAL"].ToString();
-                                // c.IdLab = int.Parse(dr["ID_LAB"].ToString());
+                                Computador c = new Computador
+                                {
+                                    IdComputador = int.Parse(dr["ID_COMPUTADOR"].ToString()),
+                                    QuantidadeMemoriaRam = dr["QUANTIDADE_MEMORIA_RAM"].ToString(),
+                                    DescricaoProcessador = dr["DESCRICAO_PROCESSADOR"].ToString(),
+                                    MacAddressInicial = dr["MAC_ADDRESS_INICIAL"].ToString(),
+                                    IdLab = int.Parse(dr["ID_LAB"].ToString())
+                                };
 
                                 listPc.Add(c);
                             }

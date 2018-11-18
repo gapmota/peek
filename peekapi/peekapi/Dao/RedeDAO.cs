@@ -13,9 +13,8 @@ namespace peekapi.Dao
         public Rede PegarRede(int idComputador)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 Rede rede = new Rede();
                 string sql = "SELECT TOP 1 * FROM PEEK_REDE WHERE ID_COMPUTADOR = @COD ORDER BY ID_REDE DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
@@ -52,10 +51,10 @@ namespace peekapi.Dao
         public double[] SomaDownloadUploadDeTodosOsLaboratorios(int idUsuario)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
                 double[] down_up = new double[2];
-                cnx.Open();
+
                 string sql = @"SELECT COUNT(VELOCIDADE_DOWNLOAD) as VELOCIDADE_DOWNLOAD, COUNT(VELOCIDADE_UPLOAD) as VELOCIDADE_UPLOAD FROM PEEK_REDE R
                                 INNER JOIN PEEK_COMPUTADOR P ON R.ID_COMPUTADOR = P.ID_COMPUTADOR 
 								INNER JOIN PEEK_LAB L ON L.ID_LAB = P.ID_LAB
@@ -101,9 +100,8 @@ namespace peekapi.Dao
 
         public List<Lab> PegarTodosLaboratoriosDeUmUsuario(int idUsuario)
         {
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 string sql = "SELECT * FROM PEEK_LAB WHERE ID_USUARIO = @ID";
 
                 List<Lab> labs = new List<Lab>();
@@ -117,12 +115,13 @@ namespace peekapi.Dao
 
                         while (dr.Read())
                         {
-                            Lab l = new Lab();
-
-                            l.IDdLab = int.Parse(dr["ID_LAB"].ToString());
-                            l.Andar = dr["ANDAR"].ToString();
-                            l.Nome = dr["NOME"].ToString();
-                            l.Capacidade = int.Parse(dr["CAPACIDADE"].ToString());
+                            Lab l = new Lab
+                            {
+                                IDdLab = int.Parse(dr["ID_LAB"].ToString()),
+                                Andar = dr["ANDAR"].ToString(),
+                                Nome = dr["NOME"].ToString(),
+                                Capacidade = int.Parse(dr["CAPACIDADE"].ToString())
+                            };
 
                             labs.Add(l);
 
@@ -140,10 +139,8 @@ namespace peekapi.Dao
 
         public List<LabConsumo> PegarLaboratoriosQueEstaoConsumindoInternet(int idUsuario)
         {
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
-
                 List<LabConsumo> labs = new List<LabConsumo>();
 
                 string sql = @"SELECT L.ID_LAB, L.NOME, L.ANDAR, L.CAPACIDADE,  COUNT(VELOCIDADE_DOWNLOAD) as VELOCIDADE_DOWNLOAD, COUNT(VELOCIDADE_UPLOAD) as VELOCIDADE_UPLOAD  FROM PEEK_REDE R
@@ -170,13 +167,15 @@ namespace peekapi.Dao
                     {
                         while (dr.Read())
                         {
-                            LabConsumo lc = new LabConsumo();
-                            lc.IDdLab = int.Parse(dr["ID_LAB"].ToString());
-                            lc.Andar = dr["ANDAR"].ToString();
-                            lc.Nome = dr["NOME"].ToString();
-                            lc.Capacidade = int.Parse(dr["CAPACIDADE"].ToString());
-                            lc.Download = double.Parse(dr["VELOCIDADE_DOWNLOAD"].ToString()); 
-                            lc.Upload = double.Parse(dr["VELOCIDADE_UPLOAD"].ToString());
+                            LabConsumo lc = new LabConsumo
+                            {
+                                IDdLab = int.Parse(dr["ID_LAB"].ToString()),
+                                Andar = dr["ANDAR"].ToString(),
+                                Nome = dr["NOME"].ToString(),
+                                Capacidade = int.Parse(dr["CAPACIDADE"].ToString()),
+                                Download = double.Parse(dr["VELOCIDADE_DOWNLOAD"].ToString()),
+                                Upload = double.Parse(dr["VELOCIDADE_UPLOAD"].ToString())
+                            };
 
                             labs.Add(lc);
 

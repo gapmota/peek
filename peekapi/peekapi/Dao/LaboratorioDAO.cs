@@ -11,9 +11,8 @@ namespace peekapi.Dao
          public int QuantidadeDeLaboratorio(int idUsuario)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 string sql = "SELECT COUNT(ID_LAB) AS QNT FROM PEEK_LAB WHERE ID_USUARIO = @ID";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {

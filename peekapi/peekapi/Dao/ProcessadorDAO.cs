@@ -13,9 +13,8 @@ namespace peekapi.Dao
         public Processador PegarProcessador(int idComputador)
         {
 
-            using (SqlConnection cnx = new SqlConnection(new Banco().StringDeConexao))
+            using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                cnx.Open();
                 Processador processador = new Processador();
                 string sql = "SELECT TOP 1 * FROM PEEK_PROCESSADOR WHERE ID_COMPUTADOR = @COD ORDER BY ID_PROCESSADOR DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
