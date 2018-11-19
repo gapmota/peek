@@ -5,11 +5,11 @@
 @import 'dashMain';
 @import 'ad-lab';
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     @include background;
     background: $cor-primaria;
     color: cor-do-texto($cor-primaria);
@@ -25,120 +25,123 @@ h2,
 h3 {
     margin: 0;
     font-weight: 400;
-
     //o h1, h2 e h3 foi definido antes
     //aqui mudo apenas o h1, chamando por '&'
-    &.title-heading{
+    &.title-heading {
         font-size: 6rem; //rem multiplica o tamanho
     }
 
-    &.subtitle-heading{
+    &.subtitle-heading {
         margin-bottom: 2rem;
         padding: 0.2rem 1rem;
         background: rgba(lighten($cor-primaria, 2), 0.5); //fundo mais claro da cor primaria (rgba para transparente)
     }
 }
 
-a{
+a {
     color: #fff;
     text-decoration: none;
 }
-header{
+
+header {
     position: fixed;
     z-index: 2;
     width: 100%;
 }
 
-.text-secondary{
+.text-secondary {
     color: $cor-secundaria;
     //$cor-secundaria;
 }
 
-main{
+main {
     padding: 4rem;
     //height: 100%;
     min-height: calc(100vh - 60px); //deixa o rodape (60px) sempre no fim
-
-    .icons{
+    .icons {
         margin-top: 1rem;
         margin-bottom: 2rem;
 
-        a{
+        a {
             padding: 0.4rem;
             //coloca cor secundaria ao passar mouse nos icones
-            &:hover{
+            &:hover {
                 color: $cor-secundaria;
                 @include easeOut(); //chama efeito de transição criado antes
             }
         }
     }
 
-    &#home{
+    &#home {
         overflow: hidden;
-        h1{
+
+        h1 {
             margin-top: 20vh; //unidade vh equivale a uma fatia do tamanho toal (1/100)
-        }  
-        
-        .btn-dark{
-            width: 30vh; 
+        }
+
+        .btn-dark {
+            width: 30vh;
             position: relative;
             text-align: center;
             float: left;
-            margin-left: 1rem;   
-            font-weight: 600; 
+            margin-left: 1rem;
+            font-weight: 600;
 
-           &.Log{background-color :rgb(31, 163, 31);}
-           &.Cad{background-color:  rgb(31, 163, 31);}
+            &.Log {
+                background-color: rgb(31, 163, 31);
+            }
 
+            &.Cad {
+                background-color: rgb(31, 163, 31);
+            }
         }
     }
 }
 
 //sobre
 
-body#backBody{
+body#backBody {
     background: $back-linhas;
     background-attachment: fixed;
     background-size: cover;
 
-    &:after{
+    &:after {
         background: none;
     }
 }
 
-.about-info{
+.about-info {
     display: grid;
     grid-gap: 30px;
     grid-template-areas: //representação visual da pagina
-    'bioimage bio bio'
-    'quadro1 quadro2 quadro3';
+    'bioimage bio bio' 'quadro1 quadro2 quadro3';
     grid-template-columns: repeat(3, 1fr);
-
     //como vai ficar cada grid area criada acima
-    .bio-img{
+    .bio-img {
         grid-area: bioimage;
         margin: auto;
         border-radius: 50%;
         border: $cor-secundaria 3px solid;
     }
 
-    .bio{
+    .bio {
         grid-area: bio;
         font-size: 1.5rem;
     }
 
-    .quadro-1{
+    .quadro-1 {
         grid-area: quadro1;
     }
 
-    .quadro-2{
+    .quadro-2 {
         grid-area: quadro2;
     }
 
-    .quadro-3{
+    .quadro-3 {
         grid-area: quadro3;
     }
-    .quadro{
+
+    .quadro {
         background: lighten($cor-primaria,5);
         padding: 0.5rem;
         border-bottom: $cor-secundaria 5px solid;
@@ -146,16 +149,16 @@ body#backBody{
 }
 
 //work/projects
-.projects{
+.projects {
     display: grid;
     grid-gap: 0.7rem;
     grid-template-columns: repeat(3, 1fr);
-    
-    img{
+
+    img {
         width: 100%;
         border: 3px #fff solid;
 
-        &:hover{
+        &:hover {
             opacity: 0.5;
             border-color: $cor-secundaria;
             @include easeOut;
@@ -164,29 +167,31 @@ body#backBody{
 }
 
 //botão work
-.btn{
+.btn {
     display: block;
     padding: 0.5rem 1rem;
     border: 0;
     margin-bottom: 0.3rem;
+
     &:hover {
         background: $cor-secundaria;
-        color: cor-do-texto($cor-secundaria);        
+        color: cor-do-texto($cor-secundaria);
     }
 }
 
-.btn-dark{
+.btn-dark {
     @extend .btn;
     background: darken($cor-primaria, 50);
     color: #fff;
 }
-.btn-light{
+
+.btn-light {
     @extend .btn;
     background: lighten($cor-primaria, 50);
     color: #333;
 }
 
-#main-footer{
+#main-footer {
     text-align: center;
     padding: 1rem;
     background: darken($cor-primaria, 10);

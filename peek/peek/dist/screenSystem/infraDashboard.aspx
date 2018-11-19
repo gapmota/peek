@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css"/>
     <title>Dashboard da Infra</title>
 </head>
@@ -28,7 +29,7 @@
                     <li class="nav-item current">
                         <a href="#" class="nav-link">
                         <i class="far fa-user"></i>
-                        Meu Perfil                         
+                        Meu Perfis                         
                         </a>
                     </li>
                     <li class="nav-item">

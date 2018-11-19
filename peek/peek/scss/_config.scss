@@ -15,15 +15,14 @@ $background-opacity: 0.9;
 
 //coloca img de fundo no body (com id bg-img), se $show-home-image for true
 @mixin background {
-    @if $show-home-image{
-        &#bg-img{
+    @if $show-home-image {
+        &#bg-img {
             background: $home-image;
             background-attachment: fixed;
             background-size: cover;
         }
-
         //cria um elemento depois da imagem (fundo cinza rgba), sem criar um elemento no html
-        &:after{
+        &:after {
             content: '';
             position: absolute;
             top: 0;
@@ -37,10 +36,11 @@ $background-opacity: 0.9;
 }
 
 //Defini cor do texto
-@function cor-do-texto($color){
-    @if(lightness($color) > 40){
+@function cor-do-texto($color) {
+    @if(lightness($color) > 40) {
         @return #000; //se a leveza da cor for > 40, retorna preto
-    } @else {
+    }
+    @else {
         @return #fff; //se não retorna branco
     }
 }
@@ -59,11 +59,11 @@ $background-opacity: 0.9;
 }
 
 @mixin mediaLg {
-    @media screen and (min-width: 769px) and 
-    (max-width: 1170px) {
+    @media screen and (min-width: 769px) and (max-width: 1170px) {
         @content;
     }
 }
+
 @mixin mediaXl {
     @media screen and (min-width: 1171px) {
         @content;
