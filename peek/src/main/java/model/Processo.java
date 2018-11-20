@@ -17,6 +17,17 @@ public class Processo {
     private boolean flag;
     private int idComputador;
     private String dataCadastro;
+    private int usaInternet;
+
+    public int getUsaInternet() {
+        return usaInternet;
+    }
+
+    public void setUsaInternet(int usaInternet) {
+        this.usaInternet = usaInternet;
+    }
+    
+    
 
     public int getIdProcesso() {
         return idProcesso;

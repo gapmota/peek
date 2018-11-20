@@ -5,6 +5,7 @@
  */
 package view;
 
+import aplicacao.App;
 import controller.ComputadorController;
 import java.awt.Color;
 import java.awt.Font;
@@ -97,8 +98,11 @@ public class JanelaCadastrarPC extends JanelaPadrao implements ActionListener {
             //JOptionPane.showOptionDialog(this, this, "cadastro de pc", 200, 50, null, null, NORMAL);
             JOptionPane.showMessageDialog(this, new ComputadorController().cadastroInicial(lab));
             System.out.println("fim");
-            this.dispose();
-            new JanelaModelIniciandoMonitoramento();
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Iniciando a coleta de dados...");
+            new ComputadorController().coletarInformacoes();
+            new ComputadorController().enviarSlack();
+            
             
         } else {
             JOptionPane.showMessageDialog(this, "selecione um laboratório");

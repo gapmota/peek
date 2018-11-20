@@ -10,9 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Processo;
+import oshi.PlatformEnum;
+import static oshi.PlatformEnum.WINDOWS;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem;
@@ -94,7 +97,7 @@ public class ProcessoController {
 
     public void finalizarProcesso(int proc) {
         try {
-            Runtime.getRuntime().exec("taskkill /PID " + proc+" /F");
+            Runtime.getRuntime().exec("taskkill /PID " + proc + " /F");
         } catch (IOException ex) {
             Logger.getLogger(ProcessoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,18 +125,19 @@ public class ProcessoController {
         processo = new ProcessoDAO();
         List<Processo> procs = processo.selectProcessosParaFinalizar();
         int totalDelete = 0;
-        for(Processo processoParaFinalizar : procs){
+        for (Processo processoParaFinalizar : procs) {
             ProcessoDAO pd = new ProcessoDAO();
-            
-            this.finalizarProcesso(processoParaFinalizar.getPid());            
+
+            this.finalizarProcesso(processoParaFinalizar.getPid());
             totalDelete += pd.deleteProcessosParaFinalizar(processoParaFinalizar);
         }
-        
-        if(totalDelete == procs.size())
+
+        if (totalDelete == procs.size()) {
             System.out.println("todos processos solicitados foram fechados");
-        else
-            System.out.println("totalDeletado = "+totalDelete+" totalListaProcessos = "+procs.size());
-            
+        } else {
+            System.out.println("totalDeletado = " + totalDelete + " totalListaProcessos = " + procs.size());
+        }
+
     }
 
     public int insertProcesso() {
@@ -147,6 +151,43 @@ public class ProcessoController {
         } catch (IOException ex) {
             Logger.getLogger(ProcessoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public String getProcessoQueUsamInternet() throws IOException {
+
+        if (SystemInfo.getCurrentPlatformEnum() == WINDOWS) {
+
+            Scanner in = new Scanner(Runtime.getRuntime().exec("netstat /b").getInputStream());
+            int cont = 0;
+
+            StringBuilder sb = new StringBuilder();
+
+            while (in.hasNextLine()) {
+
+                if (cont > 2) {
+                    sb.append(in.nextLine() + "\n");
+                } else {
+                    in.nextLine();
+                }
+
+                cont++;
+            }
+
+            return sb.toString();
+
+        }
+        return "SISTEMA INVALIDO";
+    }
+
+    public int isProcessoConsumeInternet(String processo, String netstatB) {
+        if (netstatB.contains(processo)) {
+            return 1;
+        } else if (netstatB.contains("SISTEMA INVALIDO")) {
+            return -1;
+        }else{
+            return 0;
+        }
+
     }
 
 }

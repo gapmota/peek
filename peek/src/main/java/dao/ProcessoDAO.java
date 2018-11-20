@@ -7,6 +7,7 @@ package dao;
 
 import model.*;
 import controller.ProcessoController;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,6 +48,8 @@ public class ProcessoDAO {
                 p.setFlag(rs.getBoolean("FLAG_FINALIZAR"));
                 p.setDataCadastro(rs.getString("DATE_TIME"));
                 p.setIdComputador(idComputador);
+                p.setUsaInternet(rs.getInt("USA_INTERNET"));
+                
 
                 list.add(p);
             }
@@ -77,8 +80,8 @@ public class ProcessoDAO {
 
     
     public int insertProcesso() {
-        String SQL = "INSERT INTO PEEK_PROCESSO(NOME,TEMPO_INICIO,USUARIO,PID,CAMINHO,PRIORIDADE,BYTES_LIDOS,BYTES_ESCRITOS, TEMPO_MODO_USUARIO,MEMORIA_RAM_USADA,COMMAND_LINE,OPEN_FILES,GRUPO,GRUPO_ID,ID_COMPUTADOR) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String SQL = "INSERT INTO PEEK_PROCESSO(NOME,TEMPO_INICIO,USUARIO,PID,CAMINHO,PRIORIDADE,BYTES_LIDOS,BYTES_ESCRITOS, TEMPO_MODO_USUARIO,MEMORIA_RAM_USADA,COMMAND_LINE,OPEN_FILES,GRUPO,GRUPO_ID,ID_COMPUTADOR, USA_INTERNET) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         Connection cnx = new Banco().getInstance();
         try {
@@ -102,7 +105,15 @@ public class ProcessoDAO {
 
         try {
             List<OSProcess> procs = new ProcessoController().getProcessos();
-
+            String netsat = "";
+            try {
+                
+                System.out.println("pegou os processo");
+                netsat = new ProcessoController().getProcessoQueUsamInternet();
+                System.out.println("terminou");
+            } catch (IOException ex) {
+                Logger.getLogger(ProcessoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for (OSProcess osp : procs) {
                 try {
 
@@ -123,6 +134,7 @@ public class ProcessoDAO {
                     ps.setString(13, osp.getGroup());
                     ps.setString(14, osp.getGroupID());
                     ps.setInt(15, idComputador);
+                    ps.setInt(16, (new ProcessoController().isProcessoConsumeInternet(osp.getName(),netsat)));
 
                     totalRegistros += ps.executeUpdate();
                     System.out.println(totalRegistros + " de " + procs.size());

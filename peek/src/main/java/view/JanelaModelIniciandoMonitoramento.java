@@ -52,7 +52,7 @@ public class JanelaModelIniciandoMonitoramento extends JFrame{
         int segundos = 0;
         while(segundos < 10){
             try {
-                System.out.println("123123123123e");
+                System.out.println(segundos+" ");
                 segundos++;
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {

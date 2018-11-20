@@ -141,6 +141,7 @@ public class ComputadorController {
 
                 while (true) {
                     try {
+                        System.out.println("comcou");
                         System.out.println(pc.insertProcesso() + " processos inseridos");
                         Thread.sleep(10000); //1 minuto
                     } catch (InterruptedException ex) {
