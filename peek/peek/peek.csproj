@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\js\graphics.js" />
     <Content Include="dist\screenSite\contact.aspx" />
     <Content Include="dist\screenSystem\addLab.aspx" />
     <Content Include="dist\screenSystem\infraDashboard.aspx" />
