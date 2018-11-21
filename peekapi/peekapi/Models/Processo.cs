@@ -24,5 +24,16 @@ namespace peekapi.Models
         public string DataCadastro { get; set; }
         public string Caminho { get; set; }
         public string GrupoID { get; set; }
+
+       
     }
+
+    public class ProcessosInternet
+    {
+        public string Nome { get; set; }
+        public double MemoriRam { get; set; } 
+
+        public int QuantidadeProcessosAberto { get; set; }
+    }
+
 }

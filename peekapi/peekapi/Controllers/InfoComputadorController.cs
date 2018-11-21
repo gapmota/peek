@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Web.Http;
 using peekapi.Models;
 using peekapi.Dao;
-using Newtonsoft.Json;
 
 namespace peekapi.Controllers
 {

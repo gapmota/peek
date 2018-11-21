@@ -10,6 +10,7 @@ namespace peekapi.Dao
 {
     public class ProcessoDAO
     {
+
         public List<Processo> PegarProcessos(int idComputador)
         {
             List<Processo> listProcessos = new List<Processo>();
@@ -61,6 +62,55 @@ namespace peekapi.Dao
             }
 
             return listProcessos;
+
+        }
+
+
+        public List<ProcessosInternet> PegarProcessosQueUsamInternet(int idUsuario)
+        {
+            List<ProcessosInternet> listProcessos = new List<ProcessosInternet>();
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+
+                string sql = @"SELECT P.NOME, SUM(P.MEMORIA_RAM_USADA) MEMORIA_USADA, COUNT(P.NOME) QNT_PROCESSOS FROM dbo.PEEK_PROCESSO P
+                                INNER JOIN dbo.PEEK_COMPUTADOR PC ON PC.ID_COMPUTADOR = P.ID_COMPUTADOR
+                                INNER JOIN dbo.PEEK_LAB LAB ON LAB.ID_LAB = PC.ID_LAB
+                                INNER JOIN dbo.PEEK_USUARIO U ON U.ID_USUARIO = LAB.ID_USUARIO
+                                WHERE P.USA_INTERNET = 1
+                                AND U.ID_USUARIO = @ID
+                                GROUP BY P.NOME
+                                ORDER BY P.NOME, MEMORIA_USADA, QNT_PROCESSOS;";
+
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idUsuario);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+
+                            ProcessosInternet p = new ProcessosInternet
+                            {
+                                Nome = dr["NOME"].ToString(),
+                                MemoriRam = double.Parse(dr["MEMORIA_USADA"].ToString()),
+                                QuantidadeProcessosAberto = int.Parse(dr["QNT_PROCESSOS"].ToString())                                
+
+                            };
+
+                            listProcessos.Add(p);
+
+
+                        }
+                        return listProcessos;
+                    }
+
+
+                }
+
+            }
+            
 
         }
 
