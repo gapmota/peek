@@ -88,18 +88,17 @@ main {
             font-weight: 600;
 
             &.Log {
-                background-color: rgb(31, 163, 31);
+                background-color: $cor-secundaria2;
             }
 
             &.Cad {
-                background-color: rgb(31, 163, 31);
+                background-color: $cor-secundaria2;
             }
         }
     }
 }
 
 //sobre
-
 body#backBody {
     background: $back-linhas;
     background-attachment: fixed;
@@ -139,6 +138,9 @@ body#backBody {
 }
 
 .integrantes {
+    .text-name{
+        color: $cor-secundaria2;
+    }
     display: grid;
     grid-gap: 15px;
     grid-template-areas: //representação visual da pagina
@@ -166,7 +168,7 @@ body#backBody {
     }
 
     .bio {
-        h6{
+        h6 {
             margin: 10px;
         }
 
@@ -179,14 +181,14 @@ body#backBody {
         width: 150px;
         margin: auto;
         border-radius: 50%;
-        border: $cor-secundaria 3px solid;
+        border: $cor-secundaria2 3px solid;
     }
 }
 
 //work/projects
 .projects {
     display: grid;
-    grid-gap: 0.7rem;
+    grid-gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
 
     img {
@@ -202,6 +204,12 @@ body#backBody {
 }
 
 //botão work
+.item{
+    i{
+        padding: 1vh;
+       float: right;
+    }
+}
 .btn {
     display: block;
     padding: 0.5rem 1rem;
@@ -222,8 +230,9 @@ body#backBody {
 
 .btn-light {
     @extend .btn;
-    background: lighten($cor-primaria, 50);
-    color: #333;
+    background: $cor-secundaria2;
+    font-size: 20px;
+    //color: #333;
 }
 
 #main-footer {

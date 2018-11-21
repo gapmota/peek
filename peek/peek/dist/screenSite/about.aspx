@@ -12,8 +12,8 @@
 </head>
 <body id="backBody">
     <form id="form1" runat="server">
-        <div>
-            <header>
+       
+    <header>
         <div class="menu-btn">
             <div class="btn-line"></div>
             <div class="btn-line"></div>
@@ -22,7 +22,6 @@
 
         <nav class="menu">
             <div class="menu-branding">
-                <div class="portrait"></div>
             </div>
             <div class="menu-nav">
                     <li class="nav-item">
@@ -30,12 +29,12 @@
                         Home
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item current">
                         <a href="about.aspx" class="nav-link">
                         Sobre Nós
                         </a>
                     </li>
-                    <li class="nav-item current">
+                    <li class="nav-item ">
                         <a href="work.aspx" class="nav-link">
                         Projeto
                         </a>
@@ -45,6 +44,7 @@
                         Contato
                         </a>
                     </li>               
+            </div>              
             </div>
         </nav>
     </header>
@@ -58,28 +58,28 @@
         </h2>
         <div class="integrantes">
             <div class="bio bio-1">
-                <h3 class="text-secondary">BRUNO</h3>
-                <h6 class="func">FUNÇÃO</h6>
+                <h3 class="text-name">BRUNO</h3>
+                <h6>FUNÇÃO</h6>
                 <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-2">
-                <h3 class="text-secondary">GIULIANA</h3>
-                <h6 class="func">FUNÇÃO</h6>
+                <h3 class="text-name">GIULIANA</h3>
+                <h6>FUNÇÃO</h6>
                 <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-3">
-                <h3 class="text-secondary">GUILHERME</h3>
-                <h6 class="func">FUNÇÃO</h6>
+                <h3 class="text-name">GUILHERME</h3>
+                <h6>FUNÇÃO</h6>
                 <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-4">
-                <h3 class="text-secondary">MATEUS</h3>
-                <h6 class="func">FUNÇÃO</h6>
+                <h3 class="text-name">MATEUS</h3>
+                <h6>FUNÇÃO</h6>
                 <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-5">
-                <h3 class="text-secondary">MICHEL</h3>
-                <h6 class="func">FUNÇÃO</h6>
+                <h3 class="text-name">MICHEL</h3>
+                <h6>FUNÇÃO</h6>
                 <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
         </div>
@@ -109,7 +109,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
-        </div>
+   
     </form>
 </body>
 </html>

@@ -13,8 +13,7 @@
 </head>
 <body id="bg-img">
     <form id="form1" runat="server">
-        <div>
-            <header>
+    <header>
         <div class="menu-btn">
             <div class="btn-line"></div>
             <div class="btn-line"></div>
@@ -25,7 +24,7 @@
             <div class="menu-branding">
             </div>
             <div class="menu-nav">
-                    <li class="nav-item">
+                    <li class="nav-item current">
                         <a href="home.aspx" class="nav-link">
                         Home
                         </a>
@@ -35,7 +34,7 @@
                         Sobre Nós
                         </a>
                     </li>
-                    <li class="nav-item current">
+                    <li class="nav-item">
                         <a href="work.aspx" class="nav-link">
                         Projeto
                         </a>
@@ -75,7 +74,7 @@
     </main>
 
     <script src="../js/main.js"></script>
-        </div>
+
     </form>
 </body>
 </html>

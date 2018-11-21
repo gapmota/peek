@@ -7,13 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css"/>
     <title>Nosso projeto</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <header>
+      
+    <header>
         <div class="menu-btn">
             <div class="btn-line"></div>
             <div class="btn-line"></div>
@@ -22,7 +23,6 @@
 
         <nav class="menu">
             <div class="menu-branding">
-                <div class="portrait"></div>
             </div>
             <div class="menu-nav">
                     <li class="nav-item">
@@ -45,6 +45,7 @@
                         Contato
                         </a>
                     </li>               
+            </div>              
             </div>
         </nav>
     </header>
@@ -62,10 +63,7 @@
                     <img src="../img/projects/project1.jpeg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
-                    <i class="fas fa-eye"></i> Project
-                </a>
-                <a href="#" class="btn-dark">
-                        <i class="fab fa-github"></i> Github
+                     Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
             <div class="item">
@@ -73,10 +71,7 @@
                     <img src="../img/projects/project2.jpeg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
-                    <i class="fas fa-eye"></i> Project
-                </a>
-                <a href="#" class="btn-dark">
-                        <i class="fab fa-github"></i> Github
+                     Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
             <div class="item">
@@ -84,10 +79,7 @@
                     <img src="../img/projects/project3.jpeg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
-                    <i class="fas fa-eye"></i> Project
-                </a>
-                <a href="#" class="btn-dark">
-                        <i class="fab fa-github"></i> Github
+                     Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
             <div class="item">
@@ -95,10 +87,7 @@
                     <img src="../img/projects/project4.jpeg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
-                    <i class="fas fa-eye"></i> Project
-                </a>
-                <a href="#" class="btn-dark">
-                        <i class="fab fa-github"></i> Github
+                     Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
             <div class="item">
@@ -106,10 +95,7 @@
                     <img src="../img/projects/project5.jpeg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
-                    <i class="fas fa-eye"></i> Project
-                </a>
-                <a href="#" class="btn-dark">
-                        <i class="fab fa-github"></i> Github
+                     Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
         </div>      
@@ -120,7 +106,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
-        </div>
+
     </form>
 </body>
 </html>
