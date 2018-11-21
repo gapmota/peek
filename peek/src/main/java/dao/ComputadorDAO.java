@@ -291,7 +291,6 @@ public class ComputadorDAO {
         ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)}");
 
         try {
-
             cnx.setAutoCommit(true);
             ps.setString("@TEMPO_ATIVIDADE", c.getProcessador().getTempoAtividade() + "");
             ps.setString("@PORCENTAGEM_USO", c.getProcessador().getPorcetagemDeUso() + "");
@@ -305,10 +304,13 @@ public class ComputadorDAO {
             ps.setDouble("@EM_USO", c.getRam().getUsando());
             ps.execute();
             
+            new log.arquivoLog("TEMPO_ATIVIDADE: "+c.getProcessador().getTempoAtividade().getBytes()+"\n"+ "HD"+c.getHD().getInformacoesHd()+"\n"+ "PROCESSO"+ c.getProcesso()+"\n"+"MERORIA RAM"+ c.getRam().getDisponivel()+"\n"+""+c.getRam().getTotal()+"\n"+ "REDE"+ c.getRede());
+            
             System.out.println("atualizado..");
             
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");
+            new log.arquivoLog(sqlEx.getSQLState());
             sqlEx.printStackTrace();
         }
     }
