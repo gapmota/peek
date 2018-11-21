@@ -89,6 +89,9 @@
     <Content Include="dist\screenSite\about.aspx" />
     <Content Include="dist\screenSite\work.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="dist\js\lab.js" />
+    <Content Include="dist\js\main.js" />
+    <Content Include="dist\js\request.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
