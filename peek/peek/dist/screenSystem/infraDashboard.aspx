@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <link rel="stylesheet" href="../css/main.css"/>
     <title>Dashboard da Infra</title>
 </head>
@@ -88,7 +89,9 @@
             </div>
             <div class="processos">
                 <div class="legenda" onclick="pegarDownload()">PROCESSOS</div>
-                <p id="txtDownload"></p>
+                <p id="txtDownload">
+                    <canvas id="primeiroGrafico">  </canvas>
+                </p>
                 <p id="txtUpload"></p>
             </div>     
             <div class="aplicacoes">
@@ -118,8 +121,8 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/request.js"></script>
+    <script src="../js/graphics.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
         </div>
     </form>
 </body>

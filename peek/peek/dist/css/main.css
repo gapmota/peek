@@ -1,3 +1,6 @@
+body{
+    overflow:hidden;
+}
 .menu-btn {
   position: absolute;
   z-index: 3;
