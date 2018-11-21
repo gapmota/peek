@@ -149,6 +149,7 @@
     <Content Include="scss\_menu.scss" />
     <Content Include="scss\_menuDash.scss" />
     <Content Include="scss\_mobile.scss" />
+    <Content Include="scss\_contato.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/main.css"/>
     <title>Nosso projeto</title>
 </head>
-<body>
+<body id="bodyWork">
     <form id="form1" runat="server">
       
     <header>
@@ -98,6 +98,15 @@
                      Ver mais <i class="far fa-eye"></i>
                 </a>
             </div>
+            <div class="item">
+                <a href="#!">
+                    <img src="../img/projects/project3.jpeg" alt="Project">
+                </a>
+                <a href="#" class="btn-light">
+                     Ver mais <i class="far fa-eye"></i>
+                </a>
+            </div>
+            
         </div>      
     </main>
 

@@ -4,6 +4,7 @@
 @import 'menuDash';
 @import 'dashMain';
 @import 'ad-lab';
+@import 'contato';
 
 * {
     box-sizing: border-box;
@@ -186,10 +187,20 @@ body#backBody {
 }
 
 //work/projects
+body#bodyWork {
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after {
+        background: none;
+    }
+}
+
 .projects {
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: repeat(3, 1fr);
+   // grid-template-columns: repeat(3, 1fr);
 
     img {
         width: 100%;
@@ -217,7 +228,7 @@ body#backBody {
     margin-bottom: 0.3rem;
 
     &:hover {
-        background: $cor-secundaria;
+        background: darken($cor-secundaria2, 10);
         color: cor-do-texto($cor-secundaria);
     }
 }

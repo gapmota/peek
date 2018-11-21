@@ -47,7 +47,6 @@
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
-    background: #474646;
     transform: translate3d(0, -100%, 0);
     transition: all 1.5s ease-out; }
     .menu-branding.show {
@@ -316,6 +315,20 @@ body.backBodyLab {
   width: -webkit-fill-available;
   text-align: left; }
 
+body#bodyContato {
+  background: url(../img/back-linhas.jpg);
+  background-attachment: fixed;
+  background-size: cover; }
+  body#bodyContato:after {
+    background: none; }
+  body#bodyContato .div-left {
+    width: 85vh;
+    float: left; }
+  body#bodyContato .div-right {
+    background-color: #3a3939;
+    width: 85vh;
+    float: right; }
+
 * {
   box-sizing: border-box; }
 
@@ -447,10 +460,16 @@ body#backBody {
     border-radius: 50%;
     border: #00e11d 3px solid; }
 
+body#bodyWork {
+  background: url(../img/back-linhas.jpg);
+  background-attachment: fixed;
+  background-size: cover; }
+  body#bodyWork:after {
+    background: none; }
+
 .projects {
   display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(3, 1fr); }
+  grid-gap: 2rem; }
   .projects img {
     width: 100%;
     border: 3px #fff solid; }
@@ -469,7 +488,7 @@ body#backBody {
   border: 0;
   margin-bottom: 0.3rem; }
   .btn:hover, .btn-dark:hover, .btn-light:hover {
-    background: #eb2ebc;
+    background: #00ae16;
     color: #000; }
 
 .btn-dark {

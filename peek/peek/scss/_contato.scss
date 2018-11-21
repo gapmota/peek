@@ -1,0 +1,21 @@
+﻿body#bodyContato {
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after {
+        background: none;
+    }
+
+    .div-left {
+        background-color: red;
+        width: 85vh;
+        float: left;
+    }
+
+    .div-right {
+        background-color: darken($cor-primaria, 5);
+        width: 85vh;
+        float: right;
+    }
+}
