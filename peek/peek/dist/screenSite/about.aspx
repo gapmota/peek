@@ -56,14 +56,34 @@
         <h2 class="subtitle-heading">
          Porque acreditamos na tranformação digital ?       
         </h2>
-        <div class="about-info">
-            <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">  
-            <div class="bio">
-                <h3 class="text-secondary">BIO</h3>
-                <P> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit distinctio ullam voluptatum qui, temporibus nesciunt fugiat quis accusamus, tempore vero rerum suscipit ea ex. Rerum aspernatur quisquam at consequatur sequi.
-                </P>
+        <div class="integrantes">
+            <div class="bio bio-1">
+                <h3 class="text-secondary">BRUNO</h3>
+                <h6 class="func">FUNÇÃO</h6>
+                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
             </div>
-
+            <div class="bio bio-2">
+                <h3 class="text-secondary">GIULIANA</h3>
+                <h6 class="func">FUNÇÃO</h6>
+                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+            </div>
+            <div class="bio bio-3">
+                <h3 class="text-secondary">GUILHERME</h3>
+                <h6 class="func">FUNÇÃO</h6>
+                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+            </div>
+            <div class="bio bio-4">
+                <h3 class="text-secondary">MATEUS</h3>
+                <h6 class="func">FUNÇÃO</h6>
+                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+            </div>
+            <div class="bio bio-5">
+                <h3 class="text-secondary">MICHEL</h3>
+                <h6 class="func">FUNÇÃO</h6>
+                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+            </div>
+        </div>
+        <div class="about-info"> 
             <div class="quadro quadro-1">
                 <h3>123 quadro 1</h3>
                 <h6>Teste quadro 1</h6>

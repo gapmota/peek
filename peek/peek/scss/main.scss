@@ -114,20 +114,10 @@ body#backBody {
     display: grid;
     grid-gap: 30px;
     grid-template-areas: //representação visual da pagina
-    'bioimage bio bio' 'quadro1 quadro2 quadro3';
+    'quadro1 quadro2 quadro3';
     grid-template-columns: repeat(3, 1fr);
     //como vai ficar cada grid area criada acima
-    .bio-img {
-        grid-area: bioimage;
-        margin: auto;
-        border-radius: 50%;
-        border: $cor-secundaria 3px solid;
-    }
 
-    .bio {
-        grid-area: bio;
-        font-size: 1.5rem;
-    }
 
     .quadro-1 {
         grid-area: quadro1;
@@ -142,9 +132,54 @@ body#backBody {
     }
 
     .quadro {
-        background: lighten($cor-primaria,5);
+        background: darken($cor-primaria,5);
         padding: 0.5rem;
         border-bottom: $cor-secundaria 5px solid;
+    }
+}
+
+.integrantes {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-areas: //representação visual da pagina
+    'bio1 bio2 bio3 bio4 bio5';
+    grid-template-columns: repeat(5, 1fr);
+
+    .bio-1 {
+        grid-area: bio1;
+    }
+
+    .bio-2 {
+        grid-area: bio2;
+    }
+
+    .bio-3 {
+        grid-area: bio3;
+    }
+
+    .bio-4 {
+        grid-area: bio4;
+    }
+
+    .bio-5 {
+        grid-area: bio5;
+    }
+
+    .bio {
+        h6{
+            margin: 10px;
+        }
+
+        text-align: center;
+        padding: 0.5rem;
+        margin-bottom: 4vh;
+    }
+
+    .bio-img {
+        width: 150px;
+        margin: auto;
+        border-radius: 50%;
+        border: $cor-secundaria 3px solid;
     }
 }
 

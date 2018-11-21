@@ -405,16 +405,8 @@ body#backBody {
 .about-info {
   display: grid;
   grid-gap: 30px;
-  grid-template-areas: 'bioimage bio bio' 'quadro1 quadro2 quadro3';
+  grid-template-areas: 'quadro1 quadro2 quadro3';
   grid-template-columns: repeat(3, 1fr); }
-  .about-info .bio-img {
-    grid-area: bioimage;
-    margin: auto;
-    border-radius: 50%;
-    border: #eb2ebc 3px solid; }
-  .about-info .bio {
-    grid-area: bio;
-    font-size: 1.5rem; }
   .about-info .quadro-1 {
     grid-area: quadro1; }
   .about-info .quadro-2 {
@@ -422,9 +414,36 @@ body#backBody {
   .about-info .quadro-3 {
     grid-area: quadro3; }
   .about-info .quadro {
-    background: #545353;
+    background: #3a3939;
     padding: 0.5rem;
     border-bottom: #eb2ebc 5px solid; }
+
+.integrantes {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-areas: 'bio1 bio2 bio3 bio4 bio5';
+  grid-template-columns: repeat(5, 1fr); }
+  .integrantes .bio-1 {
+    grid-area: bio1; }
+  .integrantes .bio-2 {
+    grid-area: bio2; }
+  .integrantes .bio-3 {
+    grid-area: bio3; }
+  .integrantes .bio-4 {
+    grid-area: bio4; }
+  .integrantes .bio-5 {
+    grid-area: bio5; }
+  .integrantes .bio {
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 4vh; }
+    .integrantes .bio h6 {
+      margin: 10px; }
+  .integrantes .bio-img {
+    width: 150px;
+    margin: auto;
+    border-radius: 50%;
+    border: #eb2ebc 3px solid; }
 
 .projects {
   display: grid;
