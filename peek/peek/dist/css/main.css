@@ -1,6 +1,4 @@
-body{
-    overflow:hidden;
-}
+
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -594,3 +592,9 @@ body#bodyWork {
     width: 80%; }
   .projects {
     grid-template-columns: 1fr; } }
+
+.procGraphi {
+    width: 400px;
+    height: 120px;
+    background-color: transparent;
+}
