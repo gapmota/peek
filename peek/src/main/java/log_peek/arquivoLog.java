@@ -30,7 +30,7 @@ BufferedWriter bufferedWrite;
     }
     public arquivoLog(String erros) {
         if(nomeArquivo.equals("-1")){
-            nomeArquivo = "C://log-"+this.getDataAtual().replace("/", "-").replace(" ", "_").replace(":", "-")+".log";
+            nomeArquivo = "C://log//log-"+this.getDataAtual().replace("/", "-").replace(" ", "_").replace(":", "-")+".log";
         }
         
         escreverLog("["+this.getDataAtual()+"] "+erros);
