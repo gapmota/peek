@@ -1,8 +1,17 @@
 let idUsuarioLogado;
+let idLab;
+
+const api_url = "http://visionpeekapi.azurewebsites.net/peek/";
 
 function setIdUsuario(id){
     if(idUsuarioLogado == undefined){
         idUsuarioLogado = id;
+    }
+}
+
+function setIdLab(id) {
+    if (id != undefined) {
+        idLab = id;
     }
 }
 
@@ -13,7 +22,7 @@ function pegarConsumoDownloadUploadLaboratorios(download,upload,idUsuario){
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: 'http://localhost:55053/peek/Rede/?idUsuario='+idUsuario,
+        url: api_url+"Rede/?idUsuario="+idUsuario,
         data: '',
         success: function (response) {
             download.text(response.Download);
@@ -33,7 +42,7 @@ function pegarQuantidadeDeLaboratorios(laboratorio, idUsuario){
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: 'http://localhost:55053/peek/Laboratorio/?oque=quantidade&idUsuario='+idUsuario,
+        url: api_url +"Laboratorio/?oque=quantidade&idUsuario="+idUsuario,
         data: '',
         success: function (response) {
             console.log(response);  
@@ -44,6 +53,62 @@ function pegarQuantidadeDeLaboratorios(laboratorio, idUsuario){
         }
     });
 }
+
+function pegarQuantidadeDePC(idUsuario) {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url +"Computador?idUsuario=" + idUsuario,
+        data: '',
+        success: function (response) {
+            console.log(response);            
+        },
+        error: function () {
+
+        }
+    });
+}
+
+function pegarProcessosQueMaisConsumemHardware() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Processo?idUsuario=" + idUsuario +"&oque=labUsando",
+        data: '',
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+
+        }
+    });
+}
+
+function pegarProcessosQueMaisConsumemInternet() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Processo?idUsuario=" + idUsuario + "&oque=usaInternet",
+        data: '',
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+
+        }
+    });
+}
+
+
 
 window.onload = function(){//ao carregar a pagina
     setIdUsuario(4);
