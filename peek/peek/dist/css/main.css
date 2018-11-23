@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> aaf942715de07e0124c9ac71f32b37e5b93b0890
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -620,3 +624,9 @@ body#bodyWork {
     width: 80%; }
   .projects {
     grid-template-columns: 1fr; } }
+
+.procGraphi {
+    width: 400px;
+    height: 120px;
+    background-color: transparent;
+}

@@ -4,14 +4,48 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <%-- Google Charts --%>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+       google.charts.load('current', { 'packages': ['gauge'] });
+       google.charts.setOnLoadCallback(drawChart);
+       function drawChart() {
+
+           var data = google.visualization.arrayToDataTable([
+               ['Label', 'Value'],
+               ['Download', 100],
+               ['Upload', 100],
+           ]);
+
+           var options = {
+               width: 400,
+               height: 240,
+               colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+           };
+
+           var chart = new google.visualization.Gauge(document.getElementById('procGraphi'));
+
+           chart.draw(data, options);
+
+           setInterval(function () {
+               data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+               chart.draw(data, options);
+           }, 13000);
+           setInterval(function () {
+               data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+               chart.draw(data, options);
+           }, 5000);
+       }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <link rel="stylesheet" href="../css/main.css"/>
     <title>Dashboard da Infra</title>
 </head>
+
 <body id="body-menu">
     <form id="form1" runat="server">
         <div>
@@ -85,17 +119,18 @@
         <div class="legendaMaster">DASHBOARD DE REDE</div>  
         <div class="grid1">           
             <div class="consumo">
-                <div class="legenda">CONSUMO</div>                
+                <div class="legenda">CONSUMO</div> 
+                <canvas id="consumeGraphi">  </canvas>
             </div>
             <div class="processos">
                 <div class="legenda" onclick="pegarDownload()">PROCESSOS</div>
-                <p id="txtDownload">
-                    <canvas id="primeiroGrafico">  </canvas>
-                </p>
-                <p id="txtUpload"></p>
+                <p id="txtDownload"> </p>
+                <div id="procGraphi" class="procGraphi"></div>  
+                <p id="txtUpload"></p> 
             </div>     
             <div class="aplicacoes">
                 <div class="legenda">USO APLICAÇÕES</div>
+                <canvas id="useGraphi">  </canvas>
             </div>               
         </div>
         <div class="grid2">
@@ -118,12 +153,12 @@
     <div class="btn-dash">
         <i class="fas fa-arrow-circle-down fa-3x"></i>
     </div>   
-
+        </div>
+    </form>
+</body>
     <script src="../js/main.js"></script>
     <script src="../js/request.js"></script>
     <script src="../js/graphics.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        </div>
-    </form>
-</body>
+    
 </html>
