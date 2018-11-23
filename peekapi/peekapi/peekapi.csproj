@@ -185,6 +185,8 @@
     <Compile Include="Controllers\ComputadorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoComputadorController.cs" />
+    <Compile Include="Controllers\ProcessadorController.cs" />
+    <Compile Include="Controllers\ProcessoController.cs" />
     <Compile Include="Controllers\RedeController.cs" />
     <Compile Include="Dao\Banco.cs" />
     <Compile Include="Dao\ComputadorDAO.cs" />

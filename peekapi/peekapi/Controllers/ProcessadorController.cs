@@ -6,26 +6,21 @@ using System.Net.Http;
 using System.Web.Http;
 using peekapi.Dao;
 
-namespace peekapi.Dao
+
+namespace peekapi.Controllers
 {
-    public class LaboratorioController : ApiController
+    public class ProcessadorController : ApiController
     {
 
         // GET api/<controller>/5
-        public string Get(string oque, int idUsuario)
+        public string Get(int idUsuario)
         {
             if (new UsuarioDAO().UsuarioExiste(idUsuario))
             {
-                if (oque == "quantidade")
-                    return new LaboratorioDAO().QuantidadeDeLaboratorio(idUsuario).ToString();
+                return new ProcessadorDAO().PegarMediaUsoTodosLab(idUsuario).ToString();
             }
-            else
-            {
-                return "USUARIO NÃO EXISTE";
-            }
-            return "OPÇÃO NÃO ENCONTRADA!";
+          return "";
         }
-
         // POST api/<controller>
         public void Post([FromBody]string value)
         {
@@ -40,6 +35,5 @@ namespace peekapi.Dao
         public void Delete(int id)
         {
         }
-
     }
 }

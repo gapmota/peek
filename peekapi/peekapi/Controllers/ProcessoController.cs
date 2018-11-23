@@ -12,10 +12,16 @@ namespace peekapi.Controllers
     public class ProcessoController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<ProcessosInternet> Get(int idUsuario)
+        public IEnumerable<Processo> Get(int idUsuario, string oque)
         {
+
             if(new UsuarioDAO().UsuarioExiste(idUsuario))
-                return new ProcessoDAO().PegarProcessosQueUsamInternet(idUsuario);
+            {
+                if (oque == "usaInternet")
+                    return new ProcessoDAO().PegarProcessosQueUsamInternet(idUsuario);
+                else if (oque == "labUsando")
+                    return new ProcessoDAO().PegarProcessosEmUsoTodosLab(idUsuario);
+            }
 
             return null;
         }

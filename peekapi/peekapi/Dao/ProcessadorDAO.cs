@@ -42,5 +42,36 @@ namespace peekapi.Dao
             }
 
         }
+
+        public int PegarMediaUsoTodosLab(int idUsuario)
+        {
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                Processador processador = new Processador();
+                string sql = @"SELECT AVG(PROCE.PORCENTAGEM_USO) AS USO_PROCESSADOR FROM PEEK_PROCESSADOR PROCE
+                            INNER JOIN PEEK_COMPUTADOR PC ON PC.ID_COMPUTADOR = PROCE.ID_COMPUTADOR
+                            INNER JOIN PEEK_LAB L ON PC.ID_LAB = L.ID_LAB
+                            INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
+                            WHERE U.ID_USUARIO = @ID;";
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idUsuario);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                           return int.Parse(dr["USO_PROCESSADOR"].ToString());
+                        }
+                        return -1;
+                    }
+
+
+                }
+
+            }
+
+        }
     }
 }

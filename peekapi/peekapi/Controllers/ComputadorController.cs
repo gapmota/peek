@@ -35,6 +35,14 @@ namespace peekapi.Controllers
             return null;
         }
 
+        public string Get(int idUsuario)
+        {
+            if(new UsuarioDAO().UsuarioExiste(idUsuario))
+                return new ComputadorDAO().PegarQuantidadeDePC(idUsuario).ToString();
+
+            return null;
+        }
+
  
         // POST api/<controller>
         public void Post([FromBody]string value)

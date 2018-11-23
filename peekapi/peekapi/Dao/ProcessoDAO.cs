@@ -94,7 +94,7 @@ namespace peekapi.Dao
                             ProcessosInternet p = new ProcessosInternet
                             {
                                 Nome = dr["NOME"].ToString(),
-                                MemoriRam = double.Parse(dr["MEMORIA_USADA"].ToString()),
+                                MemoriaRamUsada = double.Parse(dr["MEMORIA_USADA"].ToString()),
                                 QuantidadeProcessosAberto = int.Parse(dr["QNT_PROCESSOS"].ToString())                                
 
                             };
@@ -111,6 +111,55 @@ namespace peekapi.Dao
 
             }
             
+
+        }
+
+        public List<ProcessosMaisUsados> PegarProcessosEmUsoTodosLab(int idUsuario)
+        {
+            List<ProcessosMaisUsados> listProcessos = new List<ProcessosMaisUsados>();
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+
+                string sql = @"SELECT P.NOME, COUNT(P.NOME) AS QNT_PROCESSO,
+                               SUM(P.MEMORIA_RAM_USADA) AS QNT_RAM
+                                FROM PEEK_PROCESSO P INNER JOIN PEEK_COMPUTADOR PC
+                                ON PC.ID_COMPUTADOR = P.ID_COMPUTADOR 
+                                INNER JOIN PEEK_LAB L ON L.ID_LAB = PC.ID_LAB
+                                INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
+                                WHERE U.ID_USUARIO = @ID
+                                GROUP BY P.NOME
+                                ORDER BY QNT_RAM DESC;";
+
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idUsuario);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+
+                            ProcessosMaisUsados p = new ProcessosMaisUsados
+                            {
+                                Nome = dr["NOME"].ToString(),
+                                QuantidadeProcessos = int.Parse(dr["QNT_PROCESSO"].ToString()),
+                                MemoriaRamUsada = double.Parse(dr["QNT_RAM"].ToString())
+                            };
+
+
+                            listProcessos.Add(p);
+
+
+                        }
+                        return listProcessos;
+                    }
+
+
+                }
+
+            }
+
 
         }
 

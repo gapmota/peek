@@ -28,12 +28,18 @@ namespace peekapi.Models
        
     }
 
-    public class ProcessosInternet
+    public class ProcessosInternet : Processo
     {
-        public string Nome { get; set; }
-        public double MemoriRam { get; set; } 
+        public new double MemoriaRamUsada { get; set; } 
 
         public int QuantidadeProcessosAberto { get; set; }
+    }
+
+    public class ProcessosMaisUsados : Processo
+    {
+        public new double MemoriaRamUsada { get; set; }
+
+        public int QuantidadeProcessos { get; set; }
     }
 
 }
