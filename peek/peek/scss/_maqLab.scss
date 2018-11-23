@@ -1,0 +1,13 @@
+﻿body.bodyMaq {
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after {
+        background: none;
+    }
+
+    h1.title-heading {
+        font-size: 3rem;
+    }
+}

@@ -1,6 +1,3 @@
-body{
-    overflow:hidden;
-}
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -325,12 +322,41 @@ body#bodyContato {
   body#bodyContato:after {
     background: none; }
   body#bodyContato .div-left {
+    background-color: red;
     width: 85vh;
     float: left; }
   body#bodyContato .div-right {
     background-color: #3a3939;
     width: 85vh;
     float: right; }
+
+body.bodyMaq h1.title-heading {
+  font-size: 3rem; }
+
+body.bodyMaq .maquinaDiv {
+  background-color: blueviolet;
+  width: 50vh; }
+  body.bodyMaq .maquinaDiv h2 {
+    color: springgreen;
+    display: inline-block; }
+
+body.bodyMaq .legendaMaq {
+  background: #3a3939;
+  border-bottom: solid 2px #eb2ebc;
+  width: 100%;
+  height: 5vh;
+  padding-left: 2vh;
+  padding-top: 0.5vh;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body.bodyMaq .btn-dark.Mov, body.bodyMaq .btn-dark.Exc {
+  background-color: #00e11d;
+  width: 30vh;
+  text-align: center;
+  float: left;
+  margin-left: 1rem;
+  font-weight: 600; }
 
 * {
   box-sizing: border-box; }

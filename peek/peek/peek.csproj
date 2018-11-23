@@ -89,6 +89,7 @@
     <Content Include="dist\screenSite\home.aspx" />
     <Content Include="dist\screenSite\about.aspx" />
     <Content Include="dist\screenSite\work.aspx" />
+    <Content Include="dist\screenSystem\maquinas.aspx" />
     <Content Include="Global.asax" />
     <Content Include="dist\js\lab.js" />
     <Content Include="dist\js\main.js" />
@@ -139,6 +140,13 @@
     <Compile Include="dist\screenSite\work.aspx.designer.cs">
       <DependentUpon>work.aspx</DependentUpon>
     </Compile>
+    <Compile Include="dist\screenSystem\maquinas.aspx.cs">
+      <DependentUpon>maquinas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dist\screenSystem\maquinas.aspx.designer.cs">
+      <DependentUpon>maquinas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,6 +162,7 @@
     <Content Include="scss\_menuDash.scss" />
     <Content Include="scss\_mobile.scss" />
     <Content Include="scss\_contato.scss" />
+    <Content Include="scss\_maqLab.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
