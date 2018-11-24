@@ -23,6 +23,7 @@ FileReader fileReader;
 BufferedReader bufferedReader;
 FileWriter fileWrite;
 BufferedWriter bufferedWrite;
+    private static String diretorioPadrao = "C://log";
     public arquivoLog() 
     
     {
@@ -30,7 +31,8 @@ BufferedWriter bufferedWrite;
     }
     public arquivoLog(String erros) {
         if(nomeArquivo.equals("-1")){
-            nomeArquivo = "C://log//log-"+this.getDataAtual().replace("/", "-").replace(" ", "_").replace(":", "-")+".log";
+            this.verificaDiretorio();
+            nomeArquivo = diretorioPadrao+"//log-"+this.getDataAtual().replace("/", "-").replace(" ", "_").replace(":", "-")+".log";
         }
         
         escreverLog("["+this.getDataAtual()+"] "+erros);
@@ -79,6 +81,11 @@ BufferedWriter bufferedWrite;
     public String getDataAtual(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         return sdf.format(new Date());
+    }
+    
+    public void verificaDiretorio(){
+        if(!new File(diretorioPadrao).exists())
+            new File(diretorioPadrao).mkdir();
     }
     
 }
