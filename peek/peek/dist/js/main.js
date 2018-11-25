@@ -66,3 +66,15 @@ function toggleDash(){
 }
 
 
+window.onload = function () {//ao carregar a pagina
+    setIdUsuario(4);
+
+    google.charts.load('current', { 'packages': ['gauge'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    drawConsumeGraphi();
+    drawUseGraphi();
+
+    pegarConsumoDownloadUploadLaboratorios();
+};
+

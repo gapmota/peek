@@ -15,18 +15,18 @@ function setIdLab(id) {
     }
 }
 
-function pegarConsumoDownloadUploadLaboratorios(download, upload, idUsuario) {
+function pegarConsumoDownloadUploadLaboratorios() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Rede/?idUsuario=" + idUsuario,
+        url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            download.text(response.Download);
-            upload.text(response.Upload);
+            console.log(response + "download/upload");
+            attChartGoogle(response.Download, response.Upload);
         },
         error: function () {
 
@@ -241,17 +241,11 @@ function pegarLaboratoriosQueMaisConsomem(idUsuario) {
     });
 }
 
-window.onload = function () {//ao carregar a pagina
-    setIdUsuario(4);
-    pegarConsumoDownloadUploadLaboratorios($("#txtDownload"), $("#txtUpload"), idUsuarioLogado);
-    pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
-};
 
 setInterval(function () {//um minuto
-    pegarConsumoDownloadUploadLaboratorios($("#txtDownload"), $("#txtUpload"), idUsuarioLogado);
-
+    pegarConsumoDownloadUploadLaboratorios();
 }, 10000);
 
 setInterval(function () {//dez minutos
-    pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
+  //  pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
 }, 100000);
