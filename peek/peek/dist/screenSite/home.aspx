@@ -69,8 +69,8 @@
             </a>
         </div>
 
-        <a href="#" class="btn-dark Log">CADASTRAR</a>
-        <a href="#" class="btn-dark Cad">LOGAR</a>
+        <a href="../screenSystem/register.aspx" class="btn-dark Log">CADASTRAR</a>
+        <a href="../screenSystem/login.aspx" class="btn-dark Cad">LOGAR</a>
     </main>
 
     <script src="../js/main.js"></script>

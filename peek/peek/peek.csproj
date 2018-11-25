@@ -83,7 +83,9 @@
   <ItemGroup>
     <Content Include="dist\css\styleAddLab.css" />
     <Content Include="dist\css\styleInfraDashboard.css" />
-    <Content Include="dist\css\styleMaquinas.css" />
+    <Content Include="dist\css\styleLogin.css" />
+    <Content Include="dist\css\styleMachine.css" />
+    <Content Include="dist\css\styleRegister.css" />
     <Content Include="dist\js\graphics.js" />
     <Content Include="dist\screenSite\contact.aspx" />
     <Content Include="dist\screenSystem\addLab.aspx" />
@@ -92,7 +94,9 @@
     <Content Include="dist\screenSite\home.aspx" />
     <Content Include="dist\screenSite\about.aspx" />
     <Content Include="dist\screenSite\work.aspx" />
-    <Content Include="dist\screenSystem\maquinas.aspx" />
+    <Content Include="dist\screenSystem\login.aspx" />
+    <Content Include="dist\screenSystem\machines.aspx" />
+    <Content Include="dist\screenSystem\register.aspx" />
     <Content Include="Global.asax" />
     <Content Include="dist\js\lab.js" />
     <Content Include="dist\js\main.js" />
@@ -101,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Database.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="dist\screenSite\contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,16 +149,31 @@
     <Compile Include="dist\screenSite\work.aspx.designer.cs">
       <DependentUpon>work.aspx</DependentUpon>
     </Compile>
-    <Compile Include="dist\screenSystem\maquinas.aspx.cs">
-      <DependentUpon>maquinas.aspx</DependentUpon>
+    <Compile Include="dist\screenSystem\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="dist\screenSystem\maquinas.aspx.designer.cs">
-      <DependentUpon>maquinas.aspx</DependentUpon>
+    <Compile Include="dist\screenSystem\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dist\screenSystem\machines.aspx.cs">
+      <DependentUpon>machines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dist\screenSystem\machines.aspx.designer.cs">
+      <DependentUpon>machines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dist\screenSystem\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dist\screenSystem\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,8 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
