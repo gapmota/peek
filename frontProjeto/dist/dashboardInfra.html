@@ -83,7 +83,9 @@
                 <div class="legenda">CONSUMO</div>                
             </div>
             <div class="processos">
-                <div class="legenda">PROCESSOS</div>
+                <div class="legenda" onclick="pegarDownload()">PROCESSOS</div>
+                <p id="txtDownload"></p>
+                <p id="txtUpload"></p>
             </div>     
             <div class="aplicacoes">
                 <div class="legenda">USO APLICAÇÕES</div>
@@ -92,6 +94,7 @@
         <div class="grid2">
             <div class="qtdLabs">
                 <div class="legenda">QUANTIDADE LABORATÓRIOS</div>
+                <p id="txtQuantidadeLaboratorio"></p>
             </div>
             <div class="lab1">
                 <div class="legenda">NOME LAB</div>
@@ -110,5 +113,8 @@
     </div>   
 
     <script src="js/main.js"></script>
+    <script src="js/request.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
 </body>
 </html>
