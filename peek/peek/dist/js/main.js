@@ -76,5 +76,14 @@ window.onload = function () {//ao carregar a pagina
     drawUseGraphi();
 
     pegarConsumoDownloadUploadLaboratorios();
+
+
+    
+
 };
+
+
+setInterval(() => {
+    atualizaDrawConsume(Math.floor(Math.random() * 50), '21-21-21');
+},1000);
 

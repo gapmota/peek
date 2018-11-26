@@ -15,15 +15,28 @@ function drawConsumeGraphi() {
     chartConsume = new Chart(consumeGraphi, {
         type: 'line',
         data: {
-            labels: ['2000', '2001', '2002', '2003'],
+            //labels: ['2000', '2001', '2002', '2003'],
             datasets: [{
                 label: 'Crescimento Populacional',
-                data: [173448346, 175885229, 178276128, 180619108],
+                //data: [173448346, 175885229, 178276128, 180619108],
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
                 borderColor: "#0000ff"
-            }]
+            }],
+
         }
     });
+}
+
+function atualizaDrawConsume(consumo, data) {
+
+    if (chartConsume.data.labels.length == 6) {
+        chartConsume.data.labels.splice(0, 1);
+        chartConsume.data.datasets[0].data.splice(0, 1);
+    }
+
+    chartConsume.data.labels.push(data);
+    chartConsume.data.datasets[0].data.push(consumo);
+    chartConsume.update();
 }
 
 function drawUseGraphi() {
