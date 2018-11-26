@@ -78,9 +78,15 @@ namespace peekapi.Dao
 
                         if (dr.Read())
                         {
+                            try { 
                             down_up[0] = double.Parse(dr["VELOCIDADE_DOWNLOAD"].ToString());
                             down_up[1] = double.Parse(dr["VELOCIDADE_UPLOAD"].ToString());
-
+                            }
+                            catch
+                            {
+                                down_up[0] = 0;
+                                down_up[1] = 0;
+                            }
                             return down_up;
                         }
 
