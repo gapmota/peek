@@ -28,15 +28,12 @@
         </div>
         <nav class="menu">
             <div class="menu-branding">
-                <div class="portrait"></div>                
+                <div class="portrait"></div>    
+                 <!-- <div class="overlay">
+                     <div class="text">Hello World</div>
+                  </div> -->
             </div>
             <div class="menu-nav">
-                    <li class="nav-item current">
-                        <a href="#" class="nav-link">
-                        <i class="far fa-user"></i>
-                        Meu Perfis                         
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a href="../screenSystem/addLab.aspx" class="nav-link">
                         <i class="fas fa-flask"></i>    
@@ -45,8 +42,8 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                        <i class="far fa-bell"></i>
-                        Notificações                        
+                        <i class="fab fa-slack"></i>
+                        Slack                        
                         </a>
                     </li>
                     <li class="nav-item">
