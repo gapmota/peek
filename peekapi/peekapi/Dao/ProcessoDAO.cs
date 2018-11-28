@@ -128,6 +128,9 @@ namespace peekapi.Dao
                                 INNER JOIN PEEK_LAB L ON L.ID_LAB = PC.ID_LAB
                                 INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
                                 WHERE U.ID_USUARIO = @ID
+                                AND CONVERT(int, DATEDIFF(DAY, p.data_cadastro, getdate())) = 0
+								AND CONVERT(int, DATEDIFF(HOUR, p.data_cadastro, getdate()) % 24) = 0
+								AND CONVERT(int, DATEDIFF(MINUTE, p.data_cadastro, getdate()) % 60.0) <= 5
                                 GROUP BY P.NOME
                                 ORDER BY QNT_RAM DESC;";
 
