@@ -17,10 +17,10 @@ function drawConsumeGraphi() {
         data: {
             //labels: ['2000', '2001', '2002', '2003'],
             datasets: [{
-                label: 'Crescimento Populacional',
+                label: 'Uso da rede',
                 //data: [173448346, 175885229, 178276128, 180619108],
-                backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff"
+                backgroundColor: "rgba(0,225,29,0.3)",
+                borderColor: "rgb(235,46,188)"
             }],
 
         }
@@ -28,15 +28,16 @@ function drawConsumeGraphi() {
 }
 
 function atualizaDrawConsume(consumo, data) {
+   
+        if (chartConsume.data.labels.length == 6) {
+            chartConsume.data.labels.splice(0, 1);
+            chartConsume.data.datasets[0].data.splice(0, 1);
+        }
 
-    if (chartConsume.data.labels.length == 6) {
-        chartConsume.data.labels.splice(0, 1);
-        chartConsume.data.datasets[0].data.splice(0, 1);
-    }
-
-    chartConsume.data.labels.push(data);
-    chartConsume.data.datasets[0].data.push(consumo);
-    chartConsume.update();
+        chartConsume.data.labels.push(data);
+        chartConsume.data.datasets[0].data.push(consumo);
+        chartConsume.update();
+        console.log("aqui mano");
 }
 
 function drawUseGraphi() {
@@ -45,15 +46,25 @@ function drawUseGraphi() {
     chartUse = new Chart(useGraphi, {
         type: 'bar',
         data: {
-            labels: ['2000', '2001', '2002', '2003'],
+            //labels: ['google chrome', 'netbeans', 'steam', 'outlook'],
             datasets: [{
-                label: 'Crescimento Populacional',
-                data: [173448346, 175885229, 178276128, 180619108],
-                backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff"
+                label: 'Processos em uso',
+                //data: [100, 2, 4, 4],
+                backgroundColor: "rgba(0,225,29,0.3)",
+                borderColor: "rgb(235,46,188)",
+                borderWidth: 1
             }]
         }
     });
+}
+
+function atualizaDrawUseGraphi(processo, quantidade) {
+
+    
+        chartUse.data.labels = processo;
+        chartUse.data.datasets[0].data = quantidade;
+        chartUse.update();
+  
 }
 
 
@@ -80,9 +91,11 @@ function drawChart() {
 }
 
 function attChartGoogle(download, upload) {
-    dataGoogle.setValue(0, 1, download);
-    chartGoogle.draw(dataGoogle, optionsGoogle);
+   
+        dataGoogle.setValue(0, 1, download);
+        chartGoogle.draw(dataGoogle, optionsGoogle);
 
-    dataGoogle.setValue(1, 1, upload);
-    chartGoogle.draw(dataGoogle, optionsGoogle);
+        dataGoogle.setValue(1, 1, upload);
+        chartGoogle.draw(dataGoogle, optionsGoogle);
+        
 }

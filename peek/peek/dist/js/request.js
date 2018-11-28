@@ -35,14 +35,37 @@ function pegarConsumoDownloadUploadLaboratorios() {
 
 }
 
-function pegarQuantidadeDeLaboratorios(laboratorio, idUsuario) {
+
+function pegarConsumoDownloadLaboratorios() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Laboratorio/?idUsuario=" + idUsuario,
+        url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
+        data: '',
+        success: function (response) {
+            console.log(response.Download + "download");
+            
+
+            atualizaDrawConsume(response.Download, "aaa");//response.Data);
+        },
+        error: function () {
+
+        }
+    });
+
+}
+
+function pegarQuantidadeDeLaboratorios(laboratorio) {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
             console.log(response);
@@ -54,14 +77,14 @@ function pegarQuantidadeDeLaboratorios(laboratorio, idUsuario) {
     });
 }
 
-function pegarQuantidadeDePC(idUsuario) {
+function pegarQuantidadeDePC() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Computador?idUsuario=" + idUsuario,
+        url: api_url + "Computador?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
             console.log(response);
@@ -79,10 +102,23 @@ function pegarProcessosQueMaisConsumemHardware() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Processo?idUsuario=" + idUsuario + "&oque=labUsando",
+        url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=labUsando",
         data: '',
         success: function (response) {
-            console.log(response);
+            console.log(response[0]);
+            let arrayProcessos = response;
+            let processos = new Array();
+            let quantidadeProcesso = new Array();
+
+            for (var i = 0; i < 5; i++){
+                try {
+                    processos.push(arrayProcessos[i].Nome);
+                    quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
+                } catch (Exception){ }
+            }
+            console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
+            atualizaDrawUseGraphi(processos, quantidadeProcesso);
+
         },
         error: function () {
 
@@ -97,7 +133,7 @@ function pegarProcessosQueMaisConsumemInternet() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Processo?idUsuario=" + idUsuario + "&oque=usaInternet",
+        url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=usaInternet",
         data: '',
         success: function (response) {
             console.log(response);
@@ -108,14 +144,14 @@ function pegarProcessosQueMaisConsumemInternet() {
     });
 }
 
-function pegarTodosLaboratorioDeUmUsuario(idUsuario) {
+function pegarTodosLaboratorioDeUmUsuario() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Rede?idUsuario=" + idUsuario + "&oque=labs",
+        url: api_url + "Rede?idUsuario=" + idUsuarioLogado + "&oque=labs",
         data: '',
         success: function (response) {
             console.log(response);
@@ -126,14 +162,14 @@ function pegarTodosLaboratorioDeUmUsuario(idUsuario) {
     });
 }
 
-function pegarTodosLabs(idUsuario) {
+function pegarTodosLabs() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Laboratorio/?oque=labs&idUsuario=" + idUsuario,
+        url: api_url + "Laboratorio/?oque=labs&idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
             console.log(response);
@@ -202,14 +238,14 @@ function pegarInformacoesPcPorLab(idLab) {
     });
 }
 
-function pegarMediaPorcetagemUsoComputador(idUsuario) {
+function pegarMediaPorcetagemUsoComputador() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Processador/?idUsuario=" + idUsuario,
+        url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
             console.log(response);
@@ -222,14 +258,14 @@ function pegarMediaPorcetagemUsoComputador(idUsuario) {
 }
 
 
-function pegarLaboratoriosQueMaisConsomem(idUsuario) {
+function pegarLaboratoriosQueMaisConsomem() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Rede/?idUsuario=" + idUsuario + "&oque=consumoPorLab",
+        url: api_url + "Rede/?idUsuario=" + idUsuarioLogado + "&oque=consumoPorLab",
         data: '',
         success: function (response) {
             console.log(response);
@@ -241,11 +277,3 @@ function pegarLaboratoriosQueMaisConsomem(idUsuario) {
     });
 }
 
-
-setInterval(function () {//um minuto
-    pegarConsumoDownloadUploadLaboratorios();
-}, 10000);
-
-setInterval(function () {//dez minutos
-  //  pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
-}, 100000);
