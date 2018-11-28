@@ -541,3 +541,4 @@ F:\PEEK\MonitoringProject\peek\peek\bin\pt-br\System.Web.Http.resources.dll
 F:\PEEK\MonitoringProject\peek\peek\bin\pt-br\System.Web.Http.WebHost.resources.dll
 F:\PEEK\MonitoringProject\peek\peek\obj\Debug\peek.dll
 F:\PEEK\MonitoringProject\peek\peek\obj\Debug\peek.pdb
+F:\PEEK\MonitoringProject\peek\peek\obj\Debug\peek.csprojResolveAssemblyReference.cache
