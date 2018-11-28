@@ -11,14 +11,29 @@ let chartUse;
 
 function drawConsumeGraphi() {
     consumeGraphi = document.getElementById('consumeGraphi').getContext('2d');
+    infraProcessHistory = document.getElementById('infraHistory').getContext('2d');
+    infraProcessHistory.canvas.width = 70;
+    infraProcessHistory.canvas.height = 27;
 
     chartConsume = new Chart(consumeGraphi, {
         type: 'line',
         data: {
-            //labels: ['2000', '2001', '2002', '2003'],
             datasets: [{
-                label: 'Crescimento Populacional',
-                //data: [173448346, 175885229, 178276128, 180619108],
+                label: 'Consumo',
+                backgroundColor: "rgba(255, 34, 0, 0.3)",
+                borderColor: "#0000ff"
+            }],
+
+        }
+    });
+
+    chartUseProcessHistory = new Chart(infraProcessHistory, {
+        type: 'line',
+        data: {
+            labels: ['2000', '2001', '2002', '2003'],
+            datasets: [{
+                label: 'Desempenho',
+                data: [30, 45, 80, 100],
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
                 borderColor: "#0000ff"
             }],
@@ -41,6 +56,22 @@ function atualizaDrawConsume(consumo, data) {
 
 function drawUseGraphi() {
     useGraphi = document.getElementById('useGraphi').getContext('2d');
+    moreUseGraphi = document.getElementById('infraMoreUse').getContext('2d');
+    moreUseGraphi.canvas.width = 70;
+    moreUseGraphi.canvas.height = 27;
+
+    chartMoreUse = new Chart(moreUseGraphi, {
+        type: 'bar',
+        data: {
+            labels: ['2000', '2001', '2002', '2003'],
+            datasets: [{
+                label: 'Crescimento Populacional',
+                data: [173448346, 175885229, 178276128, 180619108],
+                backgroundColor: "rgba(255, 34, 0, 0.3)",
+                borderColor: "#0000ff"
+            }]
+        }
+    });
 
     chartUse = new Chart(useGraphi, {
         type: 'bar',

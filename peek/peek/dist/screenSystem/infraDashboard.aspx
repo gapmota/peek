@@ -64,7 +64,8 @@
         <div class="legendaMaster">DASHBOARD DE INFRA</div>  
         <div class="grid1">           
             <div class="histDesemp">
-                <div class="legenda">HISTORICO DE DESEMPENHO</div>                
+                <div class="legenda">HISTORICO DE DESEMPENHO</div>         
+                <canvas id="infraHistory">  </canvas>
             </div>
             <div class="processos">
                 <div class="legenda">PROCESSOS</div>
@@ -73,6 +74,7 @@
         <div class="grid2">
             <div class="usoProcessos">
                 <div class="legenda">PROCESSOS MAIS USADOS</div>
+                <canvas id="infraMoreUse" style="width:20%;">  </canvas>
             </div>
             <div class="qtdMaquinas">
                 <div class="legenda">QUANTIDADE DE MAQUINAS</div>
