@@ -60,27 +60,27 @@
             <div class="bio bio-1">
                 <h3 class="text-name">BRUNO</h3>
                 <h6>FUNÇÃO</h6>
-                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+                <img src="../img/bruno.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-2">
                 <h3 class="text-name">GIULIANA</h3>
                 <h6>FUNÇÃO</h6>
-                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+                <img src="../img/eu.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-3">
                 <h3 class="text-name">GUILHERME</h3>
                 <h6>FUNÇÃO</h6>
-                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+                <img src="../img/mota.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-4">
                 <h3 class="text-name">MATEUS</h3>
                 <h6>FUNÇÃO</h6>
-                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+                <img src="../img/covos.jpg" alt="Sobre nós" class="bio-img">
             </div>
             <div class="bio bio-5">
                 <h3 class="text-name">MICHEL</h3>
                 <h6>FUNÇÃO</h6>
-                <img src="../img/flag.jpg" alt="Sobre nós" class="bio-img">
+                <img src="../img/michel.jpg" alt="Sobre nós" class="bio-img">
             </div>
         </div>
         <div class="about-info"> 
