@@ -78,7 +78,8 @@ window.onload = function () {//ao carregar a pagina
     pegarConsumoDownloadUploadLaboratorios();
 
     pegarConsumoDownloadLaboratorios();
-    
+
+    console.log("a");
 
 };
 

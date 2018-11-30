@@ -19,7 +19,7 @@ function drawConsumeGraphi() {
         type: 'line',
         data: {
             datasets: [{
-<<<<<<< HEAD
+
                 label: 'Consumo',
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
                 borderColor: "#0000ff"
@@ -36,30 +36,28 @@ function drawConsumeGraphi() {
                 label: 'Desempenho',
                 data: [30, 45, 80, 100],
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff"
-=======
+                borderColor: "#0000ff",
                 label: 'Uso da rede',
                 //data: [173448346, 175885229, 178276128, 180619108],
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)"
->>>>>>> fabe617d28a09e075b87ab24538aaafbdeefc833
             }],
 
         }
     });
+
 }
-
 function atualizaDrawConsume(consumo, data) {
-   
-        if (chartConsume.data.labels.length == 6) {
-            chartConsume.data.labels.splice(0, 1);
-            chartConsume.data.datasets[0].data.splice(0, 1);
-        }
 
-        chartConsume.data.labels.push(data);
-        chartConsume.data.datasets[0].data.push(consumo);
-        chartConsume.update();
-        console.log("aqui mano");
+    if (chartConsume.data.labels.length == 6) {
+        chartConsume.data.labels.splice(0, 1);
+        chartConsume.data.datasets[0].data.splice(0, 1);
+    }
+
+    chartConsume.data.labels.push(data);
+    chartConsume.data.datasets[0].data.push(consumo);
+    chartConsume.update();
+    console.log("aqui mano");
 }
 
 function drawUseGraphi() {
@@ -98,11 +96,11 @@ function drawUseGraphi() {
 
 function atualizaDrawUseGraphi(processo, quantidade) {
 
-    
-        chartUse.data.labels = processo;
-        chartUse.data.datasets[0].data = quantidade;
-        chartUse.update();
-  
+
+    chartUse.data.labels = processo;
+    chartUse.data.datasets[0].data = quantidade;
+    chartUse.update();
+
 }
 
 
@@ -126,14 +124,16 @@ function drawChart() {
 
     chartGoogle.draw(dataGoogle, optionsGoogle);
 
+
 }
 
-function attChartGoogle(download, upload) {
-   
-        dataGoogle.setValue(0, 1, download);
-        chartGoogle.draw(dataGoogle, optionsGoogle);
 
-        dataGoogle.setValue(1, 1, upload);
-        chartGoogle.draw(dataGoogle, optionsGoogle);
-        
+function attChartGoogle(download, upload) {
+
+    dataGoogle.setValue(0, 1, download);
+    chartGoogle.draw(dataGoogle, optionsGoogle);
+
+    dataGoogle.setValue(1, 1, upload);
+    chartGoogle.draw(dataGoogle, optionsGoogle);
+
 }
