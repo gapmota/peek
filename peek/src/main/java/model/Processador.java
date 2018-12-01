@@ -1,7 +1,9 @@
 package model;
 
-import java.util.Date;
+import java.text.DecimalFormat;
+import java.util.concurrent.TimeUnit;
 import oshi.SystemInfo;
+import oshi.util.FormatUtil;
 
 public class Processador {
 
@@ -46,13 +48,18 @@ public class Processador {
 
     public String getTempoAtividade() {
         systemInfo = new SystemInfo();
-        return new Date(systemInfo.getHardware().getProcessor().getSystemUptime()).toString();
+        systemInfo.getOperatingSystem().getManufacturer();  
+        return this.converterMilliParaHoras(systemInfo.getHardware().getProcessor().getSystemUptime());
     }
-    
-    public String getIdProcessadorOSHI(){
+
+    public String getIdProcessadorOSHI() {
         systemInfo = new SystemInfo();
         return systemInfo.getHardware().getProcessor().getProcessorID();
     }
-    
-    
+
+    public String converterMilliParaHoras(long mi) {
+        System.out.println(FormatUtil.formatElapsedSecs(mi));
+        return FormatUtil.formatElapsedSecs(mi);
+                //dfHoras.format(horas)+":"+df.format(minutos)+":"+df.format(segundos);
+    }
 }

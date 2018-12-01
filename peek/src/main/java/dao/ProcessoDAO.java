@@ -12,12 +12,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
+import oshi.util.FormatUtil;
 
 /**
  *
@@ -120,14 +123,14 @@ public class ProcessoDAO {
                     PreparedStatement ps = cnx.prepareStatement(SQL);
 
                     ps.setString(1, osp.getName());
-                    ps.setLong(2, osp.getStartTime());
+                    ps.setString(2, this.converterMilliParaHoras(osp.getStartTime()));
                     ps.setString(3, osp.getUser());
                     ps.setInt(4, osp.getProcessID());
                     ps.setString(5, osp.getPath());
                     ps.setInt(6, osp.getPriority());
                     ps.setLong(7, osp.getBytesRead());
                     ps.setLong(8, osp.getBytesWritten());
-                    ps.setLong(9, osp.getUserTime());
+                    ps.setString(9, this.converterMilliParaHoras(osp.getUserTime()));
                     ps.setLong(10, osp.getResidentSetSize());
                     ps.setString(11, osp.getCommandLine());
                     ps.setLong(12, osp.getOpenFiles());
@@ -228,5 +231,12 @@ public class ProcessoDAO {
         }
 
     }
+    
+    public String converterMilliParaHoras(long mi) {
+        
+        return FormatUtil.formatElapsedSecs(mi);
+    }
 
 }
+
+
