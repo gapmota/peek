@@ -58,7 +58,7 @@
 
 
     <div id="dashboardInfra">
-        <div class="legendaMaster">DADOS DA REDE</div>  
+        <div class="legendaMaster">DADOS DOS LABORATÓRIOS</div>  
         <div class="grid1">           
             <div class="histDesemp">
                 <div class="legenda">HISTORICO DE DESEMPENHO</div>         
