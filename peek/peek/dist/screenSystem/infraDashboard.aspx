@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <link rel="stylesheet" href="../css/styleInfraDashboard.css"/>
-    <title>Peek - Dashboard da Infra</title>
+    <title>Peek - Dashboard</title>
 </head>
 
 <body id="body-menu">
@@ -58,7 +58,7 @@
 
 
     <div id="dashboardInfra">
-        <div class="legendaMaster">DASHBOARD DE INFRA</div>  
+        <div class="legendaMaster">DADOS DA REDE</div>  
         <div class="grid1">           
             <div class="histDesemp">
                 <div class="legenda">HISTORICO DE DESEMPENHO</div>         
@@ -85,36 +85,36 @@
 
 
     <div id="dashboardRede">
-        <div class="legendaMaster">DASHBOARD DE REDE</div>  
+        <div class="legendaMaster">DADOS DA REDE</div>  
         <div class="grid1">           
             <div class="consumo">
                 <div class="legenda">CONSUMO</div> 
                 <canvas id="consumeGraphi">  </canvas>
             </div>
             <div class="processos">
-                <div class="legenda" onclick="pegarDownload()">PROCESSOS</div>
+                <div class="legenda" onclick="pegarDownload()">VELOCIDADE</div>
                 <p id="txtDownload"> </p>
                 <div id="procGraphi" class="procGraphi"></div>  
                 <p id="txtUpload"></p> 
             </div>     
             <div class="aplicacoes">
-                <div class="legenda">USO APLICAÇÕES</div>
+                <div class="legenda">USO DAS APLICAÇÕES</div>
                 <canvas id="useGraphi">  </canvas>
             </div>               
         </div>
         <div class="grid2">
             <div class="qtdLabs">
-                <div class="legenda">QUANTIDADE LABORATÓRIOS</div>
+                <div class="legenda">QUANTIDADE DE LABORATÓRIOS</div>
                 <p id="txtQuantidadeLaboratorio"></p>
             </div>
             <div class="lab1">
-                <div class="legenda">NOME LAB</div>
+                <div class="legenda">ALTA UTILIZAÇÃO DA REDE</div>
             </div>
             <div class="lab2">
-                <div class="legenda">NOME LAB</div>
+                <div class="legenda">MÉDIA UTILIZAÇÃO DA REDE</div>
             </div>  
             <div class="lab3">
-                <div class="legenda">NOME LAB</div>
+                <div class="legenda">BAIXA UTILIZAÇÃO DA REDE</div>
             </div> 
         </div> 
     </div>
