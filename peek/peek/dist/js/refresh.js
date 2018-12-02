@@ -14,8 +14,21 @@ setInterval(() => {//30 seg
 
     pegarProcessosQueMaisConsumemHardware();
     
+    
 
 }, 5000);
+
+setInterval(() => {
+    pegarProcessosQueMaisConsumemInternet();
+
+}, 5000);
+
+setInterval(() => {
+    
+    pegarMediaPorcetagemUsoComputador();
+
+    console.log("internet");
+},5000);
 
 setInterval(() => {//um minuto
     console.log("aqui tiowww");

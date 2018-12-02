@@ -87,6 +87,7 @@
     <Content Include="dist\css\styleMachine.css" />
     <Content Include="dist\css\styleRegister.css" />
     <Content Include="dist\js\graphics.js" />
+    <Content Include="dist\js\refresh.js" />
     <Content Include="dist\screenSite\contact.aspx" />
     <Content Include="dist\screenSystem\addLab.aspx" />
     <Content Include="dist\screenSystem\infraDashboard.aspx" />

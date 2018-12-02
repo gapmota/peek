@@ -216,6 +216,7 @@ body#body-menu .menu .nav-link {
 
 div#dashboardInfra {
     padding: 4rem;
+    z-index: 1 !important;
 }
 
     div#dashboardInfra .legendaMaster {

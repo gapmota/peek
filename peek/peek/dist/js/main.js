@@ -74,13 +74,14 @@ window.onload = function () {//ao carregar a pagina
 
     drawConsumeGraphi();
     drawUseGraphi();
+    drawMoreUseGraphi();
+    drawInfraProcessHistory();
 
     pegarConsumoDownloadUploadLaboratorios();
 
     pegarConsumoDownloadLaboratorios();
 
-    console.log("a");
-
+    
 };
 
 

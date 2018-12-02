@@ -8,37 +8,21 @@ let chartConsume;
 let useGraphi;
 let chartUse;
 
+let moreUseGraphi;
+let chartMoreUse;
+
+let infraProcessHistory;
+let chartUseProcessHistory;
 
 function drawConsumeGraphi() {
     consumeGraphi = document.getElementById('consumeGraphi').getContext('2d');
-    infraProcessHistory = document.getElementById('infraHistory').getContext('2d');
-    infraProcessHistory.canvas.width = 70;
-    infraProcessHistory.canvas.height = 27;
-
+    
     chartConsume = new Chart(consumeGraphi, {
         type: 'line',
         data: {
             datasets: [{
 
                 label: 'Consumo',
-                backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff"
-            }],
-
-        }
-    });
-
-    chartUseProcessHistory = new Chart(infraProcessHistory, {
-        type: 'line',
-        data: {
-            labels: ['2000', '2001', '2002', '2003'],
-            datasets: [{
-                label: 'Desempenho',
-                data: [30, 45, 80, 100],
-                backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff",
-                label: 'Uso da rede',
-                //data: [173448346, 175885229, 178276128, 180619108],
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)"
             }],
@@ -46,7 +30,10 @@ function drawConsumeGraphi() {
         }
     });
 
+
 }
+
+
 function atualizaDrawConsume(consumo, data) {
 
     if (chartConsume.data.labels.length == 6) {
@@ -60,31 +47,57 @@ function atualizaDrawConsume(consumo, data) {
     console.log("aqui mano");
 }
 
-function drawUseGraphi() {
-    useGraphi = document.getElementById('useGraphi').getContext('2d');
-    moreUseGraphi = document.getElementById('infraMoreUse').getContext('2d');
-    moreUseGraphi.canvas.width = 70;
-    moreUseGraphi.canvas.height = 27;
 
-    chartMoreUse = new Chart(moreUseGraphi, {
-        type: 'bar',
+function drawInfraProcessHistory() {
+
+    infraProcessHistory = document.getElementById('infraHistory').getContext('2d');
+    infraProcessHistory.canvas.width = 70;
+    infraProcessHistory.canvas.height = 27;
+
+    chartUseProcessHistory = new Chart(infraProcessHistory, {
+        type: 'line',
         data: {
-            labels: ['2000', '2001', '2002', '2003'],
+            //labels: ['2000', '2001', '2002', '2003'],
             datasets: [{
-                label: 'Crescimento Populacional',
-                data: [173448346, 175885229, 178276128, 180619108],
+                label: 'Desempenho',
+                //data: [30, 45, 80, 100],
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
-                borderColor: "#0000ff"
-            }]
+                borderColor: "#0000ff",
+                label: 'Uso da rede',
+                //data: [173448346, 175885229, 178276128, 180619108],
+                backgroundColor: "rgba(0,225,29,0.3)",
+                borderColor: "rgb(235,46,188)"
+            }],
+
         }
     });
+}
 
+
+
+function atualizaDrawInfraProcessHistory(consumo, data) {
+
+    if (chartUseProcessHistory.data.labels.length == 6) {
+        chartUseProcessHistory.data.labels.splice(0, 1);
+        chartUseProcessHistory.data.datasets[0].data.splice(0, 1);
+    }
+
+    chartUseProcessHistory.data.labels.push(data);
+    chartUseProcessHistory.data.datasets[0].data.push(consumo);
+    chartUseProcessHistory.update();
+    console.log("aqui mano 2");
+}
+
+
+
+function drawUseGraphi() {
+    useGraphi = document.getElementById('useGraphi').getContext('2d');
     chartUse = new Chart(useGraphi, {
         type: 'bar',
         data: {
             //labels: ['google chrome', 'netbeans', 'steam', 'outlook'],
             datasets: [{
-                label: 'Processos em uso',
+                label: 'Processos que usam internet',
                 //data: [100, 2, 4, 4],
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)",
@@ -94,12 +107,44 @@ function drawUseGraphi() {
     });
 }
 
+function drawMoreUseGraphi() {
+    moreUseGraphi = document.getElementById('infraMoreUse').getContext('2d');
+    moreUseGraphi.canvas.width = 70;
+    moreUseGraphi.canvas.height = 27;
+
+    chartMoreUse = new Chart(moreUseGraphi, {
+        type: 'bar',
+        data: {
+           // labels: ['2000', '2001', '2002', '2003'],
+            datasets: [{
+                label: 'Processos mais usados',
+             //   data: [173448346, 175885229, 178276128, 180619108],
+                backgroundColor: "rgba(0,225,29,0.3)",
+                borderColor: "rgb(235,46,188)",
+                borderWidth: 1
+            }]
+        }
+    });
+
+
+}
+
 function atualizaDrawUseGraphi(processo, quantidade) {
 
 
     chartUse.data.labels = processo;
     chartUse.data.datasets[0].data = quantidade;
     chartUse.update();
+
+}
+
+
+function atualizaDrawMoreUseGraphi(processo, quantidade) {
+
+
+    chartMoreUse.data.labels = processo;
+    chartMoreUse.data.datasets[0].data = quantidade;
+    chartMoreUse.update();
 
 }
 
@@ -137,3 +182,4 @@ function attChartGoogle(download, upload) {
     chartGoogle.draw(dataGoogle, optionsGoogle);
 
 }
+

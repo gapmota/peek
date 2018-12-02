@@ -25,7 +25,7 @@ function pegarConsumoDownloadUploadLaboratorios() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response + "download/upload");
+//            console.log(response + "download/upload");
             attChartGoogle(response.Download, response.Upload);
         },
         error: function () {
@@ -46,7 +46,7 @@ function pegarConsumoDownloadLaboratorios() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response.Download + "download");
+       //     console.log(response.Download + "download");
             
 
             atualizaDrawConsume(response.Download, "aaa");//response.Data);
@@ -68,7 +68,7 @@ function pegarQuantidadeDeLaboratorios(laboratorio) {
         url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response);
+         //   console.log(response);
             laboratorio.text(response);
         },
         error: function () {
@@ -87,7 +87,7 @@ function pegarQuantidadeDePC() {
         url: api_url + "Computador?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response);
+          //  console.log(response);
         },
         error: function () {
 
@@ -105,7 +105,7 @@ function pegarProcessosQueMaisConsumemHardware() {
         url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=labUsando",
         data: '',
         success: function (response) {
-            console.log(response[0]);
+          //  console.log(response[0]);
             let arrayProcessos = response;
             let processos = new Array();
             let quantidadeProcesso = new Array();
@@ -116,8 +116,8 @@ function pegarProcessosQueMaisConsumemHardware() {
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
                 } catch (Exception){ }
             }
-            console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
-            atualizaDrawUseGraphi(processos, quantidadeProcesso);
+          //  console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
+            atualizaDrawMoreUseGraphi(processos, quantidadeProcesso);
 
         },
         error: function () {
@@ -136,7 +136,18 @@ function pegarProcessosQueMaisConsumemInternet() {
         url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=usaInternet",
         data: '',
         success: function (response) {
-            console.log(response);
+            let arrayProcessos = response;
+            let processos = new Array();
+            let quantidadeProcesso = new Array();
+
+            for (var i = 0; i < 5; i++) {
+                try {
+                    processos.push(arrayProcessos[i].Nome);
+                    quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
+                } catch (Exception) { }
+            }
+           console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
+            atualizaDrawUseGraphi(processos, quantidadeProcesso);
         },
         error: function () {
 
@@ -154,7 +165,7 @@ function pegarTodosLaboratorioDeUmUsuario() {
         url: api_url + "Rede?idUsuario=" + idUsuarioLogado + "&oque=labs",
         data: '',
         success: function (response) {
-            console.log(response);
+          //  console.log(response);
         },
         error: function () {
 
@@ -172,8 +183,8 @@ function pegarTodosLabs() {
         url: api_url + "Laboratorio/?oque=labs&idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response);
-            laboratorio.text(response);
+         //   console.log(response);
+           // laboratorio.text(response);
         },
         error: function () {
 
@@ -191,7 +202,7 @@ function pegarInformacoesPC(idComputador) {
         url: api_url + "Computador/?contexto=individual&id=" + idComputador,
         data: '',
         success: function (response) {
-            console.log(response);
+         //   console.log(response);
             laboratorio.text(response);
         },
         error: function () {
@@ -210,7 +221,7 @@ function pegarInformacoesCompletasPC(idComputador) {
         url: api_url + "InfoComputador/?idComputador=" + idComputador,
         data: '',
         success: function (response) {
-            console.log(response);
+          //  console.log(response);
             laboratorio.text(response);
         },
         error: function () {
@@ -229,7 +240,7 @@ function pegarInformacoesPcPorLab(idLab) {
         url: api_url + "Computador/?contexto=laboratario&id=" + idLab,
         data: '',
         success: function (response) {
-            console.log(response);
+         //   console.log(response);
             laboratorio.text(response);
         },
         error: function () {
@@ -248,8 +259,8 @@ function pegarMediaPorcetagemUsoComputador() {
         url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            console.log(response);
-            laboratorio.text(response);
+            
+            atualizaDrawInfraProcessHistory(response, "ddd");
         },
         error: function () {
 
@@ -268,7 +279,7 @@ function pegarLaboratoriosQueMaisConsomem() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado + "&oque=consumoPorLab",
         data: '',
         success: function (response) {
-            console.log(response);
+            
             laboratorio.text(response);
         },
         error: function () {
