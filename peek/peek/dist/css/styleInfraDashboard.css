@@ -5,10 +5,10 @@
 .menu-btn {
     position: absolute;
     z-index: 3;
-    right: 35px;
-    top: 35px;
+    height: 1vW;
     cursor: pointer;
-    transition: all 1.5s ease-out;
+    transition: all 0.5s ease-out;
+    margin-top: -0.4vW;
 }
 
     .menu-btn .btn-line {
@@ -152,7 +152,7 @@ body#body-menu .menu-btn {
     top: 0px;
     padding-top: 3vh;
     padding-left: 3vh;
-    height: 10vh;
+    height: 8vh;
     cursor: pointer;
     transition: all 1.5s ease-out;
     left: 0px;
@@ -883,4 +883,55 @@ body#bodyWork {
     width: 400px;
     height: 120px;
     background-color: transparent;
+}
+
+.BoxComputers {
+    color: white;
+    font-size: 2.7vW;
+    margin-top: 3.5vW;
+    margin-left: 13.5vW;
+    cursor: pointer;
+    width: 0vW;
+    height: 0vW;
+}
+
+.headModal {
+    width: 30vW;
+    height: 20vW;
+    background-color: #474646;
+    margin-top: 12vW;
+    text-align: center;
+}
+
+.container {
+    float: left;
+    text-align: center;
+    background-color: transparent;
+    border: 0.5vw solid darkgray;
+    width: 15vw;
+    height: 10vW;
+    color: white;
+    margin-left: 0vw;
+    margin-top: 1.7vw;
+    padding-bottom: 1vw;
+}
+
+.btnFechar {
+    position: relative;
+    float: left;
+    margin-left: -15vW;
+    margin-top: 11vW;
+    color: black;
+}
+
+.modal-body {
+    background-color: #333;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eb2ebc;
+}
+
+.modal-footer {
+    border-top: 1px solid #eb2ebc;
 }
