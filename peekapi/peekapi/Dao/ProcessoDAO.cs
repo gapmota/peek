@@ -79,8 +79,11 @@ namespace peekapi.Dao
                                 INNER JOIN dbo.PEEK_USUARIO U ON U.ID_USUARIO = LAB.ID_USUARIO
                                 WHERE P.USA_INTERNET = 1
                                 AND U.ID_USUARIO = @ID
+                                AND CONVERT(int, DATEDIFF(DAY, p.data_cadastro, getdate())) = 0
+								AND CONVERT(int, DATEDIFF(HOUR, p.data_cadastro, getdate()) % 24) = 0
+								AND CONVERT(int, DATEDIFF(MINUTE, p.data_cadastro, getdate()) % 60.0) <= 5
                                 GROUP BY P.NOME
-                                ORDER BY P.NOME, MEMORIA_USADA, QNT_PROCESSOS;";
+                                ORDER BY MEMORIA_USADA DESC;";
 
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {

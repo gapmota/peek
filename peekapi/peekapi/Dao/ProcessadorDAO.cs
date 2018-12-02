@@ -30,7 +30,7 @@ namespace peekapi.Dao
                             processador.TempoAtividade = dr["TEMPO_ATIVIDADE"].ToString();
                             processador.PorcentagemUso = dr["PORCENTAGEM_USO"].ToString();
                             processador.DataCadastro = dr["DATA_CADASTRO"].ToString();
-                            
+
                             return processador;
                         }
                         return null;
@@ -53,7 +53,11 @@ namespace peekapi.Dao
                             INNER JOIN PEEK_COMPUTADOR PC ON PC.ID_COMPUTADOR = PROCE.ID_COMPUTADOR
                             INNER JOIN PEEK_LAB L ON PC.ID_LAB = L.ID_LAB
                             INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
-                            WHERE U.ID_USUARIO = @ID;";
+                            WHERE U.ID_USUARIO = @ID
+                                AND CONVERT(int, DATEDIFF(DAY, proce.data_cadastro, getdate())) = 0
+								AND CONVERT(int, DATEDIFF(HOUR, proce.data_cadastro, getdate()) % 24) = 0
+								AND CONVERT(int, DATEDIFF(MINUTE, proce.data_cadastro, getdate()) % 60.0) <= 5
+                                ;";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
                     cmd.Parameters.AddWithValue("@ID", idUsuario);
@@ -62,11 +66,10 @@ namespace peekapi.Dao
                     {
                         if (dr.Read())
                         {
-                           return int.Parse(dr["USO_PROCESSADOR"].ToString());
+                            return (int)double.Parse(dr["USO_PROCESSADOR"].ToString());
                         }
                         return -1;
                     }
-
 
                 }
 
