@@ -43,12 +43,12 @@
     background: #3a3939;
     list-style: none;
     transform: translate3d(0, -100%, 0);
-    transition: all 1.0s ease-out; }
+    transition: all 1.5s ease-out; }
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
     transform: translate3d(0, -100%, 0);
-    transition: all 1.0s ease-out; }
+    transition: all 1.5s ease-out; }
     .menu-branding.show {
       transform: translate3d(0, 0, 0); }
     .menu-branding .portrait {
@@ -59,7 +59,7 @@
       border: solid 3px #eb2ebc; }
   .menu .nav-item {
     transform: translate3d(600px, 0, 0);
-    transition: all 1.0s ease-out; }
+    transition: all 1.5s ease-out; }
     .menu .nav-item.show {
       transform: translate3d(0, 0, 0); }
     .menu .nav-item.current > a {
@@ -73,7 +73,7 @@
     font-weight: 300;
     color: #fff;
     text-decoration: none;
-    transition: all 1.0s ease-out; }
+    transition: all 1.5s ease-out; }
     .menu .nav-link:hover {
       color: #eb2ebc; }
 
@@ -107,7 +107,7 @@ body#body-menu .menu-btn {
   top: 0px;
   padding-top: 3vh;
   padding-left: 3vh;
-  height: 10vh;
+  height: 8vh;
   cursor: pointer;
   transition: all 1.5s ease-out;
   left: 0px; }
@@ -116,7 +116,6 @@ body#body-menu .menu-btn {
 
 body#body-menu .menu {
   opacity: 1;
-  background-color: red;
   width: 25%; }
   body#body-menu .menu-nav {
     margin: 0;
@@ -130,7 +129,7 @@ body#body-menu .menu {
   body#body-menu .menu-branding {
     background: #3a3939;
     transform: translate3d(-100%, 0, 0);
-    transition: all 0.5s ease-out; }
+    transition: all 1.5s ease-out; }
     body#body-menu .menu-branding.show {
       transform: translate3d(0, 0, 0); }
     body#body-menu .menu-branding .portrait {
@@ -149,14 +148,12 @@ body#body-menu .menu {
     font-weight: 300;
     color: #fff;
     text-decoration: none;
-    transition: all 0.5s ease-out; }
+    transition: all 1.5s ease-out; }
     body#body-menu .menu .nav-link:hover {
       color: #eb2ebc; }
 
-body {
-  overflow: hidden; }
-
 div#dashboardInfra {
+  z-index: 1 !important;
   padding: 4rem; }
   div#dashboardInfra .legendaMaster {
     background-color: #3a3939;

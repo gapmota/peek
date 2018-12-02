@@ -9,8 +9,9 @@
     float: right;
 }
 
-body#body-menu {
 
+
+body#body-menu {
     .menu-btn {
         width: 100%;
         background: darken($cor-primaria, 5);
@@ -19,7 +20,7 @@ body#body-menu {
         top: 0px;
         padding-top: 3vh;
         padding-left: 3vh;
-        height: 10vh;
+        height: 8vh;
         cursor: pointer;
         transition: all 1.5s ease-out;
         left: 0px;
@@ -31,7 +32,6 @@ body#body-menu {
 
     .menu {
         opacity: 1;
-        background-color: red;
         width: 25%;
 
         &-nav {

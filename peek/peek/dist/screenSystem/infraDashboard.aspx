@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/styleInfraDashboard.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <title>Peek - Dashboard</title>
 </head>
 
 <body id="body-menu">
     <form id="form1" runat="server">
-        <div>
+
             <header>
                 <div class="imgLogo"></div>
                 <div class="menu-btn">
@@ -32,9 +32,9 @@
                 <nav class="menu">
                     <div class="menu-branding">
                         <div class="portrait"></div>
-                        <!-- <div class="overlay">
-                     <div class="text">Hello World</div>
-                  </div> -->
+                         <!-- <div class="overlay">
+                          <div class="text">Hello World</div>
+                         </div> -->
                     </div>
                     <div class="menu-nav">
                         <li class="nav-item">
@@ -157,7 +157,6 @@
             <div class="btn-dash">
                 <i class="fas fa-arrow-circle-down fa-3x"></i>
             </div>
-        </div>
     </form>
 </body>
 <script src="../js/main.js"></script>

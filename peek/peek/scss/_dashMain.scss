@@ -1,7 +1,8 @@
 body{
-    overflow: hidden;
+   // overflow: hidden;
 }
 div#dashboardInfra {
+    z-index: 1 !important;
     padding: 4rem;
 
     .legendaMaster {

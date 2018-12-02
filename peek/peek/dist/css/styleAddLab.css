@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     overflow: hidden;
 }
 
@@ -152,7 +152,7 @@ body#body-menu .menu-btn {
     top: 0px;
     padding-top: 3vh;
     padding-left: 3vh;
-    height: 10vh;
+    height: 8vh;
     cursor: pointer;
     transition: all 1.5s ease-out;
     left: 0px;
@@ -883,4 +883,4 @@ body#bodyWork {
     width: 400px;
     height: 120px;
     background-color: transparent;
-}
+}*/
