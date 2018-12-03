@@ -58,18 +58,20 @@ function pegarConsumoDownloadLaboratorios() {
 
 }
 
-function pegarQuantidadeDeLaboratorios(laboratorio) {
+function pegarQuantidadeDeLaboratorios() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado,
+        url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado+"&oque=quantidade",
         data: '',
         success: function (response) {
-         //   console.log(response);
-            laboratorio.text(response);
+
+
+            document.getElementById("txtQuantidadeLaboratorio").textContent = response;
+           
         },
         error: function () {
 
@@ -183,8 +185,8 @@ function pegarTodosLabs() {
         url: api_url + "Laboratorio/?oque=labs&idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-         //   console.log(response);
-           // laboratorio.text(response);
+           
+           
         },
         error: function () {
 
@@ -268,6 +270,9 @@ function pegarMediaPorcetagemUsoComputador() {
     });
 }
 
+let baixa = document.getElementById("baixa_utilizacao");
+let media = document.getElementById("media_utilizacao");
+let alta = document.getElementById("alta_utilizacao");
 
 function pegarLaboratoriosQueMaisConsomem() {
     $.ajax({
@@ -279,6 +284,17 @@ function pegarLaboratoriosQueMaisConsomem() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado + "&oque=consumoPorLab",
         data: '',
         success: function (response) {
+
+            console.log("AQUI KRL "+response[0].Nome);
+
+            let baixa = document.getElementById("baixa_utilizacao");
+            let array = response;
+            let size = array.length;
+
+            baixa.textContent = array[0].Nome;
+            media.textContent = array[Math.floor((size / 2))].Nome;
+            alta.textContent = array[size-1].Nome;
+
             
             laboratorio.text(response);
         },

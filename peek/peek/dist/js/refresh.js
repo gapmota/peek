@@ -3,6 +3,21 @@
 }
 
 setInterval(() => {//30 seg
+
+
+       pegarLaboratoriosQueMaisConsomem();
+
+}, 5000);
+
+setInterval(() => {//30 seg
+
+
+//    pegarLaboratoriosQueMaisConsomem();
+    pegarQuantidadeDeLaboratorios();
+
+}, 5000);
+
+setInterval(() => {//30 seg
     
     
     pegarConsumoDownloadUploadLaboratorios();

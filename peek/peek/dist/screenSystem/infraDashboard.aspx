@@ -127,7 +127,7 @@
                         <canvas id="consumeGraphi"></canvas>
                     </div>
                     <div class="processos">
-                        <div class="legenda" onclick="pegarDownload()">VELOCIDADE</div>
+                        <div class="legenda">VELOCIDADE</div>
                         <p id="txtDownload"></p>
                         <div id="procGraphi" class="procGraphi"></div>
                         <p id="txtUpload"></p>
@@ -144,12 +144,15 @@
                     </div>
                     <div class="lab1">
                         <div class="legenda">ALTA UTILIZAÇÃO DA REDE</div>
+                        <p id="alta_utilizacao"></p>
                     </div>
                     <div class="lab2">
                         <div class="legenda">MÉDIA UTILIZAÇÃO DA REDE</div>
+                        <p id="media_utilizacao"></p>
                     </div>
                     <div class="lab3">
                         <div class="legenda">BAIXA UTILIZAÇÃO DA REDE</div>
+                        <p id="baixa_utilizacao"></p>
                     </div>
                 </div>
             </div>
