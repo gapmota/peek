@@ -1,26 +1,32 @@
-﻿using System;
+﻿using peekapi.Dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using peekapi.Dao;
-
 
 namespace peekapi.Controllers
 {
-    public class ProcessadorController : ApiController
+    public class MemoriaRamController : ApiController
     {
+        // GET api/<controller>
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
 
         // GET api/<controller>/5
         public string Get(int idUsuario)
         {
             if (new UsuarioDAO().UsuarioExiste(idUsuario))
             {
-                return new ProcessadorDAO().PegarMediaUsoTodosLab(idUsuario).ToString();
+                return new MemoriaRamDAO().PegarMediaUsoTodosLab(idUsuario).ToString();
             }
-          return "0";
+            return "0";
+            
         }
+
         // POST api/<controller>
         public void Post([FromBody]string value)
         {
