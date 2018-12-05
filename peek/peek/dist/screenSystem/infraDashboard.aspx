@@ -110,15 +110,18 @@
                     </div>
                     <div class="lab1">
                         <div class="legenda">ALTA UTILIZAÇÃO DA REDE</div>
-                        <p id="alta_utilizacao"></p>
+                        <p id="alta_utilizacao" class="nomeLab3"></p>
+                        <a href="#" class="btn-dark Enc">Encerrar Processos</a>
                     </div>
                     <div class="lab2">
                         <div class="legenda">MÉDIA UTILIZAÇÃO DA REDE</div>
-                        <p id="media_utilizacao"></p>
+                        <p id="media_utilizacao" class="nomeLab3"></p>
+                        <a href="#" class="btn-dark Enc">Encerrar Processos</a>
                     </div>
                     <div class="lab3">
                         <div class="legenda">BAIXA UTILIZAÇÃO DA REDE</div>
-                        <p id="baixa_utilizacao"></p>
+                        <p id="baixa_utilizacao" class="nomeLab3"></p>
+                        <a href="#" class="btn-dark Enc">Encerrar Processos</a>
                     </div>
                 </div>
             </div>
