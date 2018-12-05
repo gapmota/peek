@@ -66,9 +66,17 @@ namespace peekapi.Dao
                     {
                         if (dr.Read())
                         {
+                            try { 
                             return (int)double.Parse(dr["USO_PROCESSADOR"].ToString());
+                            }
+                            catch 
+                            {
+                                return 0;
+                            }
+
+
                         }
-                        return -1;
+                        return 0;
                     }
 
                 }
