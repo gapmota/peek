@@ -82,9 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dist\css\styleAddLab.css" />
-    <Content Include="dist\css\styleInfraDashboard.css" />
     <Content Include="dist\css\styleLogin.css" />
-    <Content Include="dist\css\styleMachine.css" />
     <Content Include="dist\css\styleRegister.css" />
     <Content Include="dist\js\graphics.js" />
     <Content Include="dist\js\refresh.js" />
@@ -174,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

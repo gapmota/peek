@@ -13,10 +13,6 @@ namespace peek.dist.css
     {
         string linkserver = "Server=tcp:mateuzserver.database.windows.net,1433;Initial Catalog=MEU;Persist Security Info=False;User ID=mateuz;Password=Banco2k18;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int numComp = 1;
-        int id_pc;
-        String PC_totalRam;
-        String PC_Proc;
-        String Mac;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,17 +28,6 @@ namespace peek.dist.css
                         while (reader.Read())
                         {
                             lblComp.Text = "" + numComp++;
-
-                            id_pc = reader.GetInt32(0);
-                            PC_totalRam = Convert.ToString(reader[1]);
-                            PC_Proc = Convert.ToString(reader[2]);
-                            Mac = Convert.ToString(reader[3]);
-
-                            lblIdPc.Text = "Identificador - " + id_pc.ToString();
-                            lblRam.Text = "Total de memória RAM - " + PC_totalRam.ToString();
-                            lblProc.Text = "Descrição do processador - " + PC_Proc.ToString();
-                            lblMac.Text = "MAC - " + Mac.ToString();
-
                         }
                     }
                 }

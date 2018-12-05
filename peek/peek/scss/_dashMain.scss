@@ -1,5 +1,5 @@
 body{
-   // overflow: hidden;
+    overflow: hidden;
 }
 div#dashboardInfra {
     z-index: 1 !important;
@@ -46,6 +46,7 @@ div#dashboardInfra {
     .qtdMaquinas {
         background: darken($cor-primaria, 5);
         height: 30vh;
+
     }
 
     .bonusDash {
@@ -68,6 +69,7 @@ div#dashboardInfra {
         background-color: lighten($cor-primaria, 5);
         padding: 2vh;
     }
+
 }
 
 //DASHBOARD DE REDE
@@ -180,4 +182,6 @@ div#dashboardRede {
         transform: translate3d(0,100%,0);
         @include easeOut;
     }
+
 }
+

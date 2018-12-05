@@ -183,3 +183,6 @@ function attChartGoogle(download, upload) {
 
 }
 
+function seeMaquinas() {
+    window.location.href = "machines.aspx";
+}

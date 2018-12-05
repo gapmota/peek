@@ -33,18 +33,6 @@ namespace peek.dist.screenSystem
                 u.Senha = txtSenha.Text;
                 u.Telefone = txtTelefone.Text;
 
-                //vai pegar o email e senha e fazer isso
-                /*                                                              a sequencia é sempre essa passa o email dps a senha blz? gg
-                                Usuario usuario = new UsuarioController().Logar(Email.Text, Senha.Text); //onde tem esse Email.Text e Senha.Text tu vai mudar pelo valo "ID" da tela de login em .aspx (vou mostrar)
-
-                                if(usuario != null)
-                                {
-                                    Session["USUARIO"] = usuario;
-                                }
-
-                                isso vai no evento do click do botaão logar da tela de login
-
-                    */
                 if (uc.IsEmailNaoCadastrado(u))
                 {
 

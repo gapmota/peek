@@ -12,9 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/main.css" />
     <title>Peek - Dashboard</title>
 </head>
@@ -79,38 +76,7 @@
                     <div class="qtdMaquinas">
                         <div class="legenda">QUANTIDADE DE MÁQUINAS</div>
                         <div class="BoxComputers">
-                            <asp:Label Text="" ID="lblComp" runat="server" data-toggle="modal" data-target="#myModal" />
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Design do Modal -->
-                                <div class="headModal">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Computadores</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        Computadores cadastrados no sistema Peek
-                                        <div class="container">
-                                            <br />
-                                            <asp:Label class="lbl" runat="server" ID="lblIdPc" />
-                                            <br />
-                                            <br />
-                                            <asp:Label class="lbl" runat="server" ID="lblRam" />
-                                            <br />
-                                            <asp:Label class="lbl" runat="server" ID="lblProc" />
-                                            <br />
-                                            <asp:Label class="lbl" runat="server" ID="lblMac" />
-                                            <br />
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btnFechar" data-dismiss="modal">Fechar</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <asp:Label Text="" ID="lblComp" runat="server" onClick="seeMaquinas()" />
                         </div>
                     </div>
                     <div class="bonusDash">
