@@ -37,6 +37,11 @@ public class MemoriaRam {
 
     }
 
+    public int getPorcentagemUso(){
+       
+        return (int)((this.getUsando() * 100.0) / this.getTotal());
+    }
+    
     /**
      * RETORNA UM VALOR EM BYTE PARA GB USANDO O FormUtil
      * @param num

@@ -24,7 +24,7 @@ public class ComputadorDAO {
         Connection cnx = new Banco().getInstance();
         int idComputador = new SelectPEEK().getIdComputador();
         for(OSFileStore p : hc.getInformacoesHd()){
-            String SQL = "INSERT INTO PEEK_HD(TOTAL,USADO,DIRETORIO,UUID,TIPO_DIR,VOLUME,ID_COMPUTADOR) VALUES (?,?,?,?,?,?,?)";
+            String SQL = "INSERT INTO PEEK_HD(TOTAL,USADO,DIRETORIO,UUID,TIPO_DIR,VOLUME,ID_COMPUTADOR, PORCETAGEM_USO) VALUES (?,?,?,?,?,?,?,?)";
 
             try {
                 PreparedStatement ps = cnx.prepareStatement(SQL);
@@ -35,6 +35,7 @@ public class ComputadorDAO {
                 ps.setString(5, p.getType());
                 ps.setString(6, p.getVolume());
                 ps.setInt(7, idComputador);
+                ps.setLong(8, this.calculoPorcEspacoLivre(p.getTotalSpace(), p.getUsableSpace()));
                 ps.executeUpdate();
                 System.out.println("hd atualizado......");
             } catch (SQLException erro) {
@@ -45,6 +46,13 @@ public class ComputadorDAO {
         }
     }
 
+    
+    private long calculoPorcEspacoLivre(long total, long usando){
+        
+        return (usando * 100) / total;
+        
+    }
+    
     public String cadastroInicial(int idLab) {
 
         List<MAC> macs = new RedeController().getMacsPC();
@@ -288,7 +296,7 @@ public class ComputadorDAO {
 
         Connection cnx = new Banco().getInstance();
         CallableStatement ps;
-        ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?)}");
+        ps = cnx.prepareCall("{CALL Sp_adicionar_informacoes(?,?,?,?,?,?,?,?,?,?,?)}");
 
         try {
             cnx.setAutoCommit(true);
@@ -302,6 +310,7 @@ public class ComputadorDAO {
             ps.setDouble("@TOTAL", c.getRam().getTotal());
             ps.setDouble("@LIVRE", c.getRam().getDisponivel());
             ps.setDouble("@EM_USO", c.getRam().getUsando());
+            ps.setInt("@PORCENTAGEM_USO_RAM", c.getRam().getPorcentagemUso());
             ps.execute();
             
             new log_peek.arquivoLog("TEMPO_ATIVIDADE: "+c.getProcessador().getTempoAtividade().getBytes()+"\n"+ "HD"+c.getHD().getInformacoesHd()+"\n"+ "PROCESSO"+ c.getProcesso()+"\n"+"MERORIA RAM"+ c.getRam().getDisponivel()+"\n"+""+c.getRam().getTotal()+"\n"+ "REDE"+ c.getRede());
