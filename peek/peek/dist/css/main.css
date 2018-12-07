@@ -286,7 +286,7 @@ div#dashboardInfra {
     }
 
 div#dashboardRede {
-<<<<<<< HEAD
+/*<<<<<<< HEAD
     padding: 4rem;
     padding-top: 8vh;
 }
@@ -372,7 +372,7 @@ div#dashboardRede {
             padding: 3vh;
             margin: 3vh;
         }
-=======
+=======*/
   padding: 4rem;
   padding-top: 8vh; }
   div#dashboardRede .legendaMaster {
@@ -441,7 +441,7 @@ div#dashboardRede {
       text-align: center;
       padding: 3vh;
       margin: 3vh; }
->>>>>>> dc9c414542c8820dff3ce387260849d34617cdc1
+/*>>>>>>> dc9c414542c8820dff3ce387260849d34617cdc1*/
 
 .btn-dash {
     width: 5vh;
