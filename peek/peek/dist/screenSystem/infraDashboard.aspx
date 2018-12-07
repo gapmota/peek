@@ -106,7 +106,7 @@
                 <div class="grid2">
                     <div class="qtdLabs">
                         <div class="legenda">QUANTIDADE DE LABORATÓRIOS</div>
-                        <p id="txtQuantidadeLaboratorio"></p>
+                        <p id="txtQuantidadeLaboratorio" class="BoxLabs"></p>
                     </div>
                     <div class="lab1">
                         <div class="legenda">ALTA UTILIZAÇÃO DA REDE</div>
