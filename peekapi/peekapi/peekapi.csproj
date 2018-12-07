@@ -183,6 +183,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ComputadorController.cs" />
+    <Compile Include="Controllers\HdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoComputadorController.cs" />
     <Compile Include="Controllers\MemoriaRamController.cs" />
