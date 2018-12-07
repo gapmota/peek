@@ -342,7 +342,7 @@ body#bodyContato {
     float: left; }
   body#bodyContato .div-right {
     padding: 3vh;
-    background-color: #474646;
+    background-color: dimgrey;
     width: 90vh;
     height: 70vh;
     float: right;
