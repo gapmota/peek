@@ -16,29 +16,33 @@ namespace peek.dist.screenSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            verComputadores();
-            Carregar();
+                verComputadores();
+                Carregar();
+            
         }
 
         public void Carregar()
         {
-            Label lblComputador = new Label();
             for (int i = 0; i < listPC.Count; i++)
             {
+                Panel pnlComputer = new Panel();
+                pnlComputer.CssClass = "pnlItem";
+                machines.Controls.Add(pnlComputer);
+
                 Label lblID = new Label();
                 lblID.Text = "" + listPC.ElementAt(i).CodPc;
-                lblID.CssClass = "lblPC";
-                machines.Controls.Add(lblID);
+                lblID.CssClass = "lblItem";
+                pnlComputer.Controls.Add(lblID);
 
                 Label lblProc = new Label();
                 lblProc.Text = "" + listPC.ElementAt(i).Proc;
-                lblProc.CssClass = "lblPC";
-                machines.Controls.Add(lblProc);
+                lblProc.CssClass = "lblItem";
+                pnlComputer.Controls.Add(lblProc);
 
                 Label lblRam = new Label();
                 lblRam.Text = "" + listPC.ElementAt(i).Ram;
-                lblRam.CssClass = "lblPC";
-                machines.Controls.Add(lblRam);
+                lblRam.CssClass = "lblItem";
+                pnlComputer.Controls.Add(lblRam);
             }
         }
 

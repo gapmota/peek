@@ -14,8 +14,8 @@ let showMenu = false;
 //adiciona funcao de click chamada toggleMenu
 menuBtn.addEventListener('click', toggleMenu);
 
-function toggleMenu(){
-    if(!showMenu){
+function toggleMenu() {
+    if (!showMenu) {
         menuBtn.classList.add('close');
         menu.classList.add('show');
         menuNav.classList.add('show');
@@ -24,8 +24,8 @@ function toggleMenu(){
         navItems.forEach(item => item.classList.add('show'));
 
         //redefini o memnu novamente   
-        showMenu = true; 
-    }else{
+        showMenu = true;
+    } else {
         menuBtn.classList.remove('close');
         menu.classList.remove('show');
         menuNav.classList.remove('show');
@@ -33,7 +33,7 @@ function toggleMenu(){
         navItems.forEach(item => item.classList.remove('show'));
 
         //redefini o menu novamente   
-        showMenu = false; 
+        showMenu = false;
     }
 }
 
@@ -49,19 +49,19 @@ let showDash = false;
 //adiciona funcao de click chamada toggleMenu
 dashBtn.addEventListener('click', toggleDash);
 
-function toggleDash(){
-    if(!showDash){
+function toggleDash() {
+    if (!showDash) {
         dashBtn.classList.add('close');
-        legendaMaster.classList.add('show');        
+        legendaMaster.classList.add('show');
 
         //redefini o memnu novamente   
-        showDash = true; 
-    }else{
+        showDash = true;
+    } else {
         dashBtn.classList.remove('close');
         legendaMaster.classList.remove('show');
 
         //redefini o menu novamente   
-        showDash = false; 
+        showDash = false;
     }
 }
 
@@ -81,11 +81,11 @@ window.onload = function () {//ao carregar a pagina
 
     pegarConsumoDownloadLaboratorios();
 
-    
+
 };
 
 
 setInterval(() => {
-  //  atualizaDrawConsume(Math.floor(Math.random() * 50), '21-21-21');
-},1000);
+    //  atualizaDrawConsume(Math.floor(Math.random() * 50), '21-21-21');
+}, 1000);
 
