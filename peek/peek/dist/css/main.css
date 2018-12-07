@@ -251,15 +251,21 @@ div#dashboardRede {
     div#dashboardRede .grid2 .lab3 {
       background: #3a3939;
       height: 30vh; }
-    div#dashboardRede .grid2 .lab1 .legenda {
-      background-color: rgba(255, 0, 0, 0.61);
-      border-bottom: solid 1px white; }
-    div#dashboardRede .grid2 .lab2 .legenda {
-      background-color: rgba(255, 251, 0, 0.651);
-      border-bottom: solid 1px white; }
-    div#dashboardRede .grid2 .lab3 .legenda {
-      background-color: rgba(72, 255, 0, 0.589);
-      border-bottom: solid 1px white; }
+    div#dashboardRede .grid2 .lab1 i {
+      float: right;
+      margin-right: 2vh;
+      margin-top: 0.5vh;
+      color: red; }
+    div#dashboardRede .grid2 .lab2 i {
+      float: right;
+      margin-right: 2vh;
+      margin-top: 0.5vh;
+      color: yellow; }
+    div#dashboardRede .grid2 .lab3 i {
+      float: right;
+      margin-right: 2vh;
+      margin-top: 0.5vh;
+      color: lawngreen; }
     div#dashboardRede .grid2 .btn-dark.Enc {
       background-color: #00e11d;
       margin: 3vh; }
