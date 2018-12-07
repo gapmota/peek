@@ -132,23 +132,29 @@ div#dashboardRede {
         }
 
         .lab1 {
-            .legenda {
-                background-color: rgba(255, 0, 0, 0.61);
-                border-bottom: solid 1px white;
+            i {
+                float: right;
+                margin-right: 2vh;
+                margin-top: 0.5vh;
+                color: red;
             }
         }
 
         .lab2 {
-            .legenda {
-                background-color: rgba(255, 251, 0, 0.651);
-                border-bottom: solid 1px white;
+            i {
+                float: right;
+                margin-right: 2vh;
+                margin-top: 0.5vh;
+                color: yellow;
             }
         }
 
         .lab3 {
-            .legenda {
-                background-color: rgba(72, 255, 0, 0.589);
-                border-bottom: solid 1px white;
+            i {
+                float: right;
+                margin-right: 2vh;
+                margin-top: 0.5vh;
+                color: lawngreen;
             }
         }
 
