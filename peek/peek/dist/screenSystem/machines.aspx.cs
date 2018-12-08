@@ -21,25 +21,40 @@ namespace peek.dist.screenSystem
             
         }
 
+        protected void btnMaquina(object sender, EventArgs e)
+        {
+            Label l = (Label)sender;
+            Response.Write(l.ID);
+
+        }
+
+
         public void Carregar()
         {
             for (int i = 0; i < listPC.Count; i++)
             {
                 Panel pnlComputer = new Panel();
+                pnlComputer.ID = listPC.ElementAt(i).CodPc.ToString();
+                pnlComputer.Attributes.Add("OnClick", "abrirModal(this)");
                 pnlComputer.CssClass = "pnlItem";
+              
                 machines.Controls.Add(pnlComputer);
 
                 Label lblID = new Label();
+                lblID.ID = listPC.ElementAt(i).CodPc.ToString();
                 lblID.Text = "" + listPC.ElementAt(i).CodPc;
                 lblID.CssClass = "lblItem";
                 pnlComputer.Controls.Add(lblID);
 
                 Label lblProc = new Label();
+                lblProc.ID = listPC.ElementAt(i).CodPc.ToString();
                 lblProc.Text = "" + listPC.ElementAt(i).Proc;
                 lblProc.CssClass = "lblItem";
+                
                 pnlComputer.Controls.Add(lblProc);
 
                 Label lblRam = new Label();
+                lblRam.ID = listPC.ElementAt(i).CodPc.ToString();
                 lblRam.Text = "" + listPC.ElementAt(i).Ram;
                 lblRam.CssClass = "lblItem";
                 pnlComputer.Controls.Add(lblRam);

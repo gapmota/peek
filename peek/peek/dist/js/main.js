@@ -77,6 +77,9 @@ window.onload = function () {//ao carregar a pagina
     drawMoreUseGraphi();
     drawInfraProcessHistory();
 
+    pegarMediaPorcetagemUsoProcessador();
+    pegarMediaPorcetagemUsoRam();
+
     pegarConsumoDownloadUploadLaboratorios();
 
     pegarConsumoDownloadLaboratorios();

@@ -148,7 +148,7 @@ function pegarProcessosQueMaisConsumemInternet() {
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
                 } catch (Exception) { }
             }
-           console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
+         //  console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
             atualizaDrawUseGraphi(processos, quantidadeProcesso);
         },
         error: function () {
@@ -205,7 +205,7 @@ function pegarInformacoesPC(idComputador) {
         data: '',
         success: function (response) {
          //   console.log(response);
-            laboratorio.text(response);
+            
         },
         error: function () {
 
@@ -224,7 +224,7 @@ function pegarInformacoesCompletasPC(idComputador) {
         data: '',
         success: function (response) {
           //  console.log(response);
-            laboratorio.text(response);
+           
         },
         error: function () {
 
@@ -243,7 +243,7 @@ function pegarInformacoesPcPorLab(idLab) {
         data: '',
         success: function (response) {
          //   console.log(response);
-            laboratorio.text(response);
+          
         },
         error: function () {
 
@@ -270,6 +270,43 @@ function pegarMediaPorcetagemUsoComputador() {
     });
 }
 
+function pegarMediaPorcetagemUsoRam() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        data: '',
+        success: function (response) {
+            document.getElementById("mediaUsoMemoriaRam").textContent = response + "% (RAM)";
+        },
+        error: function () {
+
+        }
+    });
+}
+
+
+function pegarMediaPorcetagemUsoProcessador() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        data: '',
+        success: function (response) {
+            document.getElementById("mediaUsoProcessador").textContent = response + "% (PROCESSADOR)";
+        },
+        error: function () {
+
+        }
+    });
+}
+
 let baixa = document.getElementById("baixa_utilizacao");
 let media = document.getElementById("media_utilizacao");
 let alta = document.getElementById("alta_utilizacao");
@@ -285,8 +322,6 @@ function pegarLaboratoriosQueMaisConsomem() {
         data: '',
         success: function (response) {
 
-            console.log("AQUI KRL "+response[0].Nome);
-
             let baixa = document.getElementById("baixa_utilizacao");
             let array = response;
             let size = array.length;
@@ -295,8 +330,6 @@ function pegarLaboratoriosQueMaisConsomem() {
             media.textContent = array[Math.floor((size / 2))].Nome;
             alta.textContent = array[size-1].Nome;
 
-            
-            laboratorio.text(response);
         },
         error: function () {
 

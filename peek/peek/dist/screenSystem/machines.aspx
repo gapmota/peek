@@ -62,5 +62,6 @@
         </asp:Panel>
     </main>
     <script src="../js/main.js"></script>
+    <script src="../js/machines.js"></script>
 </body>
 </html>

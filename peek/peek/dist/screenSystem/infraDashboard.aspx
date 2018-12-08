@@ -14,6 +14,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <link rel="stylesheet" href="../css/main.css" />
     <title>Peek - Dashboard</title>
+     <style>
+    #mediaUsoProcessador {
+        width: 100%;
+        height: 5vh;
+        padding-left: 2vh;
+        padding-top: 0.5vh;
+        text-align: left;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #mediaUsoMemoriaRam {
+        width: 100%;
+        height: 5vh;
+        padding-left: 2vh;
+        padding-top: 0.5vh;
+        text-align: left;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    </style>
 </head>
 
 <body id="body-menu">
@@ -66,6 +85,8 @@
                     </div>
                     <div class="processos">
                         <div class="legenda">PROCESSOS</div>
+                        <p id="mediaUsoProcessador"></p>
+                        <p id="mediaUsoMemoriaRam"></p>
                     </div>
                 </div>
                 <div class="grid2">

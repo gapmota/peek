@@ -44,7 +44,7 @@ function atualizaDrawConsume(consumo, data) {
     chartConsume.data.labels.push(data);
     chartConsume.data.datasets[0].data.push(consumo);
     chartConsume.update();
-    console.log("aqui mano");
+  //  console.log("aqui mano");
 }
 
 
@@ -85,7 +85,7 @@ function atualizaDrawInfraProcessHistory(consumo, data) {
     chartUseProcessHistory.data.labels.push(data);
     chartUseProcessHistory.data.datasets[0].data.push(consumo);
     chartUseProcessHistory.update();
-    console.log("aqui mano 2");
+  //  console.log("aqui mano 2");
 }
 
 
@@ -174,13 +174,13 @@ function drawChart() {
 
 
 function attChartGoogle(download, upload) {
+    try {
+        dataGoogle.setValue(0, 1, download);
+        chartGoogle.draw(dataGoogle, optionsGoogle);
 
-    dataGoogle.setValue(0, 1, download);
-    chartGoogle.draw(dataGoogle, optionsGoogle);
-
-    dataGoogle.setValue(1, 1, upload);
-    chartGoogle.draw(dataGoogle, optionsGoogle);
-
+        dataGoogle.setValue(1, 1, upload);
+        chartGoogle.draw(dataGoogle, optionsGoogle);
+    } catch (Exception) { }
 }
 
 function seeMaquinas() {
