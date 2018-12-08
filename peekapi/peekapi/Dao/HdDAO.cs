@@ -96,7 +96,7 @@ namespace peekapi.Dao
 
         }
 
-        public int PegarPorcetagemUsoTodosLab(int idUsuario, int porc, string diretorio)
+        public int PegarLabsQuePossuamMenosDeAlgumaPorcetagemLivreEmDisco(int idUsuario, int porc, string diretorio)
         {
 
             using (SqlConnection cnx = new Banco().PegarConexao())
@@ -144,6 +144,102 @@ namespace peekapi.Dao
 
         }
 
+        public int PegarLabsQueEstaEntreDeAlgumaPorcetagemLivreEmDisco(int idUsuario, int porcInicial, int porcFinal, string diretorio)
+        {
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                Processador processador = new Processador();
+                string sql = @"SELECT COUNT(DISTINCT HD.ID_COMPUTADOR) AS QNT_PC FROM PEEK_HD HD
+                            INNER JOIN PEEK_COMPUTADOR PC ON PC.ID_COMPUTADOR = HD.ID_COMPUTADOR
+                            INNER JOIN PEEK_LAB L ON PC.ID_LAB = L.ID_LAB
+                            INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
+                            WHERE U.ID_USUARIO = @ID
+								AND CONVERT(int, DATEDIFF(DAY, HD.data_cadastro, getdate())) = 0
+                                AND CONVERT(int, DATEDIFF(HOUR, HD.data_cadastro, getdate()) % 24) = 0
+                                AND CONVERT(int, DATEDIFF(MINUTE, HD.data_cadastro, getdate()) % 60.0) <= 1
+								AND HD.PORCETAGEM_USO BETWEEN @PORC_INICIAL and @PORC_FINAL
+								AND HD.DIRETORIO LIKE '%" + diretorio + @"%'
+								GROUP BY HD.DIRETORIO
+                                ;";
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idUsuario);
+                    cmd.Parameters.AddWithValue("@PORC_INICIAL", porcInicial);
+                    cmd.Parameters.AddWithValue("@PORC_FINAL", porcFinal);
+                    cmd.Parameters.AddWithValue("@DIR", diretorio);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            try
+                            {
+                                return int.Parse(dr["QNT_PC"].ToString());
+                            }
+                            catch
+                            {
+                                return 0;
+                            }
+
+
+                        }
+                        return 0;
+                    }
+
+                }
+
+            }
+
+        }
+
+        public int PegarLabsQuePossuamMaisAlgumaPorcetagemLivreEmDisco(int idUsuario, int porc, string diretorio)
+        {
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                Processador processador = new Processador();
+                string sql = @"SELECT COUNT(DISTINCT HD.ID_COMPUTADOR) AS QNT_PC FROM PEEK_HD HD
+                            INNER JOIN PEEK_COMPUTADOR PC ON PC.ID_COMPUTADOR = HD.ID_COMPUTADOR
+                            INNER JOIN PEEK_LAB L ON PC.ID_LAB = L.ID_LAB
+                            INNER JOIN PEEK_USUARIO U ON U.ID_USUARIO = L.ID_USUARIO
+                            WHERE U.ID_USUARIO = @ID
+								AND CONVERT(int, DATEDIFF(DAY, HD.data_cadastro, getdate())) = 0
+                                AND CONVERT(int, DATEDIFF(HOUR, HD.data_cadastro, getdate()) % 24) = 0
+                                AND CONVERT(int, DATEDIFF(MINUTE, HD.data_cadastro, getdate()) % 60.0) <= 1
+								AND HD.PORCETAGEM_USO >= @PORC
+								AND HD.DIRETORIO LIKE '%" + diretorio + @"%'
+								GROUP BY HD.DIRETORIO
+                                ;";
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idUsuario);
+                    cmd.Parameters.AddWithValue("@PORC", porc);
+                    cmd.Parameters.AddWithValue("@DIR", diretorio);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            try
+                            {
+                                return int.Parse(dr["QNT_PC"].ToString());
+                            }
+                            catch
+                            {
+                                return 0;
+                            }
+
+
+                        }
+                        return 0;
+                    }
+
+                }
+
+            }
+
+        }
 
     }
 }

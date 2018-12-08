@@ -17,14 +17,33 @@ namespace peekapi.Controllers
         }
 
         // GET api/<controller>/5
-        public int Get(int idUsuario, int porc, string diretorio)
+        public int Get(int idUsuario, int porc, string diretorio, string oque)
         {
             if (new UsuarioDAO().UsuarioExiste(idUsuario))
             {
-                return new HdDAO().PegarPorcetagemUsoTodosLab(idUsuario, porc, diretorio);
+                if (oque == "poucoEspaco")
+                    return new HdDAO().PegarLabsQuePossuamMenosDeAlgumaPorcetagemLivreEmDisco(idUsuario, porc, diretorio);
+                else if (oque == "espacoLivre")
+                    return new HdDAO().PegarLabsQuePossuamMaisAlgumaPorcetagemLivreEmDisco(idUsuario, porc, diretorio);
+                else
+                    return -1;
             }
             return 0;
             
+        }
+
+        public int Get(int idUsuario, int porcIncial, int porcFinal, string diretorio, string oque)
+        {
+            if (new UsuarioDAO().UsuarioExiste(idUsuario))
+            {
+                if (oque == "espacoIdeal")
+                    return new HdDAO().PegarLabsQueEstaEntreDeAlgumaPorcetagemLivreEmDisco(idUsuario, porcIncial, porcFinal, diretorio);
+                else
+                    return -1;
+
+            }
+            return 0;
+
         }
 
         // POST api/<controller>
