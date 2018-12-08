@@ -52,7 +52,7 @@ function drawInfraProcessHistory() {
 
     infraProcessHistory = document.getElementById('infraHistory').getContext('2d');
     infraProcessHistory.canvas.width = 70;
-    infraProcessHistory.canvas.height = 27;
+    infraProcessHistory.canvas.height = 23;
 
     chartUseProcessHistory = new Chart(infraProcessHistory, {
         type: 'line',
@@ -110,7 +110,7 @@ function drawUseGraphi() {
 function drawMoreUseGraphi() {
     moreUseGraphi = document.getElementById('infraMoreUse').getContext('2d');
     moreUseGraphi.canvas.width = 70;
-    moreUseGraphi.canvas.height = 27;
+    moreUseGraphi.canvas.height = 23;
 
     chartMoreUse = new Chart(moreUseGraphi, {
         type: 'bar',

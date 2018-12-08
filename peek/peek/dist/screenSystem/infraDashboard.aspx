@@ -83,28 +83,36 @@
                         <div class="legenda">HISTORICO DE DESEMPENHO</div>
                         <canvas id="infraHistory"></canvas>
                     </div>
-                    <div class="processos">
+					<div class="processos">
                         <div class="legenda">PROCESSOS</div>
                         <p id="mediaUsoProcessador"></p>
                         <p id="mediaUsoMemoriaRam"></p>
                     </div>
-                </div>
-                <div class="grid2">
-                    <div class="usoProcessos">
-                        <div class="legenda">PROCESSOS MAIS USADOS</div>
-                        <canvas id="infraMoreUse" style="width: 20%;"></canvas>
-                    </div>
-                    <div class="qtdMaquinas">
+					<div class="qtdMaquinas">
                         <div class="legenda">QUANTIDADE DE MÁQUINAS</div>
                         <div class="BoxComputers">
                             <asp:Label Text="" ID="lblComp" runat="server" onClick="seeMaquinas()" />
                         </div>
-                    </div>
-                    <div class="bonusDash">
-                        <div class="legenda">DECIDIR</div>
-                    </div>
+                    </div>	                                   
                 </div>
-            </div>
+                <div class="grid2">
+					<div class="bonusDash">
+                        <div class="legenda">DECIDIR <i class="fas fa-circle A"></i></div>
+                    </div>
+					<div class="bonusDash">
+                        <div class="legenda">DECIDIR <i class="fas fa-circle B"></i></div>
+                    </div>
+					<div class="bonusDash">
+                        <div class="legenda">DECIDIR <i class="fas fa-circle C"></i></div>
+                    </div>  
+                    <div class="usoProcessos">
+                        <div class="legenda">PROCESSOS MAIS USADOS</div>
+                        <canvas id="infraMoreUse" style="width: 20%;"></canvas>
+				    </div>
+					
+				</div>
+				</div>
+		
 
             <div id="dashboardRede">
                 <div class="legendaMaster">DADOS DA REDE</div>
