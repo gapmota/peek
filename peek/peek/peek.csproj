@@ -170,7 +170,7 @@
     <Compile Include="dist\screenSystem\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarMáquina.cs" />
+    <Compile Include="Models\EditarMáquina.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

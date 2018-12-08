@@ -65,7 +65,7 @@
                 </button>
             </form>
             <asp:Panel ID="labs" class="boxLabs" runat="server">
-
+                 <input id="inHidden" name="inHidden" type="hidden" value="" runat="server"/>
             </asp:Panel>
         </div>
 

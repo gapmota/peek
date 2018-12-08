@@ -16,7 +16,7 @@ let chartUseProcessHistory;
 
 function drawConsumeGraphi() {
     consumeGraphi = document.getElementById('consumeGraphi').getContext('2d');
-    
+
     chartConsume = new Chart(consumeGraphi, {
         type: 'line',
         data: {
@@ -44,7 +44,7 @@ function atualizaDrawConsume(consumo, data) {
     chartConsume.data.labels.push(data);
     chartConsume.data.datasets[0].data.push(consumo);
     chartConsume.update();
-  //  console.log("aqui mano");
+    //  console.log("aqui mano");
 }
 
 
@@ -85,7 +85,7 @@ function atualizaDrawInfraProcessHistory(consumo, data) {
     chartUseProcessHistory.data.labels.push(data);
     chartUseProcessHistory.data.datasets[0].data.push(consumo);
     chartUseProcessHistory.update();
-  //  console.log("aqui mano 2");
+    //  console.log("aqui mano 2");
 }
 
 
@@ -115,10 +115,10 @@ function drawMoreUseGraphi() {
     chartMoreUse = new Chart(moreUseGraphi, {
         type: 'bar',
         data: {
-           // labels: ['2000', '2001', '2002', '2003'],
+            // labels: ['2000', '2001', '2002', '2003'],
             datasets: [{
                 label: 'Processos mais usados',
-             //   data: [173448346, 175885229, 178276128, 180619108],
+                //   data: [173448346, 175885229, 178276128, 180619108],
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)",
                 borderWidth: 1
@@ -185,4 +185,8 @@ function attChartGoogle(download, upload) {
 
 function seeMaquinas() {
     window.location.href = "machines.aspx";
+}
+
+function seeLabs() {
+    window.location.href = "addLab.aspx";
 }

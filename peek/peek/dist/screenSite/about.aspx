@@ -8,9 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="../css/main.css"/>
+    <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <title>Sobre Nós</title>
 </head>
 <body id="backBody">
+    <%-- Chat --%>
+    <script>
+        window.fcWidget.init({
+            token: "6dd74831-da3e-45db-a2cd-3f487123c5c1",
+            host: "https://wchat.freshchat.com"
+        });
+    </script>
+     <%-- Fim chat --%>
     <form id="form1" runat="server">
        
     <header>

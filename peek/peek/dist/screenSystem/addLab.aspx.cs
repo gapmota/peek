@@ -20,30 +20,44 @@ namespace peek.dist
             Carregar();
         }
 
+        protected void btnLab(object sender, EventArgs e)
+        {
+            Label l = (Label)sender;
+            Response.Write(l.ID);
+
+        }
+
         public void Carregar()
         {
             for (int i = 0; i < listLabs.Count; i++)
             {
                 Panel pnlLabs = new Panel();
+                pnlLabs.ID = listLabs.ElementAt(i).IDLab1.ToString();
+                pnlLabs.Attributes.Add("OnClick", "seeMachineLab(this)");
                 pnlLabs.CssClass = "pnlItem";
                 labs.Controls.Add(pnlLabs);
 
+
                 Label lblID = new Label();
+                lblID.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblID.Text = "" + listLabs.ElementAt(i).IDLab1;
                 lblID.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblID);
 
                 Label lblNome = new Label();
+                lblNome.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblNome.Text = "" + listLabs.ElementAt(i).Nome;
                 lblNome.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblNome);
 
                 Label lblAndar = new Label();
+                lblAndar.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblAndar.Text = "" + listLabs.ElementAt(i).Andar;
                 lblAndar.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblAndar);
 
                 Label lblCapacity = new Label();
+                lblCapacity.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblCapacity.Text = "" + listLabs.ElementAt(i).Capacity;
                 lblCapacity.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblCapacity);

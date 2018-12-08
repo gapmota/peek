@@ -13,12 +13,20 @@ namespace peek.dist.screenSystem
     {
         string linkserver = "Server=tcp:mateuzserver.database.windows.net,1433;Initial Catalog=MEU;Persist Security Info=False;User ID=mateuz;Password=Banco2k18;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public List<Machine> listPC;
+        string str = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            str = Request["axpsa"];
+            if (str == null || str == "")
+            {
                 verComputadores();
-                Carregar();
-            
+            }
+            else
+            {
+                verComputadoresLab();
+            }
+            Carregar();
         }
 
         protected void btnMaquina(object sender, EventArgs e)
@@ -37,7 +45,6 @@ namespace peek.dist.screenSystem
                 pnlComputer.ID = listPC.ElementAt(i).CodPc.ToString();
                 pnlComputer.Attributes.Add("OnClick", "abrirModal(this)");
                 pnlComputer.CssClass = "pnlItem";
-              
                 machines.Controls.Add(pnlComputer);
 
                 Label lblID = new Label();
@@ -50,7 +57,6 @@ namespace peek.dist.screenSystem
                 lblProc.ID = listPC.ElementAt(i).CodPc.ToString();
                 lblProc.Text = "" + listPC.ElementAt(i).Proc;
                 lblProc.CssClass = "lblItem";
-                
                 pnlComputer.Controls.Add(lblProc);
 
                 Label lblRam = new Label();
@@ -72,6 +78,38 @@ namespace peek.dist.screenSystem
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_COMPUTADOR", conexao))
                 {
 
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Machine codigo = new Machine();
+
+                            codigo.CodPc = reader.GetInt32(0);
+                            codigo.Ram = Convert.ToString(reader[1]);
+                            codigo.Proc = Convert.ToString(reader[2]);
+
+                            listPC.Add(codigo);
+                        }
+                        return listPC;
+                    }
+                }
+            }
+            #endregion
+        }
+
+
+        public List<Machine> verComputadoresLab()
+        {
+            listPC = new List<Machine>();
+
+            #region Contar e visualizar os computadores por lab
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM PEEK_COMPUTADOR WHERE ID_LAB = @id_lab", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@id_lab", str);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
