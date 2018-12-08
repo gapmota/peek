@@ -68,6 +68,7 @@ function toggleDash() {
 
 window.onload = function () {//ao carregar a pagina
     setIdUsuario(4);
+    setPorcetagensUsoHDeDiretorio(40, 80, "D");
 
     google.charts.load('current', { 'packages': ['gauge'] });
     google.charts.setOnLoadCallback(drawChart);
@@ -79,10 +80,12 @@ window.onload = function () {//ao carregar a pagina
 
     pegarMediaPorcetagemUsoProcessador();
     pegarMediaPorcetagemUsoRam();
-
     pegarConsumoDownloadUploadLaboratorios();
-
     pegarConsumoDownloadLaboratorios();
+
+    pegarQuantidadeHDsQuePossuemEspacoIdeal();
+    pegarQuantidadeHDsQuePossuemMuitoEspaco();
+    pegarQuantidadeHDsQuePossuemPoucoEspaco();
 
 
 };

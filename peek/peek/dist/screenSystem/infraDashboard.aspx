@@ -98,12 +98,15 @@
                 <div class="grid2">
 					<div class="bonusDash">
                         <div class="legenda">DECIDIR <i class="fas fa-circle A"></i></div>
+                        <p id="pouco_hd"></p>
                     </div>
 					<div class="bonusDash">
                         <div class="legenda">DECIDIR <i class="fas fa-circle B"></i></div>
+                        <p id="media_hd"></p>
                     </div>
 					<div class="bonusDash">
                         <div class="legenda">DECIDIR <i class="fas fa-circle C"></i></div>
+                        <p id="muito_hd"></p>
                     </div>  
                     <div class="usoProcessos">
                         <div class="legenda">PROCESSOS MAIS USADOS</div>
