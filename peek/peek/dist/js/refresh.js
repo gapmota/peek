@@ -2,12 +2,14 @@
     return Math.floor(Math.random() * 100);
 }
 
+let tempoPadrao = 5000;
+
 setInterval(() => {//30 seg
 
 
        pegarLaboratoriosQueMaisConsomem();
 
-}, 5000);
+}, tempoPadrao);
 
 setInterval(() => {//30 seg
 
@@ -15,7 +17,7 @@ setInterval(() => {//30 seg
 //    pegarLaboratoriosQueMaisConsomem();
     pegarQuantidadeDeLaboratorios();
 
-}, 5000);
+}, tempoPadrao);
 
 setInterval(() => {//30 seg
     
@@ -23,7 +25,7 @@ setInterval(() => {//30 seg
     pegarConsumoDownloadUploadLaboratorios();
 
 
-},5000);
+}, tempoPadrao);
 
 setInterval(() => {//30 seg
 
@@ -31,27 +33,45 @@ setInterval(() => {//30 seg
     
     
 
-}, 5000);
+}, tempoPadrao);
 
 setInterval(() => {
     pegarProcessosQueMaisConsumemInternet();
 
-}, 5000);
+}, tempoPadrao);
 
 setInterval(() => {
     
     pegarMediaPorcetagemUsoComputador();
-
-    console.log("internet");
-},5000);
+    
+}, tempoPadrao);
 
 setInterval(() => {//um minuto
-    console.log("aqui tiowww");
     pegarConsumoDownloadLaboratorios();
-}, 5000);
+}, tempoPadrao);
+
+
+
+setInterval(() => {//um minuto
+    pegarQuantidadeHDsQuePossuemPoucoEspaco();
+}, tempoPadrao);
+
+
+setInterval(() => {//um minuto
+    pegarQuantidadeHDsQuePossuemMuitoEspaco();
+}, tempoPadrao);
+
+
+setInterval(() => {//um minuto
+    pegarQuantidadeHDsQuePossuemEspacoIdeal();
+}, tempoPadrao);
 
 setInterval(() => {//dez minutos
     //  pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
 }, 100000);
+
+
+
+
 
 
