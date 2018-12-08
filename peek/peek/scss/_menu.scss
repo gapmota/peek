@@ -1,0 +1,130 @@
+//Botão do menu
+.menu-btn {
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    @include easeOut;
+
+    .btn-line {
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+        background: cor-do-texto($cor-primaria);
+        @include easeOut;
+    }
+    //girar linhas do menu para X
+    &.close {
+        transform: rotate(180deg);
+        //movimenta cada linha (3)
+        .btn-line {
+            //Linha 1 - roda
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            //Linha 2 - esconde
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            //Linha 3 - roda
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    }
+}
+
+//menu overlay
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 0.9;
+    visibility: hidden;
+    //deixa a classe show (do menu quando abre) visivel
+    &.show {
+        visibility: visible;
+    }
+    //nao precisa colocar manu-nav, pq a tag esta dentro da tag menu
+    &-branding,
+    &-nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    //desce menu ao abrir
+    &-nav {
+        margin: 0;
+        padding: 0;
+        background: darken($cor-primaria, 5);
+        list-style: none;
+        transform: translate3d(0, -100%, 0); //-100 faz vir de cima, 100 o menu vem de baixo
+        @include easeOut;
+
+        &.show {
+            //deliza classe show (menu aberto) até o topo
+            transform: translate3d(0,0,0);
+        }
+    }
+    //sobe menu ao fechar
+    &-branding {
+        transform: translate3d(0, -100%, 0);
+        @include easeOut;
+
+        &.show {
+            //deliza classe show (menu aberto) até o final
+            transform: translate3d(0,0,0);
+        }
+
+        .portrait {
+            width: 250px;
+            height: 250px;
+            background: url('../img/eu.jpg');
+            border-radius: 50%;
+            border: solid 3px $cor-secundaria;
+        }
+    }
+    //desliza items do menu para direita
+    .nav-item {
+        transform: translate3d(600px,0,0);
+        @include easeOut;
+
+        &.show {
+            //deliza classe show (menu aberto) para direita
+            transform: translate3d(0,0,0);
+        }
+
+        &.current > a { //colore só o 1º item do menu
+            color: $cor-secundaria;
+        }
+    }
+    //estilizar menu
+    .nav-link {
+        display: inline-block;
+        position: relative;
+        font-size: 30px;
+        text-transform: uppercase;
+        padding: 1rem 0;
+        font-weight: 300;
+        color: cor-do-texto($cor-primaria);
+        text-decoration: none;
+        @include easeOut;
+
+        &:hover {
+            color: $cor-secundaria;
+        }
+    }
+}
+
+//atrasa a vinda de cada item do menu em 0.1 seg.
+@for $x from 1 through 4 {
+    .nav-item:nth-child(#{$x}) { //colocar em {} porque é numerico
+        transition-delay: $x * 0.1s;
+    }
+}

@@ -1,0 +1,87 @@
+.imgLogo {
+    background: url('../img/logoDash.png');
+    background-repeat: no-repeat;
+    width: 25vh;
+    height: 10vh;
+    position: relative;
+    margin-top: 0.5vh;
+    z-index: 4;
+    float: right;
+}
+
+
+
+body#body-menu {
+    .menu-btn {
+        width: 100%;
+        background: darken($cor-primaria, 5);
+        position: absolute;
+        z-index: 3;
+        top: 0px;
+        padding-top: 3vh;
+        padding-left: 3vh;
+        height: 9vh;
+        cursor: pointer;
+        transition: all 1.5s ease-out;
+        left: 0px;
+
+        &.close {
+            transform: rotate(0deg);
+        }
+    }
+
+    .menu {
+        opacity: 1;
+        width: 25%;
+
+        &-nav {
+            margin: 0;
+            padding: 0;
+            background: darken($cor-primaria, 5);
+            list-style: none;
+            transform: translate3d(-100%,0,0); //-100 faz vir de cima, 100 o menu vem de baixo
+            @include easeOut;
+
+            &.show {
+                //deliza classe show (menu aberto) até o topo
+                transform: translate3d(0,0,0);
+            }
+        }
+        //sobe menu ao fechar
+        &-branding {
+            background: darken($cor-primaria, 5);
+            transform: translate3d(-100%,0,0);
+            @include easeOut;
+
+            &.show {
+                //deliza classe show (menu aberto) até o final
+                transform: translate3d(0,0,0);
+            }
+
+            .portrait {
+                margin-top: 10vh;
+                width: 140px;
+                height: 140px;
+                background: url('../img/userFoto.png');
+                border-radius: 50%;
+                border: solid 3px $cor-secundaria;
+            }
+        }
+
+        .nav-link {
+            display: inline-block;
+            position: relative;
+            font-size: 25px;
+            text-transform: uppercase;
+            padding: 1rem 0;
+            font-weight: 300;
+            color: cor-do-texto($cor-primaria);
+            text-decoration: none;
+            @include easeOut;
+
+            &:hover {
+                color: $cor-secundaria;
+            }
+        }
+    }
+}

@@ -1,0 +1,258 @@
+//esse import chama o arquivos .scss onde tem configurações de css que podemos reaproveitar aqui
+@import 'config';
+@import 'menu';
+@import 'menuDash';
+@import 'dashMain';
+@import 'ad-lab';
+@import 'contato';
+@import 'maqLab';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include background;
+    background: $cor-primaria;
+    color: cor-do-texto($cor-primaria);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+//headings
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: 400;
+    //o h1, h2 e h3 foi definido antes
+    //aqui mudo apenas o h1, chamando por '&'
+    &.title-heading {
+        font-size: 6rem; //rem multiplica o tamanho
+    }
+
+    &.subtitle-heading {
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($cor-primaria, 2), 0.5); //fundo mais claro da cor primaria (rgba para transparente)
+    }
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary {
+    color: $cor-secundaria;
+    //$cor-secundaria;
+}
+
+main {
+    padding: 4rem;
+    //height: 100%;
+    min-height: calc(100vh - 60px); //deixa o rodape (60px) sempre no fim
+    .icons {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+
+        a {
+            padding: 0.4rem;
+            //coloca cor secundaria ao passar mouse nos icones
+            &:hover {
+                color: $cor-secundaria;
+                @include easeOut(); //chama efeito de transição criado antes
+            }
+        }
+    }
+
+    &#home {
+        overflow: hidden;
+
+        h1 {
+            margin-top: 20vh; //unidade vh equivale a uma fatia do tamanho toal (1/100)
+        }
+
+        .btn-dark {
+            width: 30vh;
+            position: relative;
+            text-align: center;
+            float: left;
+            margin-left: 1rem;
+            font-weight: 600;
+
+            &.Log {
+                background-color: $cor-secundaria2;
+            }
+
+            &.Cad {
+                background-color: $cor-secundaria2;
+            }
+        }
+    }
+}
+
+//sobre
+body#backBody {
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after {
+        background: none;
+    }
+}
+
+.about-info {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: //representação visual da pagina
+    'quadro1 quadro2 quadro3';
+    grid-template-columns: repeat(3, 1fr);
+    //como vai ficar cada grid area criada acima
+
+
+    .quadro-1 {
+        grid-area: quadro1;
+    }
+
+    .quadro-2 {
+        grid-area: quadro2;
+    }
+
+    .quadro-3 {
+        grid-area: quadro3;
+    }
+
+    .quadro {
+        background: darken($cor-primaria,5);
+        padding: 0.5rem;
+        border-bottom: $cor-secundaria 5px solid;
+    }
+}
+
+.integrantes {
+    .text-name{
+        color: $cor-secundaria2;
+    }
+    display: grid;
+    grid-gap: 15px;
+    grid-template-areas: //representação visual da pagina
+    'bio1 bio2 bio3 bio4 bio5';
+    grid-template-columns: repeat(5, 1fr);
+
+    .bio-1 {
+        grid-area: bio1;
+    }
+
+    .bio-2 {
+        grid-area: bio2;
+    }
+
+    .bio-3 {
+        grid-area: bio3;
+    }
+
+    .bio-4 {
+        grid-area: bio4;
+    }
+
+    .bio-5 {
+        grid-area: bio5;
+    }
+
+    .bio {
+        h6 {
+            margin: 10px;
+        }
+
+        text-align: center;
+        padding: 0.5rem;
+        margin-bottom: 4vh;
+    }
+
+    .bio-img {
+        width: 150px;
+        margin: auto;
+        border-radius: 50%;
+        border: $cor-secundaria2 3px solid;
+    }
+}
+
+//work/projects
+body#bodyWork {
+    background: $back-linhas;
+    background-attachment: fixed;
+    background-size: cover;
+
+    &:after {
+        background: none;
+    }
+}
+
+.projects {
+    display: grid;
+    grid-gap: 2rem;
+   // grid-template-columns: repeat(3, 1fr);
+
+    img {
+        width: 100%;
+        border: 3px #fff solid;
+
+        &:hover {
+            opacity: 0.5;
+            border-color: $cor-secundaria;
+            @include easeOut;
+        }
+    }
+}
+
+//botão work
+.item{
+    i{
+        padding: 1vh;
+       float: right;
+    }
+}
+.btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+
+    &:hover {
+        background: darken($cor-secundaria2, 10);
+        color: cor-do-texto($cor-secundaria);
+    }
+}
+
+.btn-dark {
+    @extend .btn;
+    background: darken($cor-primaria, 50);
+    color: #fff;
+}
+
+.btn-light {
+    @extend .btn;
+    background: $cor-secundaria2;
+    font-size: 20px;
+    //color: #333;
+}
+
+#main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: darken($cor-primaria, 10);
+    color: cor-do-texto($cor-primaria);
+    height: 60px;
+}
+
+@import 'mobile';
