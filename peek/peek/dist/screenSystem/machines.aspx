@@ -9,9 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Peek - Maquinas Do Lab</title>
 </head>
 <body id="body-menu" class="bodyMaq">
@@ -58,10 +55,10 @@
     <main id="maquinasLab" class="maqui-lab">
         <h1 class="title-heading">Controle de <span class="text-secondary">Maquinas</span></h1>
         <asp:Panel ID="machines" class="boxMachines" runat="server">
-                
         </asp:Panel>
     </main>
 
     <script src="../js/main.js"></script>
+    <script src="../js/machines.js"></script>
 </body>
 </html>

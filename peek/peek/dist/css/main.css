@@ -167,11 +167,11 @@ div#dashboardInfra {
     margin-top: 2.5vh;
     padding-left: 2vh;
     padding-top: 1vh;
-    border-bottom: solid 2px #eb2ebc;
+    border-bottom: solid 2px #00e11d;
     font-size: 20px; }
   div#dashboardInfra .legenda {
     background: #3a3939;
-    border-bottom: solid 2px #eb2ebc;
+    border-bottom: solid 2px #00e11d;
     width: 100%;
     height: 5vh;
     padding-left: 2vh;
@@ -180,29 +180,43 @@ div#dashboardInfra {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   div#dashboardInfra .histDesemp {
     background: #3a3939;
-    height: 40vh; }
+    height: 35vh;
+    width: 93vh; }
   div#dashboardInfra .processos {
     background: #3a3939;
-    height: 40vh; }
+    height: 35vh;
+    width: 60vh; }
   div#dashboardInfra .usoProcessos {
     background: #3a3939;
-    height: 30vh; }
+    height: 35vh;
+    width: 90vh; }
   div#dashboardInfra .qtdMaquinas {
     background: #3a3939;
-    height: 30vh; }
+    height: 35vh;
+    width: 28vh; }
   div#dashboardInfra .bonusDash {
     background: #3a3939;
-    height: 30vh; }
+    height: 35vh; }
+    div#dashboardInfra .bonusDash i {
+      float: right;
+      margin-right: 2vh;
+      margin-top: 0.5vh; }
+      div#dashboardInfra .bonusDash i.A {
+        color: red; }
+      div#dashboardInfra .bonusDash i.B {
+        color: yellow; }
+      div#dashboardInfra .bonusDash i.C {
+        color: lawngreen; }
   div#dashboardInfra .grid1 {
     display: grid;
     grid-gap: 0.7rem;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     background-color: #545353;
     padding: 2vh; }
   div#dashboardInfra .grid2 {
     display: grid;
     grid-gap: 0.7rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     background-color: #545353;
     padding: 2vh; }
 
@@ -348,7 +362,7 @@ body#bodyContato {
     float: left; }
   body#bodyContato .div-right {
     padding: 3vh;
-    background-color: #474646;
+    background-color: dimgrey;
     width: 90vh;
     height: 70vh;
     float: right;

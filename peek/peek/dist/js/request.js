@@ -1,6 +1,19 @@
 let idUsuarioLogado;
 let idLab;
 
+let porcetagemMinimaHD;
+let porcetagemMaximaHD;
+
+let diretorioHD;
+
+function setPorcetagensUsoHDeDiretorio(min,max,diretorio) {
+    if (porcetagemMinimaHD == undefined) {
+        porcetagemMinimaHD = min;
+        porcetagemMaximaHD = max;
+        diretorioHD = diretorio
+    }
+}
+
 const api_url = "http://visionpeekapi.azurewebsites.net/peek/";
 
 function setIdUsuario(id) {
@@ -148,7 +161,7 @@ function pegarProcessosQueMaisConsumemInternet() {
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
                 } catch (Exception) { }
             }
-           console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
+         //  console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
             atualizaDrawUseGraphi(processos, quantidadeProcesso);
         },
         error: function () {
@@ -205,7 +218,7 @@ function pegarInformacoesPC(idComputador) {
         data: '',
         success: function (response) {
          //   console.log(response);
-            laboratorio.text(response);
+            
         },
         error: function () {
 
@@ -224,7 +237,7 @@ function pegarInformacoesCompletasPC(idComputador) {
         data: '',
         success: function (response) {
           //  console.log(response);
-            laboratorio.text(response);
+           
         },
         error: function () {
 
@@ -243,7 +256,7 @@ function pegarInformacoesPcPorLab(idLab) {
         data: '',
         success: function (response) {
          //   console.log(response);
-            laboratorio.text(response);
+          
         },
         error: function () {
 
@@ -270,9 +283,59 @@ function pegarMediaPorcetagemUsoComputador() {
     });
 }
 
-let baixa = document.getElementById("baixa_utilizacao");
-let media = document.getElementById("media_utilizacao");
-let alta = document.getElementById("alta_utilizacao");
+function pegarMediaPorcetagemUsoRam() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        data: '',
+        success: function (response) {
+            document.getElementById("mediaUsoMemoriaRam").textContent = response + "% (RAM)";
+        },
+        error: function () {
+
+        }
+    });
+}
+
+
+function pegarMediaPorcetagemUsoProcessador() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        data: '',
+        success: function (response) {
+            document.getElementById("mediaUsoProcessador").textContent = response + "% (PROCESSADOR)";
+        },
+        error: function () {
+
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let baixa_rede = document.getElementById("baixa_utilizacao");
+let media_rede = document.getElementById("media_utilizacao");
+let alta_rede = document.getElementById("alta_utilizacao");
 
 function pegarLaboratoriosQueMaisConsomem() {
     $.ajax({
@@ -285,18 +348,13 @@ function pegarLaboratoriosQueMaisConsomem() {
         data: '',
         success: function (response) {
 
-            console.log("AQUI KRL "+response[0].Nome);
-
-            let baixa = document.getElementById("baixa_utilizacao");
             let array = response;
             let size = array.length;
 
-            baixa.textContent = array[0].Nome;
-            media.textContent = array[Math.floor((size / 2))].Nome;
-            alta.textContent = array[size-1].Nome;
+            baixa_rede.textContent = array[0].Nome;
+            media_rede.textContent = array[Math.floor((size / 2))].Nome;
+            alta_rede.textContent = array[size-1].Nome;
 
-            
-            laboratorio.text(response);
         },
         error: function () {
 
@@ -304,3 +362,67 @@ function pegarLaboratoriosQueMaisConsomem() {
     });
 }
 
+let pouco_hd = document.getElementById("pouco_hd");
+let media_hd = document.getElementById("media_hd");
+let muito_hd = document.getElementById("muito_hd");
+
+function pegarQuantidadeHDsQuePossuemPoucoEspaco() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Hd/?idUsuario=" + idUsuarioLogado + "&porc=" + porcetagemMinimaHD + "&diretorio=" + diretorioHD + "&oque=poucoEspaco",
+        data: '',
+        success: function (response) {
+
+            pouco_hd.textContent = response;
+
+        },
+        error: function () {
+
+        }
+    });
+}
+
+function pegarQuantidadeHDsQuePossuemMuitoEspaco() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Hd/?idUsuario=" + idUsuarioLogado + "&porc=" + porcetagemMinimaHD + "&diretorio=" + diretorioHD + "&oque=espacoLivre",
+        data: '',
+        success: function (response) {
+
+            muito_hd.textContent = response;
+
+        },
+        error: function () {
+
+        }
+    });
+}
+
+
+function pegarQuantidadeHDsQuePossuemEspacoIdeal() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        url: api_url + "Hd/?idUsuario=" + idUsuarioLogado + "&porcIncial=" + porcetagemMinimaHD + "&porcFinal=" + porcetagemMaximaHD + "&diretorio=" + diretorioHD + "&oque=espacoIdeal",
+        data: '',
+        success: function (response) {
+
+            media_hd.textContent = response;
+
+        },
+        error: function () {
+
+        }
+    });
+}

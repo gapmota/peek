@@ -37,10 +37,13 @@ namespace peek.dist.screenSite
                 msg.To.Add(new MailAddress("monitoringvision@gmail.com")); //IDEM AO DE CIMA
 
                 cliente.Send(msg);
+
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Enviado com sucesso!')", true);
+
             }
             catch (Exception ex)
             {
-                Response.Write("Erro ao enviar mensagem " + ex.Message);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Erro ao enviar a mensagem')", true);
             }
         }
     }

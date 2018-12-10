@@ -9,9 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css"/>
+    <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <title>Nosso projeto</title>
 </head>
 <body id="bodyWork">
+    <%-- Chat --%>
+    <script>
+        window.fcWidget.init({
+            token: "6dd74831-da3e-45db-a2cd-3f487123c5c1",
+            host: "https://wchat.freshchat.com"
+        });
+    </script>
+     <%-- Fim chat --%>
     <form id="form1" runat="server">
       
     <header>
