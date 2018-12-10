@@ -13,7 +13,8 @@ namespace peek.dist.screenSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Usuario"] == null)
+                Response.Redirect("login.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)

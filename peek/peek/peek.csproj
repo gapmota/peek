@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="dist\css\styleAddLab.css" />
     <Content Include="dist\css\styleLogin.css" />
     <Content Include="dist\css\styleRegister.css" />
@@ -125,6 +126,13 @@
     <Compile Include="Controllers\Database.cs" />
     <Compile Include="Controllers\Processo.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dist\screenSite\contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
