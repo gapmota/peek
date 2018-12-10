@@ -457,7 +457,7 @@ function mostrarInfosPc(json) {
             "<label class='estilo_texto_detalhe' id= 'nome_processo'>" + json.Processos[i].Nome + "</label >" +
             "<label class='estilo_texto_detalhe' id='uso_ram_processo'>" + bytesToSize(json.Processos[i].MemoriaRamUsada) + "</label>" +
 
-            "<div class='btn_finalizar_processo' id='" + json.Computador.IdComputador + "-" + json.Processos[i].Nome + "'>Finalizar</div>" +
+            "<div class='btn_finalizar_processo' id='" + json.Computador.IdComputador + "-" + json.Processos[i].Nome + "' onclick='finalizarProcesso(this)'>Finalizar</div>" +
             "</div >";
     }
 
