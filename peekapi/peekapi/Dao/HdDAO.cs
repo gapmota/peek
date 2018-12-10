@@ -78,6 +78,17 @@ namespace peekapi.Dao
                                         DataCadastro = dr["DATA_CADASTRO"].ToString()
                                     };
 
+
+                                    try
+                                    {
+                                        h.PorcentagemUso = int.Parse(dr["PORCETAGEM_USO"].ToString());
+                                    }
+                                    catch
+                                    {
+                                        h.PorcentagemUso = 0;
+                                    }
+
+
                                     hds.Add(h);
                                 }
 
@@ -111,7 +122,7 @@ namespace peekapi.Dao
                                 AND CONVERT(int, DATEDIFF(HOUR, HD.data_cadastro, getdate()) % 24) = 0
                                 AND CONVERT(int, DATEDIFF(MINUTE, HD.data_cadastro, getdate()) % 60.0) <= 1
 								AND HD.PORCETAGEM_USO <= @PORC
-								AND HD.DIRETORIO LIKE '%"+diretorio+@"%'
+								AND HD.DIRETORIO LIKE '%" + diretorio + @"%'
 								GROUP BY HD.DIRETORIO
                                 ;";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))

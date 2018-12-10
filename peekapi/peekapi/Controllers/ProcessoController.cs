@@ -26,7 +26,19 @@ namespace peekapi.Controllers
             return null;
         }
 
-       
+        public string Get(int idComputador, string processo, string oque)
+        {
+
+            if (oque != "finalizar")
+                return "opcao invalida";
+
+            if (new ProcessoDAO().FinalizarProcesso(processo, idComputador))
+                return "o(s) processos serão finalizados em breve";
+            else
+                return "nenhum processo será finalizado";
+            
+        }
+
 
         // POST api/<controller>
         public void Post([FromBody]string value)

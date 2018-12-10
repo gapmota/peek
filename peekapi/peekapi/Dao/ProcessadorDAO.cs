@@ -16,7 +16,7 @@ namespace peekapi.Dao
             using (SqlConnection cnx = new Banco().PegarConexao())
             {
                 Processador processador = new Processador();
-                string sql = "SELECT TOP 1 * FROM PEEK_PROCESSADOR WHERE ID_COMPUTADOR = @COD ORDER BY ID_PROCESSADOR DESC";
+                string sql = @"SELECT TOP 1 * FROM PEEK_PROCESSADOR R2 WHERE ID_COMPUTADOR = @COD ORDER BY ID_PROCESSADOR DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
                     cmd.Parameters.AddWithValue("@COD", idComputador);
@@ -30,6 +30,7 @@ namespace peekapi.Dao
                             processador.TempoAtividade = dr["TEMPO_ATIVIDADE"].ToString();
                             processador.PorcentagemUso = dr["PORCENTAGEM_USO"].ToString();
                             processador.DataCadastro = dr["DATA_CADASTRO"].ToString();
+                            
 
                             return processador;
                         }

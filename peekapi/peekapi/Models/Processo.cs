@@ -8,9 +8,9 @@ namespace peekapi.Models
     public class Processo
     {
         public int IdProcesso { get; set; }
-        public long TempoInicio { get; set; }
+        public string TempoInicio { get; set; }
         public long OpenFiles { get; set; }
-        public long TempoModoUsuario { get; set; }
+        public string TempoModoUsuario { get; set; }
         public long MemoriaRamUsada { get; set; }
         public long BytesLidos { get; set; }
         public long BytesEscritos { get; set; }

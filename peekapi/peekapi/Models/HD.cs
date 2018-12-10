@@ -17,5 +17,6 @@ namespace peekapi.Models
         public int IdComputador { get; set; }
         public string DataCadastro { get; set; }
 
+        public int PorcentagemUso { get; set; }
     }
 }

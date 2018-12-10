@@ -49,6 +49,8 @@ namespace peekapi.Controllers
             info.MemoriaRam = new MemoriaRamDAO().PegarMemoriaRam(idComputador);
             info.Processador = new ProcessadorDAO().PegarProcessador(idComputador);
 
+
+
             return info;
         }
     }

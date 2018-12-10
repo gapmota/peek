@@ -16,7 +16,7 @@ namespace peekapi.Dao
             using (SqlConnection cnx = new Banco().PegarConexao())
             {
                 MemoriaRam memoria = new MemoriaRam();
-                string sql = "SELECT TOP 1 * FROM PEEK_MEMORIA_RAM WHERE ID_COMPUTADOR = @COD ORDER BY ID_MEMORIA_RAM DESC";
+                string sql = @"SELECT TOP 1 * FROM PEEK_MEMORIA_RAM R2 WHERE ID_COMPUTADOR = @COD ORDER BY ID_MEMORIA_RAM DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
                     cmd.Parameters.AddWithValue("@COD", idComputador);
@@ -31,7 +31,8 @@ namespace peekapi.Dao
                             memoria.Livre = double.Parse(dr["LIVRE"].ToString());
                             memoria.EmUso = double.Parse(dr["EM_USO"].ToString());
                             memoria.DataCadastro = dr["DATA_CADASTRO"].ToString();
-                            
+                            memoria.PorcentagemUso = int.Parse(dr["PORCENTAGEM_USO"].ToString());
+
                             return memoria;
                         }
                         return null;

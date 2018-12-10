@@ -14,5 +14,6 @@ namespace peekapi.Models
         public double EmUso { get; set; }
         public string DataCadastro { get; set; }
         public int IdComputador { get; set; }
+        public int PorcentagemUso { get; set; }
     }
 }
