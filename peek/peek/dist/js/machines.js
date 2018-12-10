@@ -20,7 +20,7 @@ function fechar() {
 
 function finalizarProcesso(div) {
 
-    let array = div.split("-");
+    let array = div.id.split("-");
 
     let idPc = array[0];
     let processo = array[1];

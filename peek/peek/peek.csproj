@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Database.cs" />
+    <Compile Include="Controllers\Processo.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="dist\screenSite\contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
