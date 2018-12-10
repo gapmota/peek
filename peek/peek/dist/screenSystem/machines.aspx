@@ -9,10 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/temp.css" />
     <title>Peek - Maquinas Do Lab</title>
 </head>
 <body id="body-menu" class="bodyMaq">
     <header>
+
         <div class="imgLogo"></div>
         <div class="menu-btn">
             <div class="btn-line"></div>
@@ -52,13 +54,37 @@
         </nav>
     </header>
 
+
+    <div id="modal_process" class="fnd_modal_machines_off">
+        <div id="modal_machine">
+         <div id="fechar" onclick="fechar()"></div>
+            <div class="header">
+                <p class="estilo_texto_header" id="id_computador_modal">ID: 52</p>
+                <p class="estilo_texto_header" id="processador_modal">Processador: Intel I3 | Usando 70%</p>
+                <p class="estilo_texto_header" id="ram_modal">Memoria Ram: 8GB | Usando 50%</p>
+                <p class="estilo_texto_header" id="downladUpload_modal">Download: 50mbps | Upload: 10mbps</p>
+                <p class="estilo_texto_header" id="hd_modal">C: 80% Espaço livre | D: 60% Livre</p>
+            </div>   
+            <div class="processos_ativos">
+                
+                <div id="area_processos">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main id="maquinasLab" class="maqui-lab">
         <h1 class="title-heading">Controle de <span class="text-secondary">Maquinas</span></h1>
         <asp:Panel ID="machines" class="boxMachines" runat="server">
         </asp:Panel>
     </main>
 
+
+
     <script src="../js/main.js"></script>
     <script src="../js/machines.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
