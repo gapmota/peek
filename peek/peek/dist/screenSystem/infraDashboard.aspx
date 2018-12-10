@@ -55,7 +55,7 @@
                 </div>
                 <div class="menu-nav">
                     <li class="nav-item">
-                        <a href="../screenSystem/addLab.aspx" class="nav-link">
+                        <a href="addLab.aspx" class="nav-link">
                             <i class="fas fa-flask"></i>
                             Laboratórios 
                         </a>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="login.aspx" class="nav-link">
                             <i class="fas fa-power-off"></i>
                             Sair                         
                         </a>
