@@ -11,7 +11,7 @@ import oshi.hardware.HWDiskStore;
 import oshi.software.os.OSFileStore;
 
 public class HDController {
-    
+
     private ComputadorDAO pcDAO = null;
     private String mensagemPadraoParticao = "###";
     private SystemInfo systemInfo = null;
@@ -21,13 +21,13 @@ public class HDController {
     }
 
     public List<OSFileStore> getInformacoesHd() {
-         OSFileStore[] hds = new SystemInfo().getOperatingSystem().getFileSystem().getFileStores();
+        OSFileStore[] hds = new SystemInfo().getOperatingSystem().getFileSystem().getFileStores();
         List<OSFileStore> listOS = new ArrayList<>();
         String ret = "";
         for (int i = 0; i < hds.length; i++) {
 
             if (hds[i].getDescription().equalsIgnoreCase("Fixed drive")) {
-                listOS.add(new OSFileStore(hds[i].getName(), hds[i].getVolume(), hds[i].getMount(), hds[i].getDescription(), hds[i].getType(), hds[i].getUUID(),hds[i].getUsableSpace(), hds[i].getTotalSpace()));
+                listOS.add(new OSFileStore(hds[i].getName(), hds[i].getVolume(), hds[i].getMount(), hds[i].getDescription(), hds[i].getType(), hds[i].getUUID(), hds[i].getUsableSpace(), hds[i].getTotalSpace()));
             }
         }
 
@@ -40,8 +40,8 @@ public class HDController {
         //return systemInfo.getHardware().getDiskStores()[indexHD].getPartitions()[indexParticao].get
         return 00000;//systemInfo.getHardware().getDisk;
     }
-    
-    public void atualizarHd(){
+
+    public void atualizarHd() {
         pcDAO = new ComputadorDAO();
         try {
             pcDAO.atualizarHd();

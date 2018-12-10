@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import model.Usuario;
 import controller.LaboratorioController;
+import controller.NotificacaoController;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -101,12 +102,11 @@ public class JanelaCadastrarPC extends JanelaPadrao implements ActionListener {
             this.setVisible(false);
             JOptionPane.showMessageDialog(this, "Iniciando a coleta de dados...");
             new ComputadorController().coletarInformacoes();
-            new ComputadorController().enviarSlack();
-            
-            
+            new NotificacaoController().novaMaquina();
+
         } else {
             JOptionPane.showMessageDialog(this, "selecione um laboratório");
-            
+
         }
 
     }
@@ -121,7 +121,5 @@ public class JanelaCadastrarPC extends JanelaPadrao implements ActionListener {
         }
 
     }
-    
-    
 
 }
