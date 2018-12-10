@@ -162,8 +162,11 @@ function drawChart() {
     optionsGoogle = {
         width: 400,
         height: 240,
-        colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
-    };
+        
+        redFrom: 90, redTo: 100,
+        yellowFrom: 51, yellowTo: 100,
+        greenFrom: 0, greenTo: 50,
+        minorTicks: 5    };
 
     chartGoogle = new google.visualization.Gauge(document.getElementById('procGraphi'));
 
