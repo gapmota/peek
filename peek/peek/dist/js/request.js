@@ -445,10 +445,8 @@ function mostrarInfosPc(json) {
     download.textContent = "Download: " + json.Rede.VelocidadeDownload + " | Upload: " + json.Rede.VelocidadeUpload;
     hd.textContent = "HD: ";
 
-    
-
     for (var i = 0; i < json.Hd.length; i++) {
-        hd.textContent += json.Hd[i].Diretorio + " usando " + json.Hd[i].Diretorio.PorcentagemUso + "% |";
+        hd.textContent += json.Hd[i].Diretorio + " usando " + json.Hd[i].PorcentagemUso + "% | ";
     }
 
     for (var i = 0; i < json.Processos.length; i++) {
