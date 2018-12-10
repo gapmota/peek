@@ -24,7 +24,7 @@ namespace peek.dist.screenSystem
 
             if (usuario != null)
             {
-                Session["USUARIO"] = usuario;
+                Session["Usuario"] = usuario;
                 Response.Redirect("infraDashboard.aspx");
             }
             else
