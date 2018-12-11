@@ -37,18 +37,19 @@ public class MemoriaRam {
 
     }
 
-    public int getPorcentagemUso(){
-       
-        return (int)((this.getUsando() * 100.0) / this.getTotal());
+    public int getPorcentagemUso() {
+
+        return (int) ((this.getUsando() * 100.0) / this.getTotal());
     }
-    
+
     /**
      * RETORNA UM VALOR EM BYTE PARA GB USANDO O FormUtil
+     *
      * @param num
      * @return byte para gb em double
      */
-    private double toDouble(long num){
-        return Double.parseDouble(FormatUtil.formatBytes(num).split(" ")[0].replace(",","."));
+    private double toDouble(long num) {
+        return Double.parseDouble(FormatUtil.formatBytes(num).split(" ")[0].replace(",", "."));
     }
-    
+
 }

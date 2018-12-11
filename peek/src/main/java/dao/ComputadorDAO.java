@@ -6,6 +6,7 @@ import controller.RedeController;
 import java.sql.CallableStatement;
 import java.util.List;
 import controller.*;
+import controller.NotificacaoController;
 
 import model.MAC;
 
@@ -24,7 +25,7 @@ public class ComputadorDAO {
         HDController hc = new HDController();
         Connection cnx = new Banco().getInstance();
         int idComputador = new SelectPEEK().getIdComputador();
-        for(OSFileStore p : hc.getInformacoesHd()){
+        for (OSFileStore p : hc.getInformacoesHd()) {
             String SQL = "INSERT INTO PEEK_HD(TOTAL,USADO,DIRETORIO,UUID,TIPO_DIR,VOLUME,ID_COMPUTADOR, PORCETAGEM_USO) VALUES (?,?,?,?,?,?,?,?)";
 
             try {
@@ -47,13 +48,12 @@ public class ComputadorDAO {
         }
     }
 
-    
-    private long calculoPorcEspacoLivre(long total, long usando){
-        
+    private long calculoPorcEspacoLivre(long total, long usando) {
+
         return (usando * 100) / total;
-        
+
     }
-    
+
     public String cadastroInicial(int idLab) {
 
         List<MAC> macs = new RedeController().getMacsPC();
@@ -161,7 +161,7 @@ public class ComputadorDAO {
             ps.setString(2, computador.getProcessador().getNomeProcessador());
             ps.setString(3, computador.getRede().getMacParaCadastroInicial());
             ps.setInt(4, idLab);
-            
+
             if (ps.executeUpdate() > 0) {
                 cnx.commit();
                 System.out.println("COMPUTADOR CRIADO");
@@ -209,8 +209,6 @@ public class ComputadorDAO {
      * @param computador COMPUTADOR QUE ACABOU DE SER CADASTRADO
      * @return ULTIMO ID_COMPUTADOR CADASTRADO
      */
-    
-  
     /**
      * METODO PARA CADASTRAR TODOS OS MAC ADDRESS DO COMPUTADOR
      *
@@ -292,7 +290,7 @@ public class ComputadorDAO {
         *   algum erro.
      */
     public void atualizacaoAutomatica() throws SQLException, InterruptedException {
-        
+
         Computador c = new Computador();
 
         Connection cnx = new Banco().getInstance();
@@ -313,6 +311,7 @@ public class ComputadorDAO {
             ps.setDouble("@EM_USO", c.getRam().getUsando());
             ps.setInt("@PORCENTAGEM_USO_RAM", c.getRam().getPorcentagemUso());
             ps.execute();
+<<<<<<< HEAD
             
             String processos_ = "";
             for(OSProcess o : c.getProcesso().getProcessos()){
@@ -326,7 +325,18 @@ public class ComputadorDAO {
                                             +""+c.getRam().getTotal()+System.getProperty("line.separator")+ "REDE IPV4: "+ c.getRede().getIPv4()+""
                                                     +"REDE IPV6: "+ c.getRede().getIPv6());
             
+=======
+
+            new log_peek.arquivoLog("TEMPO_ATIVIDADE: " + c.getProcessador().getTempoAtividade().getBytes() + "\n" + "HD" + c.getHD().getInformacoesHd() + "\n" + "PROCESSO" + c.getProcesso() + "\n" + "MERORIA RAM" + c.getRam().getDisponivel() + "\n" + "" + c.getRam().getTotal() + "\n" + "REDE" + c.getRede());
+
+>>>>>>> af3c40938b6334f0733373bbfd6cde3e7b4e78a5
             System.out.println("atualizado..");
+            if (c.getRam().getPorcentagemUso() > 70) {
+                new NotificacaoController().usoMemoriaRAM();
+            }
+            if (c.getProcessador().getPorcetagemDeUso() > 70) {
+                new NotificacaoController().usoProcessador();
+            }
             
         } catch (SQLException sqlEx) {
             System.out.println("Algum erro aconteceu...");

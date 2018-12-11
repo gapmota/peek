@@ -1,4 +1,3 @@
-
 package controller;
 
 import aplicacao.App;
@@ -17,13 +16,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Computador;
 
-
 public class NotificacaoController {
- 
+
     Computador c = new Computador();
-    
-    public void enviarSlack(String texto)
-    {
+
+    public void enviarSlack(String texto) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
 
@@ -33,7 +30,7 @@ public class NotificacaoController {
                 .channel("#avisos-peek")
                 .username("Integrador")
                 .iconEmoji(":smile_cat:")
-                .text(texto  + df.format(date))
+                .text(texto + df.format(date))
                 .build();
 
         Slack slack = Slack.getInstance();
@@ -43,31 +40,26 @@ public class NotificacaoController {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private boolean usoProcessador()
-    {
-        if(c.getProcessador().getPorcetagemDeUso() > 5) 
-        {
-            
-            new NotificacaoController().enviarSlack("Alto consumo do processador");
-            return true;
-        }
-        else
-        {
-           return false; 
-        }
+
+    public boolean iniciarSistema() {
+
+        new NotificacaoController().enviarSlack("Sistema iniciado ");
+        return true;
+    }
+
+    public void usoProcessador() {
+        new NotificacaoController().enviarSlack("Alto consumo do processador ");
+    }
+
+    public void usoMemoriaRAM() {
+        new NotificacaoController().enviarSlack("Alto consumo de RAM ");
     }
     
-    private boolean usoMemoriaRAM()
-    {
-        if(c.getRam().getPorcentagemUso() > 5)
-        {
-            new NotificacaoController().enviarSlack("Alto consumo de RAM");
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public void hdCheio() {
+        new NotificacaoController().enviarSlack("HD quase cheio ");
+    }
+
+    public void novaMaquina() {
+        new NotificacaoController().enviarSlack("Nova máquina cadastrada ");
     }
 }

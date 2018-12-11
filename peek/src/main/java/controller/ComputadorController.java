@@ -185,26 +185,4 @@ public class ComputadorController {
         }).start();
 
     }
-
-    // Método de enviar mensagens no slack através do Tobias
-    public void enviarSlack() {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-
-        String url = "https://hooks.slack.com/services/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";
-
-        Payload payload = Payload.builder()
-                .channel("#avisos-peek")
-                .username("Integrador")
-                .iconEmoji(":smile_cat:")
-                .text("Iniciado o sistema: " + df.format(date))
-                .build();
-
-        Slack slack = Slack.getInstance();
-        try {
-            WebhookResponse response = slack.send(url, payload);
-        } catch (IOException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

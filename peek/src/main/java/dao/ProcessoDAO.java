@@ -51,7 +51,6 @@ public class ProcessoDAO {
                 p.setFlag(rs.getBoolean("FLAG_FINALIZAR"));
                 p.setDataCadastro(rs.getString("DATE_TIME"));
                 p.setIdComputador(idComputador);
-                p.setUsaInternet(rs.getInt("USA_INTERNET"));
                 
 
                 list.add(p);
