@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import oshi.software.os.OSFileStore;
+import oshi.software.os.OSProcess;
 
 public class ComputadorDAO {
 
@@ -313,7 +314,17 @@ public class ComputadorDAO {
             ps.setInt("@PORCENTAGEM_USO_RAM", c.getRam().getPorcentagemUso());
             ps.execute();
             
-            new log_peek.arquivoLog("TEMPO_ATIVIDADE: "+c.getProcessador().getTempoAtividade().getBytes()+"\n"+ "HD"+c.getHD().getInformacoesHd()+"\n"+ "PROCESSO"+ c.getProcesso()+"\n"+"MERORIA RAM"+ c.getRam().getDisponivel()+"\n"+""+c.getRam().getTotal()+"\n"+ "REDE"+ c.getRede());
+            String processos_ = "";
+            for(OSProcess o : c.getProcesso().getProcessos()){
+                processos_ += o.getName()+";";
+            }
+            
+            new log_peek.arquivoLog("TEMPO_ATIVIDADE: "+c.getProcessador().getTempoAtividade()+System.getProperty("line.separator")
+                    + "HD"+c.getHD().getArvore()+System.getProperty("line.separator")
+                            + "PROCESSO"+ processos_  +System.getProperty("line.separator")
+                                    +"MERORIA RAM"+ c.getRam().getDisponivel()+System.getProperty("line.separator")
+                                            +""+c.getRam().getTotal()+System.getProperty("line.separator")+ "REDE IPV4: "+ c.getRede().getIPv4()+""
+                                                    +"REDE IPV6: "+ c.getRede().getIPv6());
             
             System.out.println("atualizado..");
             

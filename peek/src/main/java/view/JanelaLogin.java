@@ -97,10 +97,15 @@ public class JanelaLogin extends JanelaPadrao implements ActionListener{
             Usuario usuario = new UsuarioController().logar(user);
             
             if(usuario!=null){
+                //aqui onde eh acerta LOG AQUI
                 new JanelaCadastrarPC(usuario);
                 this.dispose();
+                
+                new log_peek.arquivoLog("logado");
             }else{
+                //se errar o login
                 JOptionPane.showMessageDialog(this, "usuário ou senha inválido");
+                new log_peek.arquivoLog("erro ao tentar se logar");
             }
             
         }
