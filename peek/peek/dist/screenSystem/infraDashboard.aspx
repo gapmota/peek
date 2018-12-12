@@ -147,17 +147,17 @@
                 <div class="lab1">
                     <div class="legenda">ALTA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="alta_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
                 <div class="lab2">
                     <div class="legenda">MÉDIA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="media_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
                 <div class="lab3">
                     <div class="legenda">BAIXA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="baixa_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
             </div>
         </div>
