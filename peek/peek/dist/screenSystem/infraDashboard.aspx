@@ -86,8 +86,10 @@
                     </div>
 					<div class="processos">
                         <div class="legenda">HD e RAM - Média</div>
-                        <p id="mediaUsoProcessador"></p>
-                        <p id="mediaUsoMemoriaRam"></p>
+                        <div class="mediaProcessador"><p id="mediaUsoProcessador"></p> </div>                        
+                        <div class="mediaProcessador"><p id="mediaUsoMemoriaRam"></p></div>
+                        <div class="mediaProcessadorFrase">PROCESSADOR</div>
+                        <div class="mediaProcessadorFrase">RAM</div>
                     </div>
 					<div class="qtdMaquinas">
                         <div class="legenda">MÁQUINAS</div>

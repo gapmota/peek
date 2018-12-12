@@ -4,13 +4,13 @@
   right: 35px;
   top: 35px;
   cursor: pointer;
-  transition: all 1.5s ease-out; }
+  transition: all 1s ease-out; }
   .menu-btn .btn-line {
     width: 28px;
     height: 3px;
     margin: 0 0 5px 0;
     background: #fff;
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
   .menu-btn.close {
     transform: rotate(180deg); }
     .menu-btn.close .btn-line:nth-child(1) {
@@ -43,12 +43,12 @@
     background: #3a3939;
     list-style: none;
     transform: translate3d(0, -100%, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
     transform: translate3d(0, -100%, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     .menu-branding.show {
       transform: translate3d(0, 0, 0); }
     .menu-branding .portrait {
@@ -59,7 +59,7 @@
       border: solid 3px #eb2ebc; }
   .menu .nav-item {
     transform: translate3d(600px, 0, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     .menu .nav-item.show {
       transform: translate3d(0, 0, 0); }
     .menu .nav-item.current > a {
@@ -73,7 +73,7 @@
     font-weight: 300;
     color: #fff;
     text-decoration: none;
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     .menu .nav-link:hover {
       color: #eb2ebc; }
 
@@ -123,13 +123,13 @@ body#body-menu .menu {
     background: #3a3939;
     list-style: none;
     transform: translate3d(-100%, 0, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     body#body-menu .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   body#body-menu .menu-branding {
     background: #3a3939;
     transform: translate3d(-100%, 0, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     body#body-menu .menu-branding.show {
       transform: translate3d(0, 0, 0); }
     body#body-menu .menu-branding .portrait {
@@ -148,11 +148,11 @@ body#body-menu .menu {
     font-weight: 300;
     color: #fff;
     text-decoration: none;
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
     body#body-menu .menu .nav-link:hover {
       color: #eb2ebc; }
 
-body {
+#body-menu {
   overflow: hidden; }
 
 div#dashboardInfra {
@@ -185,15 +185,14 @@ div#dashboardInfra {
   div#dashboardInfra .processos {
     background: #3a3939;
     height: 35vh;
-    width: 60vh; }
+    width: 65vh; }
   div#dashboardInfra .usoProcessos {
     background: #3a3939;
     height: 35vh;
     width: 90vh; }
   div#dashboardInfra .qtdMaquinas {
     background: #3a3939;
-    height: 35vh;
-    width: 24vh; }
+    height: 35vh; }
   div#dashboardInfra .bonusDash {
     background: #3a3939;
     height: 35vh; }
@@ -287,7 +286,7 @@ div#dashboardRede {
       background-color: #545353;
       font-size: 25px;
       text-align: center;
-      padding: 3vh;
+      padding: 2vh;
       margin: 3vh; }
 
 .btn-dash {
@@ -298,28 +297,49 @@ div#dashboardRede {
   position: fixed;
   cursor: pointer;
   color: #e0e0e0;
-  transition: all 1.5s ease-out; }
+  transition: all 1s ease-out; }
   .btn-dash.close {
     transform: rotate(180deg);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
 
 #dashboardInfra {
-  transition: all 1.5s ease-out;
+  transition: all 1s ease-out;
   width: 100%;
   position: absolute; }
   #dashboardInfra.show {
     visibility: visible;
     transform: translate3d(0, 100%, 0);
-    transition: all 1.5s ease-out; }
+    transition: all 1s ease-out; }
   #dashboardInfra #media_hd, #dashboardInfra #pouco_hd, #dashboardInfra #muito_hd {
+    margin: 4vh;
     font-size: 50px;
-    padding-left: 85px; }
+    text-align: center;
+    padding: 5vh;
+    background-color: #424040; }
   #dashboardInfra .BoxComputers {
     font-size: 50px;
     padding-left: 55px;
     padding-top: 55px; }
   #dashboardInfra .BoxLabs {
     font-size: 45px; }
+  #dashboardInfra .mediaProcessador, #dashboardInfra .mediaRam {
+    display: inline-block;
+    width: 45%;
+    margin-left: 2vh;
+    margin-top: 2vh;
+    padding: 1vh;
+    background-color: #424040; }
+    #dashboardInfra .mediaProcessador p, #dashboardInfra .mediaRam p {
+      font-size: 30px;
+      text-align: center; }
+  #dashboardInfra .mediaProcessadorFrase {
+    text-align: center;
+    font-size: 20px;
+    display: inline-block;
+    width: 45%;
+    margin-left: 2vh;
+    padding: 2vh;
+    background-color: #4e4e4e; }
 
 body.backBodyLab {
   background: url(../img/back-linhas.jpg);
@@ -490,7 +510,7 @@ main {
       padding: 0.4rem; }
       main .icons a:hover {
         color: #eb2ebc;
-        transition: all 1.5s ease-out; }
+        transition: all 1s ease-out; }
   main#home {
     overflow: hidden; }
     main#home h1 {
@@ -575,7 +595,7 @@ body#bodyWork {
     .projects img:hover {
       opacity: 0.5;
       border-color: #eb2ebc;
-      transition: all 1.5s ease-out; }
+      transition: all 1s ease-out; }
 
 .item i {
   padding: 1vh;

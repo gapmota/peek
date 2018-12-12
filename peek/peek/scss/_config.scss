@@ -10,7 +10,7 @@ $background-opacity: 0.9;
 
 //cria um efeito de transição que pode ser chamado depois
 @mixin easeOut {
-    transition: all 1.5s ease-out;
+    transition: all 1s ease-out;
 }
 
 //coloca img de fundo no body (com id bg-img), se $show-home-image for true

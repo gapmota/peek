@@ -69,7 +69,7 @@
         <div class="projects">
             <div class="item">
                 <a href="#!">
-                    <img src="../img/projects/project1.jpeg" alt="Project">
+                    <img src="../img/projects/dashRede.jpg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
                      Ver mais <i class="far fa-eye"></i>
@@ -77,7 +77,7 @@
             </div>
             <div class="item">
                 <a href="#!">
-                    <img src="../img/projects/project2.jpeg" alt="Project">
+                    <img src="../img/projects/responsa.jpg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
                      Ver mais <i class="far fa-eye"></i>
@@ -85,7 +85,7 @@
             </div>
             <div class="item">
                 <a href="#!">
-                    <img src="../img/projects/project3.jpeg" alt="Project">
+                    <img src="../img/projects/dashInfra.jpg" alt="Project">
                 </a>
                 <a href="#" class="btn-light">
                      Ver mais <i class="far fa-eye"></i>

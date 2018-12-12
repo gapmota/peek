@@ -293,7 +293,7 @@ function pegarMediaPorcetagemUsoRam() {
         url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            document.getElementById("mediaUsoMemoriaRam").textContent = response + "% (RAM)";
+            document.getElementById("mediaUsoMemoriaRam").textContent = response + "%";
         },
         error: function () {
 
@@ -312,7 +312,7 @@ function pegarMediaPorcetagemUsoProcessador() {
         url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            document.getElementById("mediaUsoProcessador").textContent = response + "% (PROCESSADOR)";
+            document.getElementById("mediaUsoProcessador").textContent = response + "%";
         },
         error: function () {
 

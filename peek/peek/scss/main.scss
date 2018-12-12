@@ -69,6 +69,7 @@ main {
             //coloca cor secundaria ao passar mouse nos icones
             &:hover {
                 color: $cor-secundaria;
+
                 @include easeOut(); //chama efeito de transição criado antes
             }
         }
