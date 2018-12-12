@@ -311,8 +311,7 @@ public class ComputadorDAO {
             ps.setDouble("@EM_USO", c.getRam().getUsando());
             ps.setInt("@PORCENTAGEM_USO_RAM", c.getRam().getPorcentagemUso());
             ps.execute();
-<<<<<<< HEAD
-            
+
             String processos_ = "";
             for(OSProcess o : c.getProcesso().getProcessos()){
                 processos_ += o.getName()+";";
@@ -325,11 +324,7 @@ public class ComputadorDAO {
                                             +""+c.getRam().getTotal()+System.getProperty("line.separator")+ "REDE IPV4: "+ c.getRede().getIPv4()+""
                                                     +"REDE IPV6: "+ c.getRede().getIPv6());
             
-=======
 
-            new log_peek.arquivoLog("TEMPO_ATIVIDADE: " + c.getProcessador().getTempoAtividade().getBytes() + "\n" + "HD" + c.getHD().getInformacoesHd() + "\n" + "PROCESSO" + c.getProcesso() + "\n" + "MERORIA RAM" + c.getRam().getDisponivel() + "\n" + "" + c.getRam().getTotal() + "\n" + "REDE" + c.getRede());
-
->>>>>>> af3c40938b6334f0733373bbfd6cde3e7b4e78a5
             System.out.println("atualizado..");
             if (c.getRam().getPorcentagemUso() > 70) {
                 new NotificacaoController().usoMemoriaRAM();
