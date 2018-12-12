@@ -81,11 +81,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="dist\css\styleAddLab.css" />
     <Content Include="dist\css\styleLogin.css" />
     <Content Include="dist\css\styleRegister.css" />
+    <Content Include="dist\css\temp.css" />
+    <Content Include="dist\img\back-linhas.jpg" />
+    <Content Include="dist\img\background.jpeg" />
+    <Content Include="dist\img\bruno.jpg" />
+    <Content Include="dist\img\covos.jpg" />
+    <Content Include="dist\img\eu.jpg" />
+    <Content Include="dist\img\flag.jpg" />
+    <Content Include="dist\img\logoDash.png" />
+    <Content Include="dist\img\michel.jpg" />
+    <Content Include="dist\img\mota.jpg" />
+    <Content Include="dist\img\projects\project1.jpeg" />
+    <Content Include="dist\img\projects\project2.jpeg" />
+    <Content Include="dist\img\projects\project3.jpeg" />
+    <Content Include="dist\img\projects\project4.jpeg" />
+    <Content Include="dist\img\projects\project5.jpeg" />
+    <Content Include="dist\img\userFoto.png" />
     <Content Include="dist\js\graphics.js" />
     <Content Include="dist\js\machines.js" />
+    <Content Include="dist\js\machine_view.js" />
     <Content Include="dist\js\refresh.js" />
     <Content Include="dist\screenSite\contact.aspx" />
     <Content Include="dist\screenSystem\addLab.aspx" />
@@ -106,7 +124,15 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Database.cs" />
+    <Compile Include="Controllers\Processo.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dist\screenSite\contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,6 +206,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\img\projects\Thumbs.db" />
+    <Content Include="dist\img\Thumbs.db" />
     <None Include="packages.config" />
     <Content Include="scss\main.scss" />
     <Content Include="scss\_ad-lab.scss" />
@@ -190,6 +218,8 @@
     <Content Include="scss\_mobile.scss" />
     <Content Include="scss\_contato.scss" />
     <Content Include="scss\_maqLab.scss" />
+    <None Include="Properties\PublishProfiles\peeksystem - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\peeksystem - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

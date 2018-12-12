@@ -236,8 +236,8 @@ function pegarInformacoesCompletasPC(idComputador) {
         url: api_url + "InfoComputador/?idComputador=" + idComputador,
         data: '',
         success: function (response) {
-          //  console.log(response);
-           
+            //  console.log(response);
+            mostrarInfosPc(response);
         },
         error: function () {
 
@@ -426,3 +426,48 @@ function pegarQuantidadeHDsQuePossuemEspacoIdeal() {
         }
     });
 }
+
+
+let id_pc = document.getElementById("id_computador_modal");
+let processador = document.getElementById("processador_modal");
+let ram = document.getElementById("ram_modal");
+let download = document.getElementById("downladUpload_modal");
+let hd = document.getElementById("hd_modal");
+
+let cnx = document.getElementById("area_processos");
+
+function mostrarInfosPc(json) {
+    
+
+    id_pc.textContent = json.Computador.IdComputador;
+    processador.textContent = json.Computador.DescricaoProcessador + " | Usando: " + json.Processador.PorcentagemUso + "%";
+    ram.textContent = "Memoria Ram Total: " + json.MemoriaRam.Total + " | Em uso: " + json.MemoriaRam.PorcentagemUso + "%";
+    download.textContent = "Download: " + json.Rede.VelocidadeDownload + " | Upload: " + json.Rede.VelocidadeUpload;
+    hd.textContent = "HD: ";
+
+    for (var i = 0; i < json.Hd.length; i++) {
+        hd.textContent += json.Hd[i].Diretorio + " usando " + json.Hd[i].PorcentagemUso + "% | ";
+    }
+
+    for (var i = 0; i < json.Processos.length; i++) {
+        cnx.innerHTML += "<div class='processo_detalhe'>" +
+
+            "<label class='estilo_texto_detalhe' id= 'nome_processo'>" + json.Processos[i].Nome + "</label >" +
+            "<label class='estilo_texto_detalhe' id='uso_ram_processo'>" + bytesToSize(json.Processos[i].MemoriaRamUsada) + "</label>" +
+
+            "<div class='btn_finalizar_processo' id='" + json.Computador.IdComputador + "-" + json.Processos[i].Nome + "' onclick='finalizarProcesso(this)'>Finalizar</div>" +
+            "</div >";
+    }
+
+
+
+}
+
+function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return '0 Byte';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+};
+
+

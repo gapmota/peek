@@ -16,6 +16,10 @@ namespace peek.dist
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["Usuario"] == null)
+                Response.Redirect("login.aspx");
+
             verLabs();
             Carregar();
         }

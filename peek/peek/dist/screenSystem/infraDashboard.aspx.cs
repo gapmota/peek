@@ -17,6 +17,13 @@ namespace peek.dist.css
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["Usuario"] == null)
+                Response.Redirect("login.aspx");
+
+
+
+
             #region Contar e visualizar os computadores
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {

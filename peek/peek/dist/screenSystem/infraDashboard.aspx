@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <link rel="stylesheet" href="../css/main.css" />
+    
     <title>Peek - Dashboard</title>
     <style>
         #mediaUsoProcessador {
@@ -54,7 +55,7 @@
                 </div>
                 <div class="menu-nav">
                     <li class="nav-item">
-                        <a href="../screenSystem/addLab.aspx" class="nav-link">
+                        <a href="addLab.aspx" class="nav-link">
                             <i class="fas fa-flask"></i>
                             Laboratórios 
                         </a>
@@ -66,7 +67,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="login.aspx" class="nav-link">
                             <i class="fas fa-power-off"></i>
                             Sair                         
                         </a>
@@ -146,17 +147,17 @@
                 <div class="lab1">
                     <div class="legenda">ALTA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="alta_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
                 <div class="lab2">
                     <div class="legenda">MÉDIA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="media_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
                 <div class="lab3">
                     <div class="legenda">BAIXA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
                     <p id="baixa_utilizacao" class="nomeLab3"></p>
-                    <a href="#" class="btn-dark Enc">Encerrar Processos</a>
+                    <a href="machines.aspx" class="btn-dark Enc">Encerrar Processos</a>
                 </div>
             </div>
         </div>

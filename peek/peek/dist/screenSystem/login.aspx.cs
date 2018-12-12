@@ -14,7 +14,8 @@ namespace peek.dist.screenSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Usuario"] != null)
+                Response.Redirect("infraDashboard.aspx");
         }
 
         protected void btnEnviar_Click(object sender, EventArgs e)
@@ -23,7 +24,7 @@ namespace peek.dist.screenSystem
 
             if (usuario != null)
             {
-                Session["USUARIO"] = usuario;
+                Session["Usuario"] = usuario;
                 Response.Redirect("infraDashboard.aspx");
             }
             else

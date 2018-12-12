@@ -24,26 +24,20 @@
                 <div class="portrait"></div>
             </div>
             <div class="menu-nav">
-                <li class="nav-item current">
-                    <a href="#" class="nav-link">
+                                <li class="nav-item">
+                    <a href="infraDashboard.aspx" class="nav-link">
                         <i class="far fa-user"></i>
-                        Meu Perfil                         
+                        Dashboard                        
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="addLab.aspx" class="nav-link">
                         <i class="fas fa-flask"></i>
                         Laboratórios 
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-bell"></i>
-                        Notificações                        
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="login.aspx" class="nav-link">
                         <i class="fas fa-power-off"></i>
                         Sair                         
                     </a>
