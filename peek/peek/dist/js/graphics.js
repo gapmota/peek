@@ -155,17 +155,13 @@ function drawChart() {
 
     dataGoogle = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
-        ['Download', 100],
-        ['Upload', 100],
+        ['Download', 50],
+        ['Upload', 50],
     ]);
 
     optionsGoogle = {
         width: 400,
         height: 240,
-        
-        redFrom: 90, redTo: 100,
-        yellowFrom: 51, yellowTo: 100,
-        greenFrom: 0, greenTo: 50,
         minorTicks: 5    };
 
     chartGoogle = new google.visualization.Gauge(document.getElementById('procGraphi'));

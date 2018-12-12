@@ -193,7 +193,7 @@ div#dashboardInfra {
   div#dashboardInfra .qtdMaquinas {
     background: #3a3939;
     height: 35vh;
-    width: 28vh; }
+    width: 24vh; }
   div#dashboardInfra .bonusDash {
     background: #3a3939;
     height: 35vh; }
@@ -311,6 +311,15 @@ div#dashboardRede {
     visibility: visible;
     transform: translate3d(0, 100%, 0);
     transition: all 1.5s ease-out; }
+  #dashboardInfra #media_hd, #dashboardInfra #pouco_hd, #dashboardInfra #muito_hd {
+    font-size: 50px;
+    padding-left: 85px; }
+  #dashboardInfra .BoxComputers {
+    font-size: 50px;
+    padding-left: 55px;
+    padding-top: 55px; }
+  #dashboardInfra .BoxLabs {
+    font-size: 45px; }
 
 body.backBodyLab {
   background: url(../img/back-linhas.jpg);

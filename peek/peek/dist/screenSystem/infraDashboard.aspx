@@ -81,16 +81,16 @@
                 <div class="legendaMaster">DADOS DOS LABORATÓRIOS</div>
                 <div class="grid1">
                     <div class="histDesemp">
-                        <div class="legenda">HISTORICO DE DESEMPENHO</div>
+                        <div class="legenda">HISTORICO DE DESEMPENHO - PROCESSADOR</div>
                         <canvas id="infraHistory"></canvas>
                     </div>
 					<div class="processos">
-                        <div class="legenda">PROCESSOS</div>
+                        <div class="legenda">HD e RAM - Média</div>
                         <p id="mediaUsoProcessador"></p>
                         <p id="mediaUsoMemoriaRam"></p>
                     </div>
 					<div class="qtdMaquinas">
-                        <div class="legenda">QUANTIDADE DE MÁQUINAS</div>
+                        <div class="legenda">MÁQUINAS</div>
                         <div class="BoxComputers">
                             <asp:Label Text="" ID="lblComp" runat="server" onClick="seeMaquinas()" />
                         </div>
@@ -98,15 +98,15 @@
                 </div>
                 <div class="grid2">
 					<div class="bonusDash">
-                        <div class="legenda">DECIDIR <i class="fas fa-circle A"></i></div>
+                        <div class="legenda">HD - alto <i class="fas fa-circle A"></i></div>
                         <p id="pouco_hd"></p>
                     </div>
 					<div class="bonusDash">
-                        <div class="legenda">DECIDIR <i class="fas fa-circle B"></i></div>
+                        <div class="legenda">HD - Médio <i class="fas fa-circle B"></i></div>
                         <p id="media_hd"></p>
                     </div>
 					<div class="bonusDash">
-                        <div class="legenda">DECIDIR <i class="fas fa-circle C"></i></div>
+                        <div class="legenda">HD - Baixo <i class="fas fa-circle C"></i></div>
                         <p id="muito_hd"></p>
                     </div>  
                     <div class="usoProcessos">
@@ -121,18 +121,19 @@
             <div id="dashboardRede">
                 <div class="legendaMaster">DADOS DA REDE</div>
                 <div class="grid1">
-                    <div class="consumo">
-                        <div class="legenda">CONSUMO</div>
-                        <canvas id="consumeGraphi"></canvas>
-                    </div>
+                    
                     <div class="processos">
                         <div class="legenda">VELOCIDADE</div>
                         <p id="txtDownload"></p>
                         <div id="procGraphi" class="procGraphi"></div>
                         <p id="txtUpload"></p>
                     </div>
+                    <div class="consumo">
+                        <div class="legenda">CONSUMO DE REDE</div>
+                        <canvas id="consumeGraphi"></canvas>
+                    </div>
                     <div class="aplicacoes">
-                        <div class="legenda">USO DAS APLICAÇÕES</div>
+                        <div class="legenda">USO DAS APLICAÇÕES / PROCESSOS</div>
                         <canvas id="useGraphi"></canvas>
                     </div>
             </div>

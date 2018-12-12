@@ -309,7 +309,7 @@ function pegarMediaPorcetagemUsoProcessador() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
             document.getElementById("mediaUsoProcessador").textContent = response + "% (PROCESSADOR)";
@@ -351,9 +351,9 @@ function pegarLaboratoriosQueMaisConsomem() {
             let array = response;
             let size = array.length;
 
-            baixa_rede.textContent = array[0].Nome;
+            alta_rede.textContent = array[0].Nome;
             media_rede.textContent = array[Math.floor((size / 2))].Nome;
-            alta_rede.textContent = array[size-1].Nome;
+            baixa_rede.textContent = array[size-1].Nome;
 
         },
         error: function () {

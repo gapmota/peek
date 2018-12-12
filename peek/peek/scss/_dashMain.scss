@@ -50,7 +50,7 @@ div#dashboardInfra {
     .qtdMaquinas {
         background: darken($cor-primaria, 5);
         height: 35vh;
-        width: 28vh;
+        width: 24vh;
     }
 
     .bonusDash {
@@ -227,5 +227,19 @@ div#dashboardRede {
         @include easeOut;
     }
 
+    #media_hd, #pouco_hd, #muito_hd {
+        font-size: 50px;
+        padding-left: 85px;
+    }
+
+    .BoxComputers {
+        font-size: 50px;
+        padding-left: 55px;
+        padding-top: 55px;
+    }
+
+    .BoxLabs{
+        font-size: 45px;
+    }
 }
 
