@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/main.css" />
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
@@ -63,7 +64,7 @@
             <div class="div-right">
                 <div class="container">
                     <asp:TextBox runat="server" ID="txtNome" Class="input" placeholder="Nome" />
-                    <asp:TextBox runat="server" ID="txtEmail" Class="input" placeholder="E-mail" />
+                    <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" Class="input" placeholder="E-mail" />
                     <asp:TextBox runat="server" ID="txtMensagem" Class="mensagem" TextMode="MultiLine" placeholder="Sua mensagem..." />
                     <asp:Button runat="server" ID="btnEnviar" Class="btnMensagem" Text="Enviar" OnClick="btnEnviar_Click" />
                 </div>

@@ -701,16 +701,36 @@ body#bodyWork {
     grid-template-areas: 'bioimage' 'bio' 'quadro1' 'quadro2' 'quadro3';
     grid-template-columns: 1fr; }
   .projects {
-    grid-template-columns: repeat(2, 1fr); } }
+    grid-template-columns: repeat(2, 1fr); }
+  body#bodyContato .title-heading {
+    font-size: 9vh; }
+  body#bodyContato .div-left {
+    font-size: 2vh;
+    height: 19vh;
+    float: left;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: center; }
+  body#bodyContato .btnMensagem,
+  body#bodyContato .mensagem,
+  body#bodyContato .input,
+  body#bodyContato .container,
+  body#bodyContato .div-right {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: center; } }
 
 @media screen and (max-width: 500px) {
   body#bodyContato .title-heading {
     font-size: 6vh;
-    align-items: center; }
+    align-items: center;
+    justify-content: center;
+    position: center; }
   body#bodyContato .div-left {
     font-size: 2vh;
-    height: 15vh;
-    width: 47vh;
+    height: 19vh;
     float: left;
     width: 100%;
     align-items: center;
@@ -721,10 +741,12 @@ body#bodyWork {
     align-items: center;
     justify-content: center;
     position: center; }
+  body#bodyContato .container {
+    width: 100%; }
   body#bodyContato .input,
   body#bodyContato .mensagem,
   body#bodyContato .btnMensagem {
-    width: 55vh; }
+    width: 100%; }
   main#home h1 {
     margin-top: 10vh; }
   body#body-menu .menu {
