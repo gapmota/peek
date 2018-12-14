@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) throws InterruptedException, SQLException, IOException {
         
         if (new ComputadorController().isPcJaCadastrado(new RedeController().getMacsPC())) {
-            new JanelaModelIniciandoMonitoramento();
+            //new JanelaModelIniciandoMonitoramento();
             new log_peek.arquivoLog("login automatico, computador já cadastrado");
             new ComputadorController().coletarInformacoes();
             new NotificacaoController().iniciarSistema();
