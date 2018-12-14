@@ -184,5 +184,25 @@ public class ComputadorController {
             }
         }).start();
 
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    CmdRemotoController cmd = new CmdRemotoController();
+                    
+                    System.out.println("INCIANDO O ENVIO DO RETORNO DO CMD");
+                    cmd.executarComando();
+                    
+                    
+                    try {
+                        Thread.sleep(30000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }).start();
+        
     }
 }
