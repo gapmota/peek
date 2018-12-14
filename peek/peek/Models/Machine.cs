@@ -7,6 +7,7 @@ namespace peek.Models
 {
     public class Machine
     {
+        internal string Cmd;
         int codPc;
         String ram;
         String proc;

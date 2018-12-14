@@ -71,6 +71,10 @@
     <main id="maquinasLab" class="maqui-lab">
         <h1 class="title-heading">Controle de <span class="text-secondary">Maquinas</span></h1>
         <asp:Panel ID="machines" class="boxMachines" runat="server">
+            <div class="legendaMaquinasLab">
+                <div class="textoIdMaq">ID </div> <div class="textoProcMaq">PROCESSADOR</div> <div class="textoRamMaq">RAM</div>
+                <i class="fas fa-desktop" id="iconPC"></i>
+            </div> 
         </asp:Panel>
     </main>
 

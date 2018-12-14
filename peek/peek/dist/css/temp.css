@@ -112,3 +112,49 @@ div.btn_finalizar_processo {
     color: #fff;
     padding: 13px;
 }
+
+.legendaMaquinasLab {
+    background-color: #3a3939;
+    padding: 2vh;
+    font-size: 25px;
+    display: -webkit-box;
+    text-align: center;
+    margin: 2vh;
+    margin-bottom: 0;
+}
+#iconPC {
+    margin-left: 25vh;
+}
+.textoIdMaq {
+    margin-left: 16vh;
+}
+.textoProcMaq {
+    margin-left: 40vh;
+}
+.textoRamMaq {
+    margin-left: 34vh;
+}
+
+.pnlItem {
+    background-color: dimgrey;
+    padding: 2vh;
+    font-size: 25px;
+    margin: 2vh;
+    margin-bottom: 0.5vh;
+    margin-top: 0px;
+    background-size: 65px;
+    background-position: left;
+}
+
+.lblItem {
+    margin-left: 15vh;
+}
+
+
+.lblCmd {
+    margin-left: 20vh;
+    background-color: #62b90e;
+    padding: 8px;
+    padding-left: 5vh;
+    padding-right: 5vh;
+}

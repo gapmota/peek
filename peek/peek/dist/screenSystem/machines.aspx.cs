@@ -68,6 +68,15 @@ namespace peek.dist.screenSystem
                 lblRam.Text = "" + listPC.ElementAt(i).Ram;
                 lblRam.CssClass = "lblItem";
                 pnlComputer.Controls.Add(lblRam);
+
+                Label lblCmd = new Label();
+                lblCmd.ID = listPC.ElementAt(i).CodPc.ToString();
+                lblCmd.Text = "CMD";
+                lblCmd.CssClass = "lblCmd";
+                pnlComputer.Controls.Add(lblCmd);
+
+
+
             }
         }
 
