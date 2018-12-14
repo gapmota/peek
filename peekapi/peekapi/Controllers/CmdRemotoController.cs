@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using peekapi.Dao;
+using peekapi.Models;
 
 namespace peekapi.Controllers
 {
@@ -17,14 +18,14 @@ namespace peekapi.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int idComputador, string comando, string oque)
+        public List<CmdRemoto> Get(int idComputador, string comando, string oque)
         {
             if (oque == "inserir")
                 return new CmdRemotoDAO().InserirComandoCMD(idComputador, comando);
             else if (oque == "apagar")
-                return new CmdRemotoDAO().LimparComandoCMD(idComputador);
+                return null;
 
-            return "";
+            return null;
         }
 
         // POST api/<controller>

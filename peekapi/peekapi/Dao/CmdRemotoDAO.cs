@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using peekapi.Models;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace peekapi.Dao
 {
     public class CmdRemotoDAO
     {
-        public string InserirComandoCMD(int idComputador, string comando)
+        public List<CmdRemoto> InserirComandoCMD(int idComputador, string comando)
         {
 
             using (SqlConnection cnx = new Banco().PegarConexao())
@@ -21,15 +22,131 @@ namespace peekapi.Dao
                     cmd.Parameters.AddWithValue("@ID_COMPUTADOR", idComputador);
 
                     if (cmd.ExecuteNonQuery() > 0)
-                        return "aguardando retorno do comando";
+                    {
+                        int id_cmd = PegarId(idComputador, comando);
+                        if (id_cmd != -1)
+                        {
+                            if (FoiExecutado(id_cmd))
+                            {
+                                return PegarRetorno(id_cmd, comando);
+                            }
+                        }
+                        
+                    }
+                        
 
                 }
 
             }
 
-            return "não foi possível inserir o comando: " + comando;
+            return null;
         }
 
+        public bool FoiExecutado(int id_cmd)
+        {
+
+            while (true)
+            {
+
+                using (SqlConnection cnx = new Banco().PegarConexao())
+                {
+                    List<CmdRemoto> cmds = new List<CmdRemoto>();
+                    string sql = "SELECT * FROM PEEK_CMD_REMOTO WHERE ID_CMD_REMOTO = @ID_CMD AND JA_EXECUTADO = 'N'";
+                    using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("@ID_CMD", id_cmd);
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                return true;
+                            }
+                        }
+
+                    }
+
+                }
+
+                Thread.Sleep(1000);
+            }
+        }
+
+        public List<CmdRemoto> PegarRetorno(int id, string comando)
+        {
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                List<CmdRemoto> cmds = new List<CmdRemoto>();
+                string sql = "SELECT * FROM PEEK_CMD_REMOTO_CONTEUDO WHERE ID_CMD_REMOTO = @ID_CMD";
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID_CMD", id);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+
+
+
+
+                        string cmd_return = "";
+                        if (dr.Read())
+                        {
+
+
+                            cmd_return = dr["RETORNO_CMD"].ToString();
+
+                        }
+
+                        string[] cmd_split = cmd_return.Split('\n');
+
+
+
+                        for (int i = 0; i < cmd_split.Length; i++)
+                        {
+                            CmdRemoto c = new CmdRemoto();
+                            c.Comando = comando;
+                            c.Retorno = cmd_split[i];
+
+                            cmds.Add(c);
+                        }
+
+
+
+
+                        return cmds;
+                    }
+
+                }
+
+            }
+
+        }
+
+        public int PegarId(int idComputador, string comando)
+        {
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                 string sql = "SELECT TOP 1 * FROM PEEK_CMD_REMOTO WHERE COMANDO = @COMANDO AND ID_COMPUTADOR = @ID AND JA_EXECUTADO = 'S' ORDER BY ID_CMD_REMOTO DESC";
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@COMANDO",comando);
+                    cmd.Parameters.AddWithValue("@ID", idComputador);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            return int.Parse(dr["ID_CMD_REMOTO"].ToString());
+                        }
+                        return -1;
+                    }
+
+                }
+
+            }
+
+        }
         public string LimparComandoCMD(int idComputador)
         {
 
