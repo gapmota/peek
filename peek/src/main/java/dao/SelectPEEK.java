@@ -17,7 +17,18 @@ import java.sql.SQLException;
  * @author Mateus
  */
 public class SelectPEEK {
-    public int getIdComputador() {
+    
+    private static int ID_COMPUTADOR = -1;
+    
+    public int getIdComputador(){
+        if(ID_COMPUTADOR == -1){
+            ID_COMPUTADOR = this.getIdComputadorSelect();
+        }
+        return ID_COMPUTADOR;
+    }
+    
+    
+    private int getIdComputadorSelect() {
         String SQL = "SELECT * FROM PEEK_COMPUTADOR WHERE MAC_ADDRESS_INICIAL = ?";
         Connection cnx = new Banco().getInstance();
         Computador computador = new Computador();
@@ -59,6 +70,7 @@ public class SelectPEEK {
                 }
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
+                
                 e.printStackTrace();
             }
         }
