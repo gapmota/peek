@@ -13,6 +13,13 @@ namespace peekapi.Dao
         public List<CmdRemoto> InserirComandoCMD(int idComputador, string comando)
         {
 
+            if (ComandoJaInseridoRecentemente(idComputador, comando))
+            {
+                int id_cmd = PegarId(idComputador, comando);
+                return PegarRetorno(id_cmd, comando);
+            }
+                
+
             using (SqlConnection cnx = new Banco().PegarConexao())
             {
                 string sql = "INSERT INTO peek_cmd_remoto(COMANDO,ID_COMPUTADOR) VALUES(@COMANDO,@ID_COMPUTADOR)";
@@ -26,14 +33,14 @@ namespace peekapi.Dao
                         int id_cmd = PegarId(idComputador, comando);
                         if (id_cmd != -1)
                         {
-                            if (FoiExecutado(id_cmd))
+                            if (FoiExecutado(comando, id_cmd))
                             {
                                 return PegarRetorno(id_cmd, comando);
                             }
                         }
-                        
+
                     }
-                        
+
 
                 }
 
@@ -42,7 +49,7 @@ namespace peekapi.Dao
             return null;
         }
 
-        public bool FoiExecutado(int id_cmd)
+        public bool FoiExecutado(string comando, int id_cmd)
         {
 
             while (true)
@@ -51,10 +58,11 @@ namespace peekapi.Dao
                 using (SqlConnection cnx = new Banco().PegarConexao())
                 {
                     List<CmdRemoto> cmds = new List<CmdRemoto>();
-                    string sql = "SELECT * FROM PEEK_CMD_REMOTO WHERE ID_CMD_REMOTO = @ID_CMD AND JA_EXECUTADO = 'N'";
+                    string sql = "SELECT TOP 1 * FROM PEEK_CMD_REMOTO WHERE ID_CMD_REMOTO = @ID_CMD AND JA_EXECUTADO = 'S' AND COMANDO = @CMD ORDER BY ID_CMD_REMOTO DESC";
                     using (SqlCommand cmd = new SqlCommand(sql, cnx))
                     {
                         cmd.Parameters.AddWithValue("@ID_CMD", id_cmd);
+                        cmd.Parameters.AddWithValue("@CMD", comando);
 
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
@@ -105,6 +113,7 @@ namespace peekapi.Dao
                         for (int i = 0; i < cmd_split.Length; i++)
                         {
                             CmdRemoto c = new CmdRemoto();
+                            c.IdCmdRemoto = id;
                             c.Comando = comando;
                             c.Retorno = cmd_split[i];
 
@@ -127,10 +136,10 @@ namespace peekapi.Dao
         {
             using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                 string sql = "SELECT TOP 1 * FROM PEEK_CMD_REMOTO WHERE COMANDO = @COMANDO AND ID_COMPUTADOR = @ID AND JA_EXECUTADO = 'S' ORDER BY ID_CMD_REMOTO DESC";
+                string sql = "SELECT MAX(ID_CMD_REMOTO) as ID_CMD_REMOTO FROM PEEK_CMD_REMOTO WHERE COMANDO = @COMANDO AND ID_COMPUTADOR = @ID";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
-                    cmd.Parameters.AddWithValue("@COMANDO",comando);
+                    cmd.Parameters.AddWithValue("@COMANDO", comando);
                     cmd.Parameters.AddWithValue("@ID", idComputador);
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -208,5 +217,39 @@ namespace peekapi.Dao
 
         }
 
+        public bool ComandoJaInseridoRecentemente(int id_pc, string comando)
+        {
+
+
+            using (SqlConnection cnx = new Banco().PegarConexao())
+            {
+                List<CmdRemoto> cmds = new List<CmdRemoto>();
+                string sql = @"SELECT CONVERT(int, DATEDIFF(MINUTE, data_cadastro, getdate()) % 60) FROM PEEK_CMD_REMOTO
+                               WHERE ID_COMPUTADOR = @ID_PC
+                               AND COMANDO = @CMD
+                               AND CONVERT(int, DATEDIFF(DAY, data_cadastro, getdate())) <= 0
+                               AND CONVERT(int, DATEDIFF(HOUR, data_cadastro, getdate()) % 24) <= 0
+                               AND CONVERT(int, DATEDIFF(MINUTE, data_cadastro, getdate()) % 60) <= 2
+                              ";
+
+                using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@ID_PC", id_pc);
+                    cmd.Parameters.AddWithValue("@CMD", comando);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            return true;
+                        }
+
+                        return false;
+                    }
+
+                }
+
+            }
+        }
     }
 }
