@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/tempAddLab.css" />
     <title>Peek - Dashboard da Infra</title>
+    <link rel="icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon" />
 </head>
 <body id="body-menu" class="backBodyLab">
     <header>
@@ -25,7 +27,7 @@
                 <div class="portrait"></div>
             </div>
             <div class="menu-nav">
-                                <li class="nav-item">
+                <li class="nav-item">
                     <a href="infraDashboard.aspx" class="nav-link">
                         <i class="far fa-user"></i>
                         Dashboard                        
@@ -62,7 +64,7 @@
                 </button>
             </form>
             <asp:Panel ID="labs" class="boxLabs" runat="server">
-                 <input id="inHidden" name="inHidden" type="hidden" value="" runat="server"/>
+                <input id="inHidden" name="inHidden" type="hidden" value="" runat="server" />
             </asp:Panel>
         </div>
 

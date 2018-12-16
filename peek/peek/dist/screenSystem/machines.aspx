@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/temp.css" />
     <title>Peek - Maquinas Do Lab</title>
+    <link rel="icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon" />
 </head>
 <body id="body-menu" class="bodyMaq">
     <header>
