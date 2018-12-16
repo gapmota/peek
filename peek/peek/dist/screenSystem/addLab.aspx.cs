@@ -44,25 +44,25 @@ namespace peek.dist
 
                 Label lblID = new Label();
                 lblID.ID = listLabs.ElementAt(i).IDLab1.ToString();
-                lblID.Text = "" + listLabs.ElementAt(i).IDLab1;
-                lblID.CssClass = "lblItem";
+                lblID.Text = "ID: " + listLabs.ElementAt(i).IDLab1;
+                lblID.CssClass = "lblItemID";
                 pnlLabs.Controls.Add(lblID);
 
                 Label lblNome = new Label();
                 lblNome.ID = listLabs.ElementAt(i).IDLab1.ToString();
-                lblNome.Text = "" + listLabs.ElementAt(i).Nome;
+                lblNome.Text = "Nome: " + listLabs.ElementAt(i).Nome;
                 lblNome.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblNome);
 
                 Label lblAndar = new Label();
                 lblAndar.ID = listLabs.ElementAt(i).IDLab1.ToString();
-                lblAndar.Text = "" + listLabs.ElementAt(i).Andar;
+                lblAndar.Text = "Andar: " + listLabs.ElementAt(i).Andar;
                 lblAndar.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblAndar);
 
                 Label lblCapacity = new Label();
                 lblCapacity.ID = listLabs.ElementAt(i).IDLab1.ToString();
-                lblCapacity.Text = "" + listLabs.ElementAt(i).Capacity;
+                lblCapacity.Text = "Capacidade: " + listLabs.ElementAt(i).Capacity;
                 lblCapacity.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblCapacity);
             }

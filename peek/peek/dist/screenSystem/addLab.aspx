@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/tempAddLab.css" />
     <title>Peek - Dashboard da Infra</title>
 </head>
 <body id="body-menu" class="backBodyLab">
@@ -53,7 +54,9 @@
         <div class="projects">
             <form class="item form" id="form1" runat="server">
                 <div class="legenda">ADICIONAR LAB</div>
-                <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Nome do lab" />
+                 <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Nome" />
+                 <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Andar" />
+                 <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Capacidade" />
                 <button class="btn-dark add">
                     <i class="fas fa-plus-square"></i>Adicionar
                 </button>

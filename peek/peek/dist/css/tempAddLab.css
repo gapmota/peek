@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.pnlItem {
+  background-color: #696969;
+  margin-left: 5vh;
+  float: left;
+  padding-bottom: 1vh;
+  width: 25vh;
+  padding-top: 0vh;
+}
+
+.lblItem {
+  display: inline;
+  float: left;
+  width: 85%;
+  margin: 2vh;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 1vh;
+  padding: 1vh;
+  background-color: #888787;
+}
+
+.lblItemID {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-bottom: 1vh;
+  font-size: 20px;
+  border-bottom: 2px solid #8BC34A;
+  padding: 0.8vh;
+  background-color: #3a3939;
+}
+
+.boxLabs {
+  width: 132vh;
+ 
+}

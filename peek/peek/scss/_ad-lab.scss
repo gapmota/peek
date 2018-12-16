@@ -16,6 +16,9 @@ body.backBodyLab {
     }
 
     .item {
+        i{
+            padding: 0px;
+        }
         background-color: lighten($cor-primaria, 5);
     }
 
