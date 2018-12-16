@@ -16,9 +16,10 @@ body.backBodyLab {
     }
 
     .item {
-        i{
+        i {
             padding: 0px;
         }
+
         background-color: lighten($cor-primaria, 5);
     }
 
@@ -37,6 +38,8 @@ body.backBodyLab {
     .btn-dark {
         background-color: darken($cor-primaria, 5);
         margin: 3vh;
+        padding: 1.5vh;
+        margin-bottom: 2vh;
     }
 
     .item.form {

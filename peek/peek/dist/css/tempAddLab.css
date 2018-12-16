@@ -37,3 +37,15 @@
   width: 132vh;
  
 }
+
+.lblMaq {
+    display: inline;
+    float: left;
+    width: 85%;
+    margin: 2vh;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 1vh;
+    padding: 1vh;
+    background-color: #8bc34a;
+}

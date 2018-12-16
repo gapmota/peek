@@ -65,6 +65,12 @@ namespace peek.dist
                 lblCapacity.Text = "Capacidade: " + listLabs.ElementAt(i).Capacity;
                 lblCapacity.CssClass = "lblItem";
                 pnlLabs.Controls.Add(lblCapacity);
+
+                Label lblMaq = new Label();
+                lblMaq.ID = listLabs.ElementAt(i).IDLab1.ToString();
+                lblMaq.Text = "Ver Maquinas ";
+                lblMaq.CssClass = "lblMaq";
+                pnlLabs.Controls.Add(lblMaq);
             }
         }
 

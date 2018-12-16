@@ -370,7 +370,9 @@ body.backBodyLab {
 
 .ad-lab .btn-dark {
   background-color: #3a3939;
-  margin: 3vh; }
+  margin: 3vh;
+  padding: 1.5vh;
+  margin-bottom: 2vh; }
 
 .ad-lab .item.form input {
   font-size: 20px; }
