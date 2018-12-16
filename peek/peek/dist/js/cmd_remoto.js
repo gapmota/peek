@@ -24,6 +24,8 @@ function abrirModalCmd(div) {
     document.getElementById("digite_sem_texto").textContent = "computador " + div.id + ">";
 }
 
+
+
 function fecharModalCmd() {
     document.getElementById("modal_cmd").className = "modal_cmd_off";
     area_prompt.innerHTML = "";
@@ -40,7 +42,7 @@ input.onclick = function () {
 
 btn.onclick = function () {
 
-    
+
 
     var texto = input.value;
 
@@ -52,14 +54,14 @@ btn.onclick = function () {
 
     }
 
-    
+
 
 }
 
 hist.onclick = function () {
 
-        addTextoPromptRemotoListarTudo();
-    
+    addTextoPromptRemotoListarTudo();
+
 }
 
 apagr.onclick = function () {
@@ -97,7 +99,7 @@ function addTextoPromptRemoto(comando) {
 
                 for (var i = 0; i < listTemp.length; i++) {
 
-                    console.log(listTemp[i]);
+                    //    console.log(listTemp[i]);
 
                     div_bloco_prompt_temp += "<p id='retorno_executado'> " + listTemp[i] + "</p>";
                 }
@@ -110,12 +112,24 @@ function addTextoPromptRemoto(comando) {
         },
         error: function () {
             barraTitulo.textContent = "prompt remoto ~ computador " + idComputador + " [ERRO AO EXECUTAR COMANDO] ";
+
+            div_bloco_prompt_temp =
+                "<div class='bloco_prompt'> "
+                + "<p id='cmd_executado'>computador " + idComputador + "> " + response[j].Comando + "</p>";
+
+
+            div_bloco_prompt_temp += "<p id='retorno_executado'>Computador não responde... assim que possível será executado o comando.</p>";
+
+
+            div_bloco_prompt_temp += "</div>";
+
+            area_prompt.innerHTML += "<p><p><p></p>" + div_bloco_prompt_temp;
         }
     });
 
 
 
-    
+
 
 }
 
@@ -144,16 +158,16 @@ function addTextoPromptRemotoListarTudo() {
 
                 div_bloco_prompt_temp =
                     "<div class='bloco_prompt'> "
-                + "<p id='cmd_executado'>computador " + idComputador + "> " + response[j].Comando + "</p>";
+                    + "<p id='cmd_executado'>computador " + idComputador + "> " + response[j].Comando + "</p>";
 
 
                 let listTemp = response[j].Retorno.split(';');
 
-                console.log(listTemp);
+                //  console.log(listTemp);
 
                 for (var i = 0; i < listTemp.length; i++) {
 
-                    console.log(listTemp[i]);
+                    //   console.log(listTemp[i]);
 
                     div_bloco_prompt_temp += "<p id='retorno_executado'> " + listTemp[i] + "</p>";
                 }
@@ -170,7 +184,7 @@ function addTextoPromptRemotoListarTudo() {
 
 
 
-    
+
 
 }
 
@@ -190,7 +204,7 @@ function addTextoPromptRemotoApagarTudo() {
         success: function (response) {
 
             area_prompt.innerHTML = "";
-           
+
         },
         error: function () {
 

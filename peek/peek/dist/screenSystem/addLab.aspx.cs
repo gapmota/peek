@@ -37,40 +37,47 @@ namespace peek.dist
             {
                 Panel pnlLabs = new Panel();
                 pnlLabs.ID = listLabs.ElementAt(i).IDLab1.ToString();
-                pnlLabs.Attributes.Add("OnClick", "seeMachineLab(this)");
-                pnlLabs.CssClass = "pnlItem";
+                pnlLabs.CssClass = "pnlItemLab";
                 labs.Controls.Add(pnlLabs);
 
 
                 Label lblID = new Label();
                 lblID.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblID.Text = "ID: " + listLabs.ElementAt(i).IDLab1;
-                lblID.CssClass = "lblItemID";
+                lblID.CssClass = "lblItemIDLab";
                 pnlLabs.Controls.Add(lblID);
 
                 Label lblNome = new Label();
                 lblNome.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblNome.Text = "Nome: " + listLabs.ElementAt(i).Nome;
-                lblNome.CssClass = "lblItem";
+                lblNome.CssClass = "lblItemLab";
                 pnlLabs.Controls.Add(lblNome);
 
                 Label lblAndar = new Label();
                 lblAndar.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblAndar.Text = "Andar: " + listLabs.ElementAt(i).Andar;
-                lblAndar.CssClass = "lblItem";
+                lblAndar.CssClass = "lblItemLab";
                 pnlLabs.Controls.Add(lblAndar);
 
                 Label lblCapacity = new Label();
                 lblCapacity.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblCapacity.Text = "Capacidade: " + listLabs.ElementAt(i).Capacity;
-                lblCapacity.CssClass = "lblItem";
+                lblCapacity.CssClass = "lblItemLab";
                 pnlLabs.Controls.Add(lblCapacity);
 
                 Label lblMaq = new Label();
                 lblMaq.ID = listLabs.ElementAt(i).IDLab1.ToString();
                 lblMaq.Text = "Ver Maquinas ";
-                lblMaq.CssClass = "lblMaq";
+                lblMaq.CssClass = "lblMaqLab";
+                lblMaq.Attributes.Add("OnClick", "seeMachineLab(this)");
                 pnlLabs.Controls.Add(lblMaq);
+
+                Label lblCmd = new Label();
+                lblCmd.ID = listLabs.ElementAt(i).IDLab1.ToString();
+                lblCmd.Text = "CMD";
+                lblCmd.CssClass = "lblMaqLab";
+                lblCmd.Attributes.Add("OnClick", "abrirModalCmd("+listLabs.ElementAt(i).IDLab1.ToString()+")");
+                pnlLabs.Controls.Add(lblCmd);
             }
         }
 

@@ -47,6 +47,7 @@ namespace peek.dist.screenSystem
             {
                 Panel pnlComputer = new Panel();
                 pnlComputer.ID = listPC.ElementAt(i).CodPc.ToString();
+
                 pnlComputer.CssClass = "pnlItem";
                 machines.Controls.Add(pnlComputer);
 
@@ -73,7 +74,17 @@ namespace peek.dist.screenSystem
                 lblCmd.Text = "CMD";
                 lblCmd.CssClass = "lblCmd";
                 lblCmd.Attributes.Add("OnClick", "abrirModalCmd(this)");
+
                 pnlComputer.Controls.Add(lblCmd);
+
+
+                Label lblInfos = new Label();
+                lblInfos.ID = listPC.ElementAt(i).CodPc.ToString();
+                lblInfos.Text = "PROCESSOS";
+                lblInfos.CssClass = "lblProcesso";
+                lblInfos.Attributes.Add("OnClick", "abrirModal(this)");
+
+                pnlComputer.Controls.Add(lblInfos);
 
 
 

@@ -86,6 +86,7 @@
     <Content Include="dist\css\styleLogin.css" />
     <Content Include="dist\css\styleRegister.css" />
     <Content Include="dist\css\temp.css" />
+    <Content Include="dist\css\tempAddLab.css" />
     <Content Include="dist\img\back-linhas.jpg" />
     <Content Include="dist\img\background.jpeg" />
     <Content Include="dist\img\bruno.jpg" />
@@ -102,6 +103,7 @@
     <Content Include="dist\img\projects\project5.jpeg" />
     <Content Include="dist\img\userFoto.png" />
     <Content Include="dist\js\cmd_remoto.js" />
+    <Content Include="dist\js\cmd_remoto_lab.js" />
     <Content Include="dist\js\graphics.js" />
     <Content Include="dist\js\machines.js" />
     <Content Include="dist\js\machine_view.js" />
