@@ -38,7 +38,6 @@ function pegarConsumoDownloadUploadLaboratorios() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-//            console.log(response + "download/upload");
             attChartGoogle(response.Download, response.Upload);
         },
         error: function () {
@@ -58,11 +57,9 @@ function pegarConsumoDownloadLaboratorios() {
         },
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
-        success: function (response) {
-       //     console.log(response.Download + "download");
-            
+        success: function (response) {            
 
-            atualizaDrawConsume(response.Download, "aaa");//response.Data);
+            atualizaDrawConsume(response.Download, "");
         },
         error: function () {
 
@@ -102,7 +99,6 @@ function pegarQuantidadeDePC() {
         url: api_url + "Computador?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-          //  console.log(response);
         },
         error: function () {
 
@@ -120,7 +116,6 @@ function pegarProcessosQueMaisConsumemHardware() {
         url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=labUsando",
         data: '',
         success: function (response) {
-          //  console.log(response[0]);
             let arrayProcessos = response;
             let processos = new Array();
             let quantidadeProcesso = new Array();
@@ -131,7 +126,6 @@ function pegarProcessosQueMaisConsumemHardware() {
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
                 } catch (Exception){ }
             }
-          //  console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
             atualizaDrawMoreUseGraphi(processos, quantidadeProcesso);
 
         },
@@ -161,7 +155,6 @@ function pegarProcessosQueMaisConsumemInternet() {
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
                 } catch (Exception) { }
             }
-         //  console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
             atualizaDrawUseGraphi(processos, quantidadeProcesso);
         },
         error: function () {
@@ -180,7 +173,6 @@ function pegarTodosLaboratorioDeUmUsuario() {
         url: api_url + "Rede?idUsuario=" + idUsuarioLogado + "&oque=labs",
         data: '',
         success: function (response) {
-          //  console.log(response);
         },
         error: function () {
 
@@ -216,9 +208,7 @@ function pegarInformacoesPC(idComputador) {
         },
         url: api_url + "Computador/?contexto=individual&id=" + idComputador,
         data: '',
-        success: function (response) {
-         //   console.log(response);
-            
+        success: function (response) {            
         },
         error: function () {
 
@@ -236,7 +226,6 @@ function pegarInformacoesCompletasPC(idComputador) {
         url: api_url + "InfoComputador/?idComputador=" + idComputador,
         data: '',
         success: function (response) {
-            //  console.log(response);
             mostrarInfosPc(response);
         },
         error: function () {
@@ -254,9 +243,7 @@ function pegarInformacoesPcPorLab(idLab) {
         },
         url: api_url + "Computador/?contexto=laboratario&id=" + idLab,
         data: '',
-        success: function (response) {
-         //   console.log(response);
-          
+        success: function (response) {          
         },
         error: function () {
 
@@ -275,7 +262,7 @@ function pegarMediaPorcetagemUsoComputador() {
         data: '',
         success: function (response) {
             
-            atualizaDrawInfraProcessHistory(response, "ddd");
+            atualizaDrawInfraProcessHistory(response, "");
         },
         error: function () {
 
@@ -353,8 +340,8 @@ function pegarLaboratoriosQueMaisConsomem() {
 
             alta_rede.textContent = array[0].Nome;
             media_rede.textContent = array[Math.floor((size / 2))].Nome;
-            baixa_rede.textContent = array[size-1].Nome;
-
+            baixa_rede.textContent = array[size - 1].Nome;
+            
         },
         error: function () {
 
