@@ -17,7 +17,7 @@
             <div class="container">
                 <h1>Cadastre-se</h1>
                 <asp:TextBox runat="server" ID="txtNome" Class="input" placeholder="Nome" />
-                <asp:TextBox runat="server" ID="txtEmail" Class="input" placeholder="E-mail" />
+                <asp:TextBox runat="server" ID="txtEmail" TextMode="Email" Class="input" placeholder="E-mail" />
                 <asp:TextBox runat="server" ID="txtTelefone" Class="input" placeholder="Telefone" />
                 <asp:TextBox runat="server" type="password" ID="txtSenha" Class="input" placeholder="Senha" />
                 <asp:TextBox runat="server" type="password" ID="txtConfirmaSenha" Class="input" placeholder="Confirmar Senha" />
