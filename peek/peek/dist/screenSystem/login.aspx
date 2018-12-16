@@ -22,7 +22,7 @@
               </div>
                <asp:TextBox runat="server" type="password" ID="txtSenha" Class="input" placeholder="Senha" />
                <asp:Button runat="server" ID="btnVoltar" Class="voltar" Text="Voltar" OnClick="btnVoltar_Click" />
-               <asp:Button runat="server" ID="btnEnviar" Class="enviar" Text="Iniciar" OnClick="btnEnviar_Click" />
+               <asp:Button runat="server" ID="btnEnviar" Class="enviar" Text="Iniciar" OnClick="btnEnviar_Click" tabindex="1"/>
                 <p>Não possui cadastro?
                     <a href="register.aspx">Cadastre-se</a>
                 </p>

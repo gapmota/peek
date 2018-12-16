@@ -47,7 +47,7 @@ namespace peek.dist.screenSystem
             {
                 Panel pnlComputer = new Panel();
                 pnlComputer.ID = listPC.ElementAt(i).CodPc.ToString();
-                pnlComputer.Attributes.Add("OnClick", "abrirModal(this)");
+                //pnlComputer.Attributes.Add("OnClick", "abrirModal(this)");
                 pnlComputer.CssClass = "pnlItem";
                 machines.Controls.Add(pnlComputer);
 
@@ -73,6 +73,7 @@ namespace peek.dist.screenSystem
                 lblCmd.ID = listPC.ElementAt(i).CodPc.ToString();
                 lblCmd.Text = "CMD";
                 lblCmd.CssClass = "lblCmd";
+                lblCmd.Attributes.Add("OnClick", "abrirModalCmd(this)");
                 pnlComputer.Controls.Add(lblCmd);
 
 

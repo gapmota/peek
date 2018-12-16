@@ -175,5 +175,6 @@
 <script src="../js/graphics.js"></script>
 <script src="../js/refresh.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <% Response.Write("<script>iniciar("+((peek.Models.User)Session["Usuario"]).Id+");</script>"); %>   
 </html>
 

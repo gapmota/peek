@@ -101,6 +101,7 @@
     <Content Include="dist\img\projects\project4.jpeg" />
     <Content Include="dist\img\projects\project5.jpeg" />
     <Content Include="dist\img\userFoto.png" />
+    <Content Include="dist\js\cmd_remoto.js" />
     <Content Include="dist\js\graphics.js" />
     <Content Include="dist\js\machines.js" />
     <Content Include="dist\js\machine_view.js" />
