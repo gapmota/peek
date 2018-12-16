@@ -23,7 +23,14 @@ namespace peekapi.Controllers
             if (oque == "inserir")
                 return new CmdRemotoDAO().InserirComandoCMD(idComputador, comando);
             else if (oque == "apagar")
+            {
+                new CmdRemotoDAO().LimparComandoCMD(idComputador);
                 return null;
+            }
+            else if (oque == "historico")
+            {
+                return new CmdRemotoDAO().TodosRetornos(new CmdRemotoDAO().PegarIdComandoCmd(idComputador));
+            }
 
             return null;
         }

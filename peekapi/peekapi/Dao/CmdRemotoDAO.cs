@@ -159,23 +159,23 @@ namespace peekapi.Dao
         public string LimparComandoCMD(int idComputador)
         {
 
-            foreach (int i in this.PegarIdComandoCmd(idComputador))
+            foreach (CmdRemoto i in this.PegarIdComandoCmd(idComputador))
             {
                 using (SqlConnection cnx = new Banco().PegarConexao())
                 {
                     string sql = "DELETE FROM PEEK_CMD_REMOTO_CONTEUDO WHERE ID_CMD_REMOTO = @ID_CMD";
                     using (SqlCommand cmd = new SqlCommand(sql, cnx))
                     {
-                        cmd.Parameters.AddWithValue("@ID_CMD", i);
+                        cmd.Parameters.AddWithValue("@ID_CMD", i.IdCmdRemoto);
 
-                        if (cmd.ExecuteNonQuery() > 0)
+                        //apagar os cmd
                         {
                             using (SqlConnection cnx2 = new Banco().PegarConexao())
                             {
                                 string sql2 = "DELETE FROM PEEK_CMD_REMOTO WHERE ID_CMD_REMOTO = @ID_PC";
                                 using (SqlCommand cmd2 = new SqlCommand(sql2, cnx2))
                                 {
-                                    cmd2.Parameters.AddWithValue("@ID_CMD", i);
+                                    cmd2.Parameters.AddWithValue("@ID_PC", idComputador);
                                     if (cmd2.ExecuteNonQuery() > 0)
                                         return "";
                                 }
@@ -190,12 +190,12 @@ namespace peekapi.Dao
 
         }
 
-        public List<int> PegarIdComandoCmd(int idComputador)
+        public List<CmdRemoto> PegarIdComandoCmd(int idComputador)
         {
 
             using (SqlConnection cnx = new Banco().PegarConexao())
             {
-                List<int> ids = new List<int>();
+                List<CmdRemoto> ids = new List<CmdRemoto>();
                 string sql = "SELECT * FROM PEEK_CMD_REMOTO WHERE ID_COMPUTADOR = @ID_PC";
                 using (SqlCommand cmd = new SqlCommand(sql, cnx))
                 {
@@ -205,7 +205,12 @@ namespace peekapi.Dao
                     {
                         while (dr.Read())
                         {
-                            ids.Add(int.Parse(dr["ID_CMD_REMOTO"].ToString()));
+                            CmdRemoto cr = new CmdRemoto();
+
+                            cr.IdCmdRemoto = int.Parse(dr["ID_CMD_REMOTO"].ToString());
+                            cr.Comando = dr["COMANDO"].ToString();
+
+                            ids.Add(cr);
                         }
 
                         return ids;
@@ -251,5 +256,49 @@ namespace peekapi.Dao
 
             }
         }
+
+        public List<CmdRemoto> TodosRetornos(List<CmdRemoto> id_cmd)
+        {
+
+            List<CmdRemoto> c = new List<CmdRemoto>();
+
+            foreach(CmdRemoto i in id_cmd)
+            {
+                using (SqlConnection cnx = new Banco().PegarConexao())
+                {
+                    
+                    string sql = "SELECT * FROM PEEK_CMD_REMOTO_CONTEUDO WHERE ID_CMD_REMOTO = @ID_CMD";
+                    using (SqlCommand cmd = new SqlCommand(sql, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("@ID_CMD", i.IdCmdRemoto);
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                CmdRemoto cr = new CmdRemoto();
+
+                                cr.IdCmdRemoto = int.Parse(dr["ID_CMD_REMOTO"].ToString());
+                                cr.Comando = i.Comando;
+                                cr.Retorno = dr["RETORNO_CMD"].ToString();
+
+                                c.Add(cr);
+
+                            }
+
+                            
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return c;
+
+        }
+
+
     }
 }
