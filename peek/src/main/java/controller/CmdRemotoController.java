@@ -24,16 +24,17 @@ public class CmdRemotoController {
                 try {
                     String cmd_retorno = "";
                     while(in.hasNext()){
-                         cmd_retorno += in.nextLine()+"\\n";
+                         cmd_retorno += in.nextLine()+";";
                     }
                     
                     if(cmd_retorno.equals(""))
                         cmd_retorno = "comando sem retorno!";
                     
+                    
+                    cmd_retorno = cmd_retorno.replace("<", "[").replace(">", "]");
                     cmdInsert.insertComandos(new CmdRemoto(cmd.getIdComando(), cmd_retorno));
                     cmdInsert.updateComandosJaExecutado(cmd);
                             
-                    System.err.println("AE FOI POURA");
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(CmdRemotoController.class.getName()).log(Level.SEVERE, null, ex);
