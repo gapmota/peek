@@ -110,6 +110,18 @@ body#backBody {
     &:after {
         background: none;
     }
+
+    h3 {
+        text-align: center;
+        font-size: 20px;
+        color: #eb2ebc;
+    }
+
+    h6 {
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+        font-size: 15px;
+    }
 }
 
 .about-info {

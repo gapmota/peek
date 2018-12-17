@@ -64,47 +64,47 @@
             <div class="integrantes">
                 <div class="bio bio-1">
                     <h3 class="text-name">BRUNO</h3>
-                    <h6>FUNÇÃO</h6>
+                    <h6>Desenvolvedor</h6>
                     <img src="../img/bruno.jpg" alt="Sobre nós" class="bio-img">
                 </div>
                 <div class="bio bio-2">
                     <h3 class="text-name">GIULIANA</h3>
-                    <h6>FUNÇÃO</h6>
+                    <h6>Desenvolvedora e PO</h6>
                     <img src="../img/eu.jpg" alt="Sobre nós" class="bio-img">
                 </div>
                 <div class="bio bio-3">
                     <h3 class="text-name">GUILHERME</h3>
-                    <h6>FUNÇÃO</h6>
+                    <h6>Desenvolvedor e Scrum</h6>
                     <img src="../img/mota.jpg" alt="Sobre nós" class="bio-img">
                 </div>
                 <div class="bio bio-4">
                     <h3 class="text-name">MATEUS</h3>
-                    <h6>FUNÇÃO</h6>
+                    <h6>Desenvolvedor e DBA</h6>
                     <img src="../img/covos.jpg" alt="Sobre nós" class="bio-img">
                 </div>
                 <div class="bio bio-5">
                     <h3 class="text-name">MICHEL</h3>
-                    <h6>FUNÇÃO</h6>
+                    <h6>Desenvolvedor</h6>
                     <img src="../img/michel.jpg" alt="Sobre nós" class="bio-img">
                 </div>
             </div>
             <div class="about-info">
                 <div class="quadro quadro-1">
-                    <h3>123 quadro 1</h3>
-                    <h6>Teste quadro 1</h6>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod error odio temporibus laborum, repudiandae exercitationem voluptatem similique eum laudantium eos?</p>
+                    <h3>SOLUCIONAR PROBLEMAS</h3>
+                    <h6>Missão</h6>
+                    <p>Atuar como facilitador monitorando desempenho de hardware e udo da rede de ambientes educacionais </p>
                 </div>
 
                 <div class="quadro quadro-2">
-                    <h3>123 quadro 2</h3>
-                    <h6>Frase quadro 2</h6>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod error odio temporibus laborum, repudiandae exercitationem voluptatem similique eum laudantium eos?</p>
+                    <h3>INOVAÇÃO</h3>
+                    <h6>Valor</h6>
+                    <p>Sair do convencional trazendo funções e design diferenciados para experiência do usuário no Dashboard</p>
                 </div>
 
                 <div class="quadro quadro-3">
-                    <h3>123 quadro 3</h3>
-                    <h6>Algo no quadro 3</h6>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod error odio temporibus laborum, repudiandae exercitationem voluptatem similique eum laudantium eos?</p>
+                    <h3>FUTURO</h3>
+                    <h6>Visão</h6>
+                    <p> Implementar melhorias e trabalhar na evolução constante do sistema visando a experiência do usuário</p>
                 </div>
             </div>
         </main>
