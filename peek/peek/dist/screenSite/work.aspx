@@ -65,6 +65,27 @@
             <div class="projects">
                 <div class="item">
                     <a href="#!">
+                        <img src="../img/projects/suporte.png" alt="Project">
+                    </a>
+                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#!">
+                        <img src="../img/projects/cmd.png" alt="Project">
+                    </a>
+                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#!">
+                        <img src="../img/projects/process.png" alt="Project">
+                    </a>
+                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#!">
                         <img src="../img/projects/dashRede.jpg" alt="Project">
                     </a>
                     <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
@@ -84,27 +105,7 @@
                     <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
                     </a>
                 </div>
-                <div class="item">
-                    <a href="#!">
-                        <img src="../img/projects/project4.jpeg" alt="Project">
-                    </a>
-                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#!">
-                        <img src="../img/projects/project5.jpeg" alt="Project">
-                    </a>
-                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#!">
-                        <img src="../img/projects/project3.jpeg" alt="Project">
-                    </a>
-                    <a href="#" class="btn-light">Ver mais <i class="far fa-eye"></i>
-                    </a>
-                </div>
+                
 
             </div>
         </main>
