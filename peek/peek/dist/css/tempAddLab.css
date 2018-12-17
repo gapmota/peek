@@ -6,14 +6,14 @@
     margin-left: 5vh;
     float: left;
     padding-bottom: 1vh;
-    width: 25vh;
+    width: 39vh;
     padding-top: 0vh;
 }
 
 .lblItemLab {
     display: inline;
     float: left;
-    width: 85%;
+    width: 90%;
     margin: 2vh;
     text-align: center;
     font-size: 20px;
@@ -41,7 +41,7 @@
 .lblMaqLab {
     display: inline;
     float: left;
-    width: 85%;
+    width: 90%;
     margin: 2vh;
     text-align: center;
     font-size: 20px;

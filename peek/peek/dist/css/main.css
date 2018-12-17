@@ -258,6 +258,13 @@ div#dashboardRede {
     grid-template-columns: repeat(4, 1fr);
     background-color: #545353;
     padding: 2vh; }
+    div#dashboardRede .grid2 .qtdLabs .BoxLabs {
+      background-color: #545353;
+      padding: 3vh;
+      margin: 4vh;
+      text-align: center;
+      display: block;
+      font-size: 50px; }
     div#dashboardRede .grid2 .qtdLabs,
     div#dashboardRede .grid2 .lab1,
     div#dashboardRede .grid2 .lab2,
@@ -358,7 +365,7 @@ body.backBodyLab {
     padding: 0px; }
 
 .ad-lab .legenda {
-  margin-bottom: 2vh;
+  margin-bottom: 4vh;
   background: #3a3939;
   border-bottom: solid 2px #eb2ebc;
   width: 100%;
@@ -371,7 +378,7 @@ body.backBodyLab {
 .ad-lab .btn-dark {
   background-color: #3a3939;
   margin: 3vh;
-  padding: 1.5vh;
+  padding: 2.5vh;
   margin-bottom: 2vh; }
 
 .ad-lab .item.form input {

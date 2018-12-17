@@ -61,7 +61,7 @@
                  <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Andar" />
                  <asp:TextBox type="text" class="btn-dark" runat="server" required name="nome-lab" placeholder="Capacidade" />
                 <button class="btn-dark add">
-                    <i class="fas fa-plus-square"></i>Adicionar
+                    <i class="fas fa-plus-square"></i>Adicionar Laboratório
                 </button>
             </form>
             <asp:Panel ID="labs" class="boxLabs" runat="server">

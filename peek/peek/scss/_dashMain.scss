@@ -142,6 +142,18 @@ div#dashboardRede {
         background-color: lighten($cor-primaria, 5);
         padding: 2vh;
 
+
+        .qtdLabs {
+            .BoxLabs {
+                background-color: #545353;
+                padding: 3vh;
+                margin: 4vh;
+                text-align: center;
+                display: block;
+                font-size: 50px;
+            }
+        }
+
         .qtdLabs,
         .lab1,
         .lab2,
@@ -192,8 +204,6 @@ div#dashboardRede {
             padding: 2vh;
             margin: 3vh;
         }
-
-
     }
 }
 

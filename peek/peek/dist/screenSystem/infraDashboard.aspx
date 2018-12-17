@@ -146,10 +146,7 @@
             <div class="grid2">
                 <div class="qtdLabs">
                     <div class="legenda">QUANTIDADE DE LABORATÓRIOS</div>
-                    <br />
-                    <br />
-                    <br />
-                    <asp:Label Text="" ID="lblQuantLabs" runat="server" onClick="seeLabs()" CssClass="BoxLabs" />
+                        <asp:Label Text="" ID="lblQuantLabs" runat="server" onClick="seeLabs()" CssClass="BoxLabs" />                 
                 </div>
                 <div class="lab1">
                     <div class="legenda">ALTA UTILIZAÇÃO DA REDE <i class="fas fa-circle"></i></div>
