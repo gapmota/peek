@@ -77,6 +77,7 @@
                 <div class="textoProcMaq">PROCESSADOR</div>
                 <div class="textoRamMaq">RAM</div>
                 <i class="fas fa-desktop" id="iconPC"></i>
+                <i class="fas fa-list" id="iconList"></i>
             </div>
         </asp:Panel>
     </main>

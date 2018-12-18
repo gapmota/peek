@@ -153,15 +153,19 @@ div.btn_finalizar_processo {
 }
 
 #iconPC {
-    margin-left: 25vh;
+    margin-left: 20vh;
+}
+
+#iconList {
+    margin-left: 20vh;
 }
 
 .textoIdMaq {
-    margin-left: 16vh;
+    margin-left: 8vh;
 }
 
 .textoProcMaq {
-    margin-left: 40vh;
+    margin-left: 25vh;
 }
 
 .textoRamMaq {
@@ -187,7 +191,7 @@ div.btn_finalizar_processo {
 
 
 .lblCmd {
-    margin-left: 10vh;
+    margin-left: 15vh;
     background-color: #62b90e;
     padding: 8px;
     padding-left: 5vh;
