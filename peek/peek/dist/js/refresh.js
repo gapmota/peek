@@ -69,8 +69,8 @@ setInterval(() => {//um minuto
 }, tempoPadrao);
 
 setInterval(() => {//dez minutos
-    //  pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
-}, 100000);
+    pegarMediaPorcetagemUsoComputador();
+}, tempoPadrao);
 
 
 

@@ -100,8 +100,8 @@ namespace peek.dist
 
                             codigo.IDLab1 = reader.GetInt32(0);
                             codigo.Nome = Convert.ToString(reader[1]);
-                            codigo.Andar = Convert.ToString(reader[2]);
-                            codigo.Capacity = Convert.ToString(reader[3]);
+                            codigo.Andar = Convert.ToString(reader[3]);
+                            codigo.Capacity = Convert.ToString(reader[2]);
 
                             listLabs.Add(codigo);
                         }
