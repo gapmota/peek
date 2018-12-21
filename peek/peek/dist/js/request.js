@@ -6,7 +6,7 @@ let porcetagemMaximaHD;
 
 let diretorioHD;
 
-function setPorcetagensUsoHDeDiretorio(min,max,diretorio) {
+function setPorcetagensUsoHDeDiretorio(min, max, diretorio) {
     if (porcetagemMinimaHD == undefined) {
         porcetagemMinimaHD = min;
         porcetagemMaximaHD = max;
@@ -38,7 +38,7 @@ function pegarConsumoDownloadUploadLaboratorios() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-//            console.log(response + "download/upload");
+            //            console.log(response + "download/upload");
             attChartGoogle(response.Download, response.Upload);
         },
         error: function () {
@@ -59,10 +59,11 @@ function pegarConsumoDownloadLaboratorios() {
         url: api_url + "Rede/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-       //     console.log(response.Download + "download");
-            
+            //     console.log(response.Download + "download");
+            var now = new Date();
 
-            atualizaDrawConsume(response.Download, "aaa");//response.Data);
+
+            atualizaDrawConsume(response.Download, now.getHours() + ":" + now.getMinutes());//response.Data);
         },
         error: function () {
 
@@ -78,13 +79,13 @@ function pegarQuantidadeDeLaboratorios() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado+"&oque=quantidade",
+        url: api_url + "Laboratorio/?idUsuario=" + idUsuarioLogado + "&oque=quantidade",
         data: '',
         success: function (response) {
 
 
             document.getElementById("txtQuantidadeLaboratorio").textContent = response;
-           
+
         },
         error: function () {
 
@@ -102,7 +103,7 @@ function pegarQuantidadeDePC() {
         url: api_url + "Computador?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-          //  console.log(response);
+            //  console.log(response);
         },
         error: function () {
 
@@ -120,18 +121,18 @@ function pegarProcessosQueMaisConsumemHardware() {
         url: api_url + "Processo?idUsuario=" + idUsuarioLogado + "&oque=labUsando",
         data: '',
         success: function (response) {
-          //  console.log(response[0]);
+            //  console.log(response[0]);
             let arrayProcessos = response;
             let processos = new Array();
             let quantidadeProcesso = new Array();
 
-            for (var i = 0; i < 5; i++){
+            for (var i = 0; i < 5; i++) {
                 try {
                     processos.push(arrayProcessos[i].Nome);
                     quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
-                } catch (Exception){ }
+                } catch (Exception) { }
             }
-          //  console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
+            //  console.log(processos+" aaaaaaaaaaaaaaaaaa "+quantidadeProcesso)
             atualizaDrawMoreUseGraphi(processos, quantidadeProcesso);
 
         },
@@ -158,10 +159,13 @@ function pegarProcessosQueMaisConsumemInternet() {
             for (var i = 0; i < 5; i++) {
                 try {
                     processos.push(arrayProcessos[i].Nome);
-                    quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessos);
+                    quantidadeProcesso.push(arrayProcessos[i].QuantidadeProcessosAberto);
+
+                    console.log(quantidadeProcesso);
+
                 } catch (Exception) { }
             }
-         //  console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
+            //  console.log(processos + " aaaaaaaaaaaaaaaaaa " + quantidadeProcesso)
             atualizaDrawUseGraphi(processos, quantidadeProcesso);
         },
         error: function () {
@@ -180,7 +184,7 @@ function pegarTodosLaboratorioDeUmUsuario() {
         url: api_url + "Rede?idUsuario=" + idUsuarioLogado + "&oque=labs",
         data: '',
         success: function (response) {
-          //  console.log(response);
+            //  console.log(response);
         },
         error: function () {
 
@@ -198,8 +202,8 @@ function pegarTodosLabs() {
         url: api_url + "Laboratorio/?oque=labs&idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-           
-           
+
+
         },
         error: function () {
 
@@ -217,8 +221,8 @@ function pegarInformacoesPC(idComputador) {
         url: api_url + "Computador/?contexto=individual&id=" + idComputador,
         data: '',
         success: function (response) {
-         //   console.log(response);
-            
+            //   console.log(response);
+
         },
         error: function () {
 
@@ -255,8 +259,8 @@ function pegarInformacoesPcPorLab(idLab) {
         url: api_url + "Computador/?contexto=laboratario&id=" + idLab,
         data: '',
         success: function (response) {
-         //   console.log(response);
-          
+            //   console.log(response);
+
         },
         error: function () {
 
@@ -274,8 +278,9 @@ function pegarMediaPorcetagemUsoComputador() {
         url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            
-            atualizaDrawInfraProcessHistory(response, "ddd");
+            var now = new Date();
+
+            atualizaDrawInfraProcessHistory(response, now.getHours() + ":" + now.getMinutes());
         },
         error: function () {
 
@@ -293,7 +298,7 @@ function pegarMediaPorcetagemUsoRam() {
         url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            document.getElementById("mediaUsoMemoriaRam").textContent = response + "% (RAM)";
+            document.getElementById("mediaUsoMemoriaRam").textContent = response + "%";
         },
         error: function () {
 
@@ -309,10 +314,10 @@ function pegarMediaPorcetagemUsoProcessador() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: api_url + "MemoriaRam/?idUsuario=" + idUsuarioLogado,
+        url: api_url + "Processador/?idUsuario=" + idUsuarioLogado,
         data: '',
         success: function (response) {
-            document.getElementById("mediaUsoProcessador").textContent = response + "% (PROCESSADOR)";
+            document.getElementById("mediaUsoProcessador").textContent = response + "%";
         },
         error: function () {
 
@@ -351,9 +356,16 @@ function pegarLaboratoriosQueMaisConsomem() {
             let array = response;
             let size = array.length;
 
-            baixa_rede.textContent = array[0].Nome;
+            console.log(response[0]);
+
+            alta_rede.textContent = array[0].Nome;
+            document.getElementById("btn_lab1").href = "machines.aspx?axpsa=" + array[0].IDdLab;
+
             media_rede.textContent = array[Math.floor((size / 2))].Nome;
-            alta_rede.textContent = array[size-1].Nome;
+            document.getElementById("btn_lab2").href = "machines.aspx?axpsa=" + array[Math.floor((size / 2))].IDdLab;
+
+            baixa_rede.textContent = array[size - 1].Nome;
+            document.getElementById("btn_lab3").href = "machines.aspx?axpsa=" + array[size - 1].IDdLab;
 
         },
         error: function () {
@@ -437,16 +449,15 @@ let hd = document.getElementById("hd_modal");
 let cnx = document.getElementById("area_processos");
 
 function mostrarInfosPc(json) {
-    
+
 
     id_pc.textContent = json.Computador.IdComputador;
-    processador.textContent = json.Computador.DescricaoProcessador + " | Usando: " + json.Processador.PorcentagemUso + "%";
-    ram.textContent = "Memoria Ram Total: " + json.MemoriaRam.Total + " | Em uso: " + json.MemoriaRam.PorcentagemUso + "%";
-    download.textContent = "Download: " + json.Rede.VelocidadeDownload + " | Upload: " + json.Rede.VelocidadeUpload;
-    hd.textContent = "HD: ";
-
+    processador.textContent = json.Computador.DescricaoProcessador.split('@')[0] + " | Usando: " + json.Processador.PorcentagemUso + "%";
+    ram.textContent = "Memoria Ram Total: " + json.MemoriaRam.Total + "GB | Em uso: " + json.MemoriaRam.PorcentagemUso + "%";
+    download.textContent = "Download: " + json.Rede.VelocidadeDownload + "mpbs | Upload: " + json.Rede.VelocidadeUpload + "mpbs";
+    hd.textContent = "";
     for (var i = 0; i < json.Hd.length; i++) {
-        hd.textContent += json.Hd[i].Diretorio + " usando " + json.Hd[i].PorcentagemUso + "% | ";
+        hd.textContent += json.Hd[i].Diretorio.replace("\\", "") + " Livre: " + json.Hd[i].PorcentagemUso + "% | ";
     }
 
     for (var i = 0; i < json.Processos.length; i++) {

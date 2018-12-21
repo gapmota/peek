@@ -22,7 +22,7 @@ namespace peek.dist.css
                 Response.Redirect("login.aspx");
 
 
-
+            
 
             #region Contar e visualizar os computadores
             using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -59,6 +59,7 @@ namespace peek.dist.css
                 }
             }
             #endregion
+
         }
     }
 }

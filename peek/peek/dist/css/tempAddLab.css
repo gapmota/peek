@@ -1,0 +1,52 @@
+﻿body {
+}
+
+.pnlItemLab {
+    background-color: #696969;
+    margin-left: 5vh;
+    float: left;
+    padding-bottom: 1vh;
+    width: 39vh;
+    padding-top: 0vh;
+}
+
+.lblItemLab {
+    display: inline;
+    float: left;
+    width: 90%;
+    margin: 2vh;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 1vh;
+    padding: 1vh;
+    background-color: #888787;
+}
+
+.lblItemIDLab {
+    display: inline;
+    float: left;
+    width: 100%;
+    margin-bottom: 1vh;
+    font-size: 20px;
+    border-bottom: 2px solid #8BC34A;
+    padding: 0.8vh;
+    background-color: #3a3939;
+}
+
+.boxLabs {
+  width: 132vh;
+ 
+}
+
+.lblMaqLab {
+    display: inline;
+    float: left;
+    width: 90%;
+    margin: 2vh;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 1vh;
+    padding: 1vh;
+    background-color: #8bc34a;
+    cursor: pointer;
+}

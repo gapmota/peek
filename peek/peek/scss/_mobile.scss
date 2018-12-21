@@ -125,7 +125,34 @@
     }
 
     .projects {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    body#bodyContato {
+        .title-heading {
+            font-size: 9vh;
+        }
+
+        .div-left {
+            font-size: 2vh;
+            height: 19vh;
+            float: left;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            position: center;
+        }
+
+        .btnMensagem,
+        .mensagem,
+        .input,
+        .container,
+        .div-right {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            position: center;
+        }
     }
 }
 
@@ -135,12 +162,13 @@
         .title-heading {
             font-size: 6vh;
             align-items: center;
+            justify-content: center;
+            position: center;
         }
 
         .div-left {
             font-size: 2vh;
-            height: 15vh;
-            width: 47vh;
+            height: 19vh;
             float: left;
             width: 100%;
             align-items: center;
@@ -155,10 +183,14 @@
             position: center;
         }
 
+        .container{
+            width: 100%;
+        }
+
         .input,
         .mensagem,
         .btnMensagem {
-            width: 55vh;
+            width: 100%;
         }
     }
 

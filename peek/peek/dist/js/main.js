@@ -66,8 +66,10 @@ function toggleDash() {
 }
 
 
-window.onload = function () {//ao carregar a pagina
-    setIdUsuario(4);
+
+
+function iniciar(id) {//ao carregar a pagina
+    setIdUsuario(id);
     setPorcetagensUsoHDeDiretorio(40, 80, "D");
 
     google.charts.load('current', { 'packages': ['gauge'] });

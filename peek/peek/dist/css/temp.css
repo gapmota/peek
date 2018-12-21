@@ -1,9 +1,9 @@
-﻿.fnd_modal_machines_on{
+﻿.fnd_modal_machines_on {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: rgba(26, 80, 207, 0.83);
+    background: rgba(000, 000, 000, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@
     position: relative;
     width: 500px;
     height: 80%;
-    background-color: #fff;
+    background-color: #474646;
     padding: 5px;
 }
 
@@ -33,14 +33,14 @@ p#estilo_texto_modal {
 
 .estilo_texto_header {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
+    color: #fff;
     font-size: 18px;
     margin: 3px;
 }
 
 .estilo_texto_detalhe {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
+    color: #fff;
     font-size: 18px;
     margin: 3px;
 }
@@ -54,6 +54,35 @@ div.header {
     overflow-y: scroll;
 }
 
+.header::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.header::-webkit-scrollbar-track {
+    background-color: #474646;
+}
+
+
+.header::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 50px;
+}
+
+.processos_ativos ::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.processos_ativos::-webkit-scrollbar-track {
+    background-color: #474646;
+}
+
+
+.processos_ativos::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 50px;
+}
 
 
 div.processos_ativos {
@@ -65,12 +94,12 @@ div.processos_ativos {
     overflow-y: scroll;
 }
 
-div.processo_detalhe{
+div.processo_detalhe {
     position: relative;
     margin-bottom: 5px;
     width: 100%;
     height: 50px;
-    background-color: #ccc;
+    background-color: dimgrey;
     display: flex;
 }
 
@@ -82,7 +111,7 @@ div.processo_detalhe{
     display: flex;
 }
 
-#fechar::before{
+#fechar::before {
     content: "x";
 }
 
@@ -91,15 +120,15 @@ div#fechar {
     width: 30px;
     height: 30px;
     font-size: 20px;
-    border-radius: 100%;
     background-color: #e61818;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -20px;
-    right: -20px;
+    top: 0px;
+    right: 0px;
     cursor: pointer;
+    z-index: 9 !important;
 }
 
 div.btn_finalizar_processo {
@@ -107,8 +136,290 @@ div.btn_finalizar_processo {
     margin-bottom: 5px;
     width: calc(100% / 3);
     height: 50px;
-    background-color: #000;
+    background-color: #b94d0e;
     cursor: pointer;
     color: #fff;
     padding: 13px;
+}
+
+.legendaMaquinasLab {
+    background-color: #3a3939;
+    padding: 2vh;
+    font-size: 25px;
+    display: -webkit-box;
+    text-align: center;
+    margin: 2vh;
+    margin-bottom: 0;
+}
+
+#iconPC {
+    margin-left: 20vh;
+}
+
+#iconList {
+    margin-left: 20vh;
+}
+
+.textoIdMaq {
+    margin-left: 8vh;
+}
+
+.textoProcMaq {
+    margin-left: 25vh;
+}
+
+.textoRamMaq {
+    margin-left: 34vh;
+}
+
+.pnlItem {
+    background-color: dimgrey;
+    padding: 2vh;
+    font-size: 25px;
+    margin: 2vh;
+    margin-bottom: 0.5vh;
+    margin-top: 0px;
+    background-size: 65px;
+    background-position: left;
+    display: flex;
+    white-space: nowrap;
+}
+
+.lblItem {
+    margin-left: 7vh;
+}
+
+
+.lblCmd {
+    margin-left: 15vh;
+    background-color: #62b90e;
+    padding: 8px;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    cursor: pointer;
+}
+
+.lblProcesso {
+    margin-left: 2vh;
+    background-color: #62b90e;
+    padding: 8px;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    cursor: pointer;
+}
+
+
+
+
+--------------------------CMD REMOTO-------------------------------------------------
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: : 100%;
+    height: 100%;
+}
+
+.modal_cmd_on {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 7 !important;
+    background: rgba(000, 000, 000, 0.8);
+    top: 0px;
+}
+
+.modal_cmd_off {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    display: none;
+    z-index: 0;
+    background: rgba(000, 000, 000, 0.0);
+}
+
+.area_cmd {
+    position: relative;
+    width: 700px;
+    height: 450px;
+    background: #fff;
+}
+
+.area_titulo_cmd {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    color: #000;
+    font-family: Century gothic;
+    display: flex;
+}
+
+#titulo_cmd {
+    position: relative;
+    width: calc(100% - 30px);
+    height: 30px;
+    color: #000;
+    font-family: Century gothic;
+    padding: 5px;
+}
+
+
+#fechar_cmd {
+    position: relative;
+    width: 30px;
+    background: #fff;
+    height: 30px;
+    color: #000;
+    font-family: Century gothic;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+    #fechar_cmd::before {
+        content: "x";
+    }
+
+    #fechar_cmd:hover {
+        color: #fff;
+        background: #f00;
+        transition: 0.2s;
+    }
+
+.prompt_remoto {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px);
+    background: #000;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+    .prompt_remoto::-webkit-scrollbar {
+        width: 8px;
+    }
+
+
+    .prompt_remoto::-webkit-scrollbar-track {
+        background-color: #000;
+    }
+
+
+    .prompt_remoto::-webkit-scrollbar-thumb {
+        background: #fff;
+        border-radius: 50px;
+    }
+
+
+.acoes_cmd {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #0f0;
+    display: flex;
+}
+
+.bloco_prompt {
+    position: relative;
+    width: 100%;
+}
+
+#cmd_executado, #retorno_executado {
+    color: green;
+    font-family: Century gothic;
+}
+
+#cmd_executado {
+    margin-bottom: 20px;
+}
+
+#retorno_executado {
+    font-size: 11px;
+}
+
+#digite_sem_texto {
+    position: relative;
+    min-width: 136px;
+    max-width: 190px;
+    height: 100%;
+    padding: 8px 2px;
+    font-family: Century gothic;
+    color: green;
+    font-size: 15px;
+    background: #000;
+    display: inline-block;
+}
+
+input[class=txtComandoExecutar] {
+    position: relative;
+    width: calc(100% - 160px);
+    height: 100%;
+    outline: none;
+    padding: 5px;
+    font-family: Century gothic;
+    color: green;
+    font-size: 15px;
+    background: #000;
+    border: none;
+}
+
+#btn_executar_comando {
+    position: relative;
+    width: 80px;
+    height: 100%;
+    outline: none;
+    padding: 5px;
+    font-family: Century gothic;
+    font-size: 15px;
+    border: none;
+    color: #000;
+    padding: 10px 7px;
+    cursor: pointer;
+}
+
+    #btn_executar_comando::before {
+        content: "executar";
+    }
+
+.area_historico {
+    position: absolute;
+    width: 300px;
+    height: 70px;
+    top: 20px;
+    left: 0px;
+    font-family: 'Century Gothic';
+}
+
+#todos_os_comandos_executados {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: rgb(19, 189, 19);
+    cursor: pointer;
+    padding: 5px;
+}
+
+#limpar_todos_os_comandos {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(144, 25, 25, 0.83);
+    cursor: pointer;
+    padding: 5px;
+}
+
+#todos_os_comandos_executados::before {
+    content: "todos os comandos executados";
+}
+
+#limpar_todos_os_comandos::before {
+    content: "apagar comandos executados";
 }

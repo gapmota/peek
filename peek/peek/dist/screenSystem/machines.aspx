@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/temp.css" />
     <title>Peek - Maquinas Do Lab</title>
+    <link rel="icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon" />
 </head>
 <body id="body-menu" class="bodyMaq">
     <header>
@@ -51,18 +53,17 @@
 
     <div id="modal_process" class="fnd_modal_machines_off">
         <div id="modal_machine">
-         <div id="fechar" onclick="fechar()"></div>
+            <div id="fechar" onclick="fechar()"></div>
             <div class="header">
                 <p class="estilo_texto_header" id="id_computador_modal">ID: 52</p>
                 <p class="estilo_texto_header" id="processador_modal">Processador: Intel I3 | Usando 70%</p>
                 <p class="estilo_texto_header" id="ram_modal">Memoria Ram: 8GB | Usando 50%</p>
                 <p class="estilo_texto_header" id="downladUpload_modal">Download: 50mbps | Upload: 10mbps</p>
                 <p class="estilo_texto_header" id="hd_modal">C: 80% Espaço livre | D: 60% Livre</p>
-            </div>   
+            </div>
             <div class="processos_ativos">
-                
+
                 <div id="area_processos">
-                    
                 </div>
             </div>
         </div>
@@ -71,12 +72,44 @@
     <main id="maquinasLab" class="maqui-lab">
         <h1 class="title-heading">Controle de <span class="text-secondary">Maquinas</span></h1>
         <asp:Panel ID="machines" class="boxMachines" runat="server">
+            <div class="legendaMaquinasLab">
+                <div class="textoIdMaq">ID </div>
+                <div class="textoProcMaq">PROCESSADOR</div>
+                <div class="textoRamMaq">RAM</div>
+                <i class="fas fa-desktop" id="iconPC"></i>
+                <i class="fas fa-list" id="iconList"></i>
+            </div>
         </asp:Panel>
     </main>
+
+    <div id="modal_cmd" class="modal_cmd_off">
+
+        <span class="area_historico">
+            <div id="todos_os_comandos_executados"></div>
+            <div id="limpar_todos_os_comandos"></div>
+        </span>
+
+        <div class="area_cmd">
+
+            <div class="area_titulo_cmd">
+                <div id="titulo_cmd"></div>
+                <div id="fechar_cmd" onclick="fecharModalCmd()"></div>
+            </div>
+
+            <div id="area_prompt_remoto" class="prompt_remoto">
+            </div>
+            <div class="acoes_cmd">
+                <div id="digite_sem_texto"></div>
+                <input type="text" id="txtComandoParaSerExecutado" class="txtComandoExecutar" tabindex="1">
+                <div id="btn_executar_comando"></div>
+            </div>
+        </div>
+    </div>
 
 
 
     <script src="../js/main.js"></script>
+    <script src="../js/cmd_remoto.js"></script>
     <script src="../js/machines.js"></script>
     <script src="../js/request.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

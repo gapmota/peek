@@ -22,7 +22,7 @@ function drawConsumeGraphi() {
         data: {
             datasets: [{
 
-                label: 'Consumo',
+                label: 'Uso da rede',
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)"
             }],
@@ -63,7 +63,7 @@ function drawInfraProcessHistory() {
                 //data: [30, 45, 80, 100],
                 backgroundColor: "rgba(255, 34, 0, 0.3)",
                 borderColor: "#0000ff",
-                label: 'Uso da rede',
+                
                 //data: [173448346, 175885229, 178276128, 180619108],
                 backgroundColor: "rgba(0,225,29,0.3)",
                 borderColor: "rgb(235,46,188)"
@@ -131,6 +131,7 @@ function drawMoreUseGraphi() {
 
 function atualizaDrawUseGraphi(processo, quantidade) {
 
+    //  console.log(processo + " ;;;;;;;;;;; " + quantidade);
 
     chartUse.data.labels = processo;
     chartUse.data.datasets[0].data = quantidade;
@@ -155,18 +156,15 @@ function drawChart() {
 
     dataGoogle = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
-        ['Download', 100],
-        ['Upload', 100],
+        ['Download', 50],
+        ['Upload', 50],
     ]);
 
     optionsGoogle = {
         width: 400,
         height: 240,
-        
-        redFrom: 90, redTo: 100,
-        yellowFrom: 51, yellowTo: 100,
-        greenFrom: 0, greenTo: 50,
-        minorTicks: 5    };
+        minorTicks: 5
+    };
 
     chartGoogle = new google.visualization.Gauge(document.getElementById('procGraphi'));
 

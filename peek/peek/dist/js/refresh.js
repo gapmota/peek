@@ -3,25 +3,20 @@
 }
 
 let tempoPadrao = 5000;
+let tempoPadraoLinhas = 10000;
 
 setInterval(() => {//30 seg
 
 
-       pegarLaboratoriosQueMaisConsomem();
+    pegarLaboratoriosQueMaisConsomem();
 
 }, tempoPadrao);
 
+
+
 setInterval(() => {//30 seg
 
 
-//    pegarLaboratoriosQueMaisConsomem();
-    pegarQuantidadeDeLaboratorios();
-
-}, tempoPadrao);
-
-setInterval(() => {//30 seg
-    
-    
     pegarConsumoDownloadUploadLaboratorios();
 
 
@@ -30,25 +25,32 @@ setInterval(() => {//30 seg
 setInterval(() => {//30 seg
 
     pegarProcessosQueMaisConsumemHardware();
-    
-    
+
+
 
 }, tempoPadrao);
 
 setInterval(() => {
     pegarProcessosQueMaisConsumemInternet();
-
+    //  console.log("aqui");
 }, tempoPadrao);
 
 setInterval(() => {
-    
+
     pegarMediaPorcetagemUsoComputador();
-    
+
+}, tempoPadraoLinhas);
+
+setInterval(() => {//30 seg
+
+
+    pegarMediaPorcetagemUsoRam();
+
 }, tempoPadrao);
 
 setInterval(() => {//um minuto
     pegarConsumoDownloadLaboratorios();
-}, tempoPadrao);
+}, tempoPadraoLinhas);
 
 
 
@@ -67,8 +69,8 @@ setInterval(() => {//um minuto
 }, tempoPadrao);
 
 setInterval(() => {//dez minutos
-    //  pegarQuantidadeDeLaboratorios($("#txtQuantidadeLaboratorio"), idUsuarioLogado);
-}, 100000);
+    pegarMediaPorcetagemUsoComputador();
+}, tempoPadrao);
 
 
 

@@ -36,10 +36,15 @@ namespace peek.dist.screenSite
                 msg.From = new MailAddress("monitoringvision@gmail.com"); //EMAIL PARA RECEBER A MENSAGEM
                 msg.To.Add(new MailAddress("monitoringvision@gmail.com")); //IDEM AO DE CIMA
 
-                cliente.Send(msg);
-
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Enviado com sucesso!')", true);
-
+                if (!(txtNome.Text == "" || txtEmail.Text == "" || txtMensagem.Text == ""))
+                {
+                    cliente.Send(msg);
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Enviado com sucesso!')", true);
+                }
+                else
+                {
+                    Response.Write("<script>alert('Por favor, verifique se existem campos vazios')</script>");
+                }
             }
             catch (Exception ex)
             {

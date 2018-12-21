@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/main.css" />
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <title>Peek - Home</title>
+    <link rel="icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon" />
 </head>
 <body id="bg-img">
     <%-- Chat --%>
@@ -20,7 +22,7 @@
             host: "https://wchat.freshchat.com"
         });
     </script>
-     <%-- Fim chat --%>
+    <%-- Fim chat --%>
     <form id="form1" runat="server">
         <header>
             <div class="menu-btn">

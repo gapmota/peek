@@ -13,8 +13,8 @@ namespace peek.dist.screenSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] == null)
-                Response.Redirect("login.aspx");
+            //if (Session["Usuario"] == null)
+            //    Response.Redirect("login.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
@@ -25,6 +25,28 @@ namespace peek.dist.screenSystem
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
             UserController uc = new UserController();
+
+            if (txtNome.Text == "")
+            {
+                Response.Write("<script>alert('Campo do nome está vazio')</script>");
+            }
+            else if (txtEmail.Text == "")
+            {
+                Response.Write("<script>alert('Campo de e-mail está vazio')</script>");
+            }
+            else if (txtTelefone.Text == "")
+            {
+                Response.Write("<script>alert('Campo de telefone está vazio')</script>");
+            }
+            else if (txtSenha.Text == "")
+            {
+                Response.Write("<script>alert('Campo de senha está vazio')</script>");
+            }
+            else if (txtConfirmaSenha.Text == "")
+            {
+                Response.Write("<script>alert('Campo para confirmar senha está vazio')</script>");
+            }
+
             if (uc.CompararSenha(txtSenha.Text, txtConfirmaSenha.Text))
             {
 
